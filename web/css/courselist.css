@@ -1,0 +1,99 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 28, 2020, 10:00:10 PM
+    Author     : Zafrul Hasan Nasim
+*/
+.btn{
+    margin: 3px auto;
+   
+}
+.table-responsive{
+    width: 1070px;
+    margin: 5px auto;       /* centering a table */
+    position: center;
+}
+.home{
+    border:2px solid red;
+    width: 70px;
+   text-align: center;
+    margin: .75px auto;
+    background: red;
+    position: center;
+    
+}
+.heading{
+    color: aliceblue;
+    border:4px solid red;
+    width:200px;
+    margin: 8px auto;
+    position: center;
+    background: red;
+}
+
+.theading{
+    color: #ff0000 ;
+}
+.hname{
+    min-width:50px;
+    text-align: center;
+    background: white; 
+    
+    
+}
+
+.hdept{
+    min-width:25px;text-align: center;background:black;;
+}
+.hemail{
+    min-width:45px;text-align: center; background: white; 
+}
+.hmobile{
+    min-width:50px;text-align: center;background:black;
+}
+.hview{
+    min-width:25px;text-align: center;background:black;
+}
+.hdelete{
+     min-width:45px;text-align: center; background: white;
+}
+
+.bname{
+    background-color:white;
+    color:black;
+    text-align: center;
+    border: 2.5px solid #0000ff;
+}
+.bdept{
+    background-color:black;
+    text-align: center;
+    color:white;
+     border: 2.5px solid #0000ff;
+}
+.bemail{
+    background-color: white;
+    color:black;
+    text-align: center;
+    border: 2.5px solid  #0000ff ;
+}
+.bmobile{
+    background-color:black;
+    text-align: center;
+    color:white;
+    border: 2.5px solid #0000ff ;/* using for make border of line*/
+}
+.bview{
+     background-color:black;
+    text-align: center;
+    color:white;
+     border: 2.5px solid #0000ff;
+}
+.bdelete{
+     background-color: white;
+    color:black;
+    text-align: center;
+    border: 2.5px solid  #0000ff ;
+}

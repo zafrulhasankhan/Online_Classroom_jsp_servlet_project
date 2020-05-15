@@ -1,0 +1,64 @@
+body{
+    
+    background: url('../image/bodyblog5.jpg');
+    background-size: 400px 200px;
+}
+
+.header {
+    position: absolute;
+    left: 0;
+    top:0;
+	width:1700;
+        height: 60;
+	font-family: 'Noto Serif', serif;
+	color: white;
+        background: #cc0033;
+}
+.logo{
+    text-align: center;
+    position: absolute;
+    top:-10;
+    left:540;
+    height: 10;
+}
+.container {
+    position: absolute;
+    top:190;
+    left: 32;
+	width: 95%;
+	margin: 5px auto 50px;
+	border: 1px solid #BFBCB3;
+	padding: 10px 0px 50px;
+        border: 2px red solid;
+}
+.container:after { content: ""; display: block; clear: both; }
+.container.dashboard h1 { text-align: center; margin: 25px;color: white }
+.container.dashboard .stats a {
+	display: inline-block;
+	padding: 30px;
+	margin: 5px;
+	width: 25%;
+	text-align: center;
+	border-radius: 3px;
+	border: 2px solid  red;
+        font-size: 20;
+        background:  #cc3300;
+        color: white;
+         
+}
+.container.dashboard .stats a.first { margin-left: 25px;  }
+.container.dashboard .stats a:hover { cursor: pointer; background-color: aqua; }
+.container.dashboard .buttons { margin-left: 15px;position:absolute;
+        left:500;  }
+.container.dashboard .buttons a {
+	display: inline-block;
+	margin: 10px;
+	text-decoration: none;
+        color:  #cc0033;
+	padding: 10px 25px;
+	border: none;
+	background-color: #0E7D92;
+	color: white;
+        
+        
+}
