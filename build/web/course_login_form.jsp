@@ -1,6 +1,6 @@
 <%-- 
-    Document   : add_course
-    Created on : May 15, 2020, 4:45:48 PM
+    Document   : course_login_form
+    Created on : May 16, 2020, 9:51:59 PM
     Author     : Zafrul Hasan Nasim
 --%>
 
@@ -9,33 +9,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link href="css/login.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/login.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>${errorMsg}</h1>
-       <div class="container">
-            <form action="add_course_controller" method="POST">
+        <div class="container">
+        <form action="course_login_controller" method="POST">
                            <div class="username">
                                
-                               <input type="text" name="name" placeholder="Course Name" required="" class="name"/>
+                               <input type="text" value="${code}" name="code" placeholder="Course code" required="" class="name"/>
                            </div><br>
                              
                             
                             <div class="pass"><br>
 								
 			    
-                            <input type="text" name="code" placeholder="Course code" required="" class="code" />
-							</div>
-                            <div class="pass"><br>
-								
-			    
-                            <input type="password" name="pass" placeholder="password" required="" class="password" />
+                            <input type="password" name="pass" placeholder="PassWord" required="" class="password" />
 							</div>
                             
                              
                             <br><div class="st">
-                                <button class="button button2" type="submit" name="login">Save</button>
+                                <button class="button button2" type="submit" name="login">Login</button>
                                 
                             </div>
                             

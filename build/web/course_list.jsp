@@ -55,7 +55,7 @@
             <td class="bname"><%= u.getId()%></td>
             <td class="bdept"><%= u.getName()%></td>
         <td class="bemail"><%= u.getCode()%></td>
-        <td class="bview"><%out.print("<a href='UpdateServlet?id="+u.getId()+"'</a>");%>View Course</td>
+        <td class="bview"><%out.print("<a href='get_course_servlet?code="+u.getCode()+"'</a>");%>View Course</td>
         <td class="bdelete"><%out.print("<a href='UpdateServlet?id="+u.getId()+"'</a>");%> Delete Course</td>
         
         

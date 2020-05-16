@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <h1>${errorMsg}</h1>
        <div class="container">
             <form action="add_course_controller" method="POST">
                            <div class="username">

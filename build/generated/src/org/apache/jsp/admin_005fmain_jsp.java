@@ -62,7 +62,7 @@ public final class admin_005fmain_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("<div class=\"container dashboard\">\n");
       out.write("\t\t<h1>Welcome To Admin Panel</h1>\n");
       out.write("\t\t<div class=\"stats\">\n");
-      out.write("\t\t\t<a href=\"users.php\" class=\"first\">\n");
+      out.write("\t\t\t<a href=\"all_course_controller\" class=\"first\">\n");
       out.write("\t\t\t\t\n");
       out.write("\t\t\t\t<span>See All course's</span>\n");
       out.write("\t\t\t</a>\n");
