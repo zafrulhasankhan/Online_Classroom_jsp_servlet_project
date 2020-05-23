@@ -13,7 +13,7 @@
         
         <div class="header">
 		<div class="logo">
-			<h1 class="welcome" > Online Classromm </h1>
+			<h1 class="welcome" > Online Classroom </h1>
 				
 			</a>
 		</div>

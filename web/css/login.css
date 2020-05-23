@@ -7,12 +7,45 @@ and open the template in the editor.
     Created on : Mar 28, 2020, 12:03:17 PM
     Author     : Zafrul Hasan Nasim
 */
+body{
+    
+    background: url('../image/bodyblog5.jpg');
+    background-size: 400px 200px;
+}
+.welcome-title{
+   
+    text-align: center;
+    animation: bymove 4s infinite;
+}
+
+@keyframes bymove{
+   
+   0%{
+      color:red;
+      
+   }
+   25%{
+       color:green;
+   }
+   50%{
+       color :yellow;
+   }
+   75%{
+       color:orange;
+   }
+   100%{
+       color: white;
+   }
+
+
+}
+
 .container
 {
     width: 400px;
     height: 300px;
-    margin: 100px auto;
-    background:  #0000ff;
+    margin: 90px auto;
+    background: #ff3333;
     position: center;
 }
 
@@ -26,7 +59,7 @@ and open the template in the editor.
     
     text-align: center;
     position: relative;
-    top: 10%;
+    top: 20%;
     transform: translateY(5%);
 }
 
@@ -65,3 +98,35 @@ and open the template in the editor.
     background-color:#ffcccc;
     
 }
+.button{
+    margin-left: 15px; 
+    font-size: large;
+    color:white;
+    background: blue;
+    border: 1px blue solid;
+}
+.button:hover{
+    background: #33ff33;
+}
+
+.container-select-file{
+    width: 400px;
+    height: 200px;
+    margin: 80px auto;
+    background: #ff3333;
+    position: center;
+}
+.container-select-file form{
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+    font-size: 50 cm;
+    color:wheat;
+    text-transform:none;
+    
+    text-align: center;
+    position: relative;
+    top: 5%;
+    transform: translateY(5%);
+}
+

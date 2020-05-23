@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class course_005flogin_005fform_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -44,6 +44,8 @@ public final class course_005flogin_005fform_jsp extends org.apache.jasper.runti
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -52,6 +54,7 @@ public final class course_005flogin_005fform_jsp extends org.apache.jasper.runti
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
+      out.write("        <br><br><br><<h1 class=\"welcome-title\">Welcome To Nasim's Classroom</h1>\n");
       out.write("        <div class=\"container\">\n");
       out.write("        <form action=\"course_login_controller\" method=\"Post\">\n");
       out.write("                           <div class=\"username\">\n");
@@ -76,6 +79,36 @@ public final class course_005flogin_005fform_jsp extends org.apache.jasper.runti
       out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
+      out.write("<div class=\"topnav\">\n");
+      out.write("           <!-- Centered link -->\n");
+      out.write("           <div class=\"topnav-centered\">\n");
+      out.write("               <a href=\"\" class=\"active\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(" | ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${code}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</a>\n");
+      out.write("           </div>\n");
+      out.write("           <!-- Left-aligned links (default) -->\n");
+      out.write("           <a href=\"#news\">News</a>\n");
+      out.write("           <a href=\"#contact\">Contact</a>\n");
+      out.write("             <div class=\"dropdown\">\n");
+      out.write("    <button class=\"dro \n");
+      out.write("      <i class=\"fa fa-caret-down\"></i>\n");
+      out.write("    </button>\n");
+      out.write("    <div class=\"dropdown-content\">\n");
+      out.write("      <a href=\"#\">Link 1</a>\n");
+      out.write("      <a href=\"#\">Link 2</a>\n");
+      out.write("      <a href=\"#\">Link 3</a>\n");
+      out.write("    </div>\n");
+      out.write("  </div> \n");
+      out.write("           <!-- Right-aligned links -->\n");
+      out.write("           <div class=\"tovnav-right\">\n");
+      out.write("           <a href=\"#news\">News</a>\n");
+      out.write("           <a href=\"#contact\">Contact</a>\n");
+      out.write("           </div>\n");
+      out.write("           \n");
+      out.write("           \n");
+      out.write("           </div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

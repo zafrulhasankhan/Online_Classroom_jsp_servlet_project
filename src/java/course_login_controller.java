@@ -41,7 +41,8 @@ public class course_login_controller extends HttpServlet {
            if(rs.next()){
                String code1 = rs.getString("course_code");
                 String pass1 = rs.getString("password");
-                 request.getRequestDispatcher("index.jsp").forward(request,response);
+               request.setAttribute("code", code);
+                 request.getRequestDispatcher("select_file_for_input.jsp").forward(request,response);
            }
                     
         } catch (SQLException ex) {

@@ -38,7 +38,7 @@
                                         <th class="hdept" style="border: 3px solid red; "><h5>Course Name</h5></th>
                                         <th class="hemail" style="border: 3px solid red;"><h5>Course code</h5></th>
                                         <th class="hview" style="border: 3px solid red;"><h5>view course</h5></th>
-                                        <th class="hdelete" style="border: 3px solid red;"><h5>Delete course</h5></th>
+                                        <th class="hdelete" style="border: 3px solid red;"><h5>Add Feature</h5></th>
                                         
                                     </tr>
                                 </thead><br>
@@ -55,8 +55,8 @@
             <td class="bname"><%= u.getId()%></td>
             <td class="bdept"><%= u.getName()%></td>
         <td class="bemail"><%= u.getCode()%></td>
-        <td class="bview"><%out.print("<a href='get_course_servlet?code="+u.getCode()+"'</a>");%>View Course</td>
-        <td class="bdelete"><%out.print("<a href='UpdateServlet?id="+u.getId()+"'</a>");%> Delete Course</td>
+        <td class="bview"><%out.print("<a href='select_file_controller?code="+u.getCode()+"'</a>");%><%=u.getCode()%></td>
+        <td class="bdelete"><%out.print("<a href='get_course_servlet?code="+u.getCode()+"'</a>");%> Add post</td>
         
         
       </tr>  

@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class admin_005fmain_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class input_005f1_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -30,7 +30,7 @@ public final class admin_005fmain_jsp extends org.apache.jasper.runtime.HttpJspB
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html");
+      response.setContentType("text/html; charset=ISO-8859-1");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -43,45 +43,27 @@ public final class admin_005fmain_jsp extends org.apache.jasper.runtime.HttpJspB
 
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
       out.write("<html>\n");
-      out.write("    \n");
-      out.write("    <head>\n");
-      out.write("        <link href=\"css/admin_main_css.css\" rel=\"stylesheet\"> \n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        \n");
-      out.write("        <div class=\"header\">\n");
-      out.write("\t\t<div class=\"logo\">\n");
-      out.write("\t\t\t<h1 class=\"welcome\" > Online Classroom </h1>\n");
-      out.write("\t\t\t\t\n");
-      out.write("\t\t\t</a>\n");
-      out.write("\t\t</div>\n");
-      out.write("        </div>\n");
-      out.write("\t\n");
-      out.write("        \n");
-      out.write("<div class=\"container dashboard\">\n");
-      out.write("\t\t<h1>Welcome To Admin Panel</h1>\n");
-      out.write("\t\t<div class=\"stats\">\n");
-      out.write("\t\t\t<a href=\"all_course_controller\" class=\"first\">\n");
-      out.write("\t\t\t\t\n");
-      out.write("\t\t\t\t<span>See All course's</span>\n");
-      out.write("\t\t\t</a>\n");
-      out.write("                    <a href=\"add_course.jsp\">\n");
-      out.write("\t\t\t\t\n");
-      out.write("\t\t\t\t<span>Add new course</span>\n");
-      out.write("\t\t\t</a>\n");
-      out.write("\t\t\t<a href=\"posts.php\">\n");
-      out.write("\t\t\t\t\n");
-      out.write("\t\t\t\t<span>Block the user's</span>\n");
-      out.write("\t\t\t</a>\n");
-      out.write("\t\t</div>\n");
-      out.write("\t\t<br><br><br>\n");
-      out.write("\t\t<div class=\"buttons\">\n");
-      out.write("\t\t\t<a href=\"users.php\">Add Users</a>\n");
-      out.write("                        <a href=\"create_post_form.php\">Add Posts</a>\n");
-      out.write("\t\t</div>\n");
-      out.write("\t</div>\n");
-      out.write("    </body>\n");
+      out.write("<head>\n");
+      out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\n");
+      out.write("<title>Home</title>\n");
+      out.write("</head>\n");
+      out.write("<body>\n");
+      out.write("<center>\n");
+      out.write("<h1>Image Uploading</h1>\n");
+      out.write("<table>\n");
+      out.write("<form action=\"./ImageUpload2\" method=\"post\">\n");
+      out.write("<tr><td>Id</td><td><input type=\"text\" name=\"id\"/></td></tr>\n");
+      out.write("<tr><td>Name</td><td><input type=\"text\" name=\"name\"/></td></tr>\n");
+      out.write("<tr><td>Image</td><td><input type=\"file\" name=\"image\"/></td></tr>\n");
+      out.write("<tr><td colspan=\"2\"><input type=\"submit\" value=\"upload\"/></td></tr>\n");
+      out.write("</form>\n");
+      out.write("    <a href=\"ImageViewerController\">see the all photo</a>\n");
+      out.write("</table>\n");
+      out.write("</center>\n");
+      out.write("</body>\n");
       out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

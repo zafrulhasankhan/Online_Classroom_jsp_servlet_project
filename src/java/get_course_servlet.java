@@ -22,13 +22,13 @@ public class get_course_servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String code = request.getParameter("code");
+    throws ServletException, IOException {
+    String code = request.getParameter("code"); 
          
-        System.out.println(code);
+    System.out.println(code);
         
-                request.setAttribute("code", code);
-         request.getRequestDispatcher("course_login_form.jsp").forward(request,response);
+    request.setAttribute("code", code);
+    request.getRequestDispatcher("input.jsp").forward(request,response);
     }
 
 }
