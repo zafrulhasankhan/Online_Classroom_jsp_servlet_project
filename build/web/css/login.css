@@ -42,8 +42,8 @@ body{
 
 .container
 {
-    width: 400px;
-    height: 300px;
+    
+   width: 400px;
     margin: 90px auto;
     background: #ff3333;
     position: center;
@@ -56,11 +56,11 @@ body{
     font-size: 50 cm;
     color:wheat;
     text-transform:none;
-    
-    text-align: center;
     position: relative;
     top: 20%;
     transform: translateY(5%);
+    text-align: center;
+    
 }
 
 .title{

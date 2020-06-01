@@ -27,16 +27,18 @@ public class add_course_controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String tecname = request.getParameter("tecname");
        String name = request.getParameter("name");
        String code = request.getParameter("code");
        String pass = request.getParameter("pass");
         System.out.println(name);
        
         try {
-            PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into add_course values(course_id,?,?,?)");
-            ps.setString(1, name);
-              ps.setString(2, code);
-              ps.setString(3, pass);
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into add_course values(course_id,?,?,?,?)");
+            ps.setString(1, tecname);
+            ps.setString(2, name);
+              ps.setString(3, code);
+              ps.setString(4, pass);
                ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(add_course_controller.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,6 +4,7 @@
     Author     : Zafrul Hasan Nasim
 --%>
 
+<%@page import="dao.people"%>
 <%@page import="dao.post"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,6 +21,9 @@
         <%
             String name = session.getAttribute("name").toString();
                session.setAttribute("name", name);
+               
+String tecname = session.getAttribute("tecname").toString();
+               session.setAttribute("tecname", tecname);
                %>
            
             
@@ -36,7 +40,10 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Link 1</a>
+        
+       
+      
+      <a href="peoplelist_controller?code=${code} ">People</a>
       <a href="#">Link 2</a>
       <a href="#">Link 3</a>
     </div>
@@ -48,7 +55,7 @@
             
        
              
-  <div class="post">
+  
       <h2 style="text-align: center;color: #000;"><b><u>All post</u></b></h2>
        <div class="postarea">
         <%
@@ -60,9 +67,11 @@
                 
         %>
         <div class="bodypost">
-           <h4><%= po.getBody()%></h4>
-          <h5>Uploaded File/Image : <a href="getImage.jsp?name=<%=po.getName()%>"> <%=po.getName()%></a></h5><br>
-        <h6>post creation time:  <%=po.getTime()%></h6>
+            <h4>Text Message:</h4>
+            <h3><%= po.getBody()%></h3><p>***********************------------------------------***********************</p>
+            
+          <h4>Uploaded File/Image : <a href="getImage.jsp?name=<%=po.getName()%>"> <%=po.getName()%></a></h4><br>
+          <h5>post creation time:  <%=po.getTime()%></h5>
            
         </div><br>
        
@@ -76,7 +85,7 @@
       
      
         
-        </div>
+        
       <div class="home">
           <a href="index.jsp" style="color: white; align-content: right; "><h5>Home</h5></a>
       </div>

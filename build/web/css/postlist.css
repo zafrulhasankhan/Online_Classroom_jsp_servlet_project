@@ -84,12 +84,10 @@ and open the template in the editor.
   color: white;
   
 }
-.bodypost{
-    
-}
+
 .postarea{
  
-    width: 400px;
+    width: 700px;
     height: 300px;
     margin: 80px auto;
   
@@ -98,14 +96,46 @@ and open the template in the editor.
 }
 .bodypost{
     
-    border: 1px red   solid;
+    border: 2px black   solid;
 }
-.bodypost h4{
+.postarea .bodypost h4{
+     animation: bymove 4s infinite;
+}
+
+@keyframes bymove{
+   
+   0%{
+      color:red;
+      
+   }
+   25%{
+       color:green;
+   }
+   50%{
+       color :yellow;
+   }
+   75%{
+       color:orange;
+   }
+   100%{
+       color: red;
+   }
+
+
+
    
 }
-.bodypost a{
-   
+.postarea .bodypost h3{
+     color: #4CAF50;
+     text-align: center;
 }
-.bodypost h6{
+.postarea .bodypost p{
+     color: #4CAF50;
+     text-align: center;
+    
+}
+.bodypost h5{
+  margin: 4px auto;
   text-align: end;
+  color: red;
 }

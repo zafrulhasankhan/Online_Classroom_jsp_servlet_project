@@ -24,9 +24,9 @@ import javax.servlet.http.Part;
  *
  * @author Zafrul Hasan Nasim
  */
-@WebServlet(name = "ImageUpload", urlPatterns = {"/ImageUpload"})
+@WebServlet(name = "post_form_controller", urlPatterns = {"/post_form_controller"})
 @MultipartConfig(maxFileSize = 16177216)
-public class ImageUpload extends HttpServlet {
+public class post_form_controller extends HttpServlet {
 //private static final long serialVersionUID = 1L;
 
 	

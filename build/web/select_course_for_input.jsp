@@ -16,7 +16,7 @@
         <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1>
         <div class="container-select-file">
             <br><h3 class="welcome-title">Enter your course code Again</h3>
-        <form action="select_file_controller" method="Get">
+        <form action="select_course_controller" method="Get">
             <input type="text" name="code" value="${code}" placeholder="Confirm course code" class="name"/><br><br>
             <input type="submit" class="button" value="Join Class"/>
         </form>

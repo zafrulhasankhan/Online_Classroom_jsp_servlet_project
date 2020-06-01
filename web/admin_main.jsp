@@ -23,7 +23,7 @@
 <div class="container dashboard">
 		<h1>Welcome To Admin Panel</h1>
 		<div class="stats">
-			<a href="all_course_controller" class="first">
+			<a href="courselist_controller" class="first">
 				
 				<span>See All course's</span>
 			</a>

@@ -53,6 +53,7 @@ public final class postlist_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link href=\"css/postlist.css\" rel=\"stylesheet\"/>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"../css/bootstrap.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n");
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
@@ -62,6 +63,9 @@ public final class postlist_jsp extends org.apache.jasper.runtime.HttpJspBase
             String name = session.getAttribute("name").toString();
                session.setAttribute("name", name);
                
+String tecname = session.getAttribute("tecname").toString();
+               session.setAttribute("tecname", tecname);
+               
       out.write("\n");
       out.write("           \n");
       out.write("            \n");
@@ -70,9 +74,16 @@ public final class postlist_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <div class=\"navbar\">\n");
       out.write("  <a href=\"#home\">Home</a>\n");
       out.write("  <a href=\"#news\">News</a>\n");
+      out.write("  <div class=\"navbar-centered\">\n");
+      out.write("      <a  class=\"active\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write(" | ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${code}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</a>\n");
+      out.write("  </div>\n");
       out.write("  <div class=\"dropdown\">\n");
-      out.write("    <button class=\"dro\n");
-      out.write("      <i class=\"fa fa-caret-down\">Dropdown</i>\n");
+      out.write("    <button class=\"dropbtn\">Dropdown \n");
+      out.write("      <i class=\"fa fa-caret-down\"></i>\n");
       out.write("    </button>\n");
       out.write("    <div class=\"dropdown-content\">\n");
       out.write("      <a href=\"#\">Link 1</a>\n");
@@ -80,27 +91,16 @@ public final class postlist_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("      <a href=\"#\">Link 3</a>\n");
       out.write("    </div>\n");
       out.write("  </div> \n");
-      out.write("   </div>\n");
+      out.write("</div>\n");
       out.write("\n");
       out.write("           \n");
       out.write("            \n");
       out.write("            \n");
       out.write("       \n");
       out.write("             \n");
-      out.write("        \n");
-      out.write("        <div class=\"table-responsive\">\n");
-      out.write("                            <table class=\"table\">\n");
-      out.write("                                <thead class=\"theading\">\n");
-      out.write("                                    <tr >\n");
-      out.write("                                        <th class=\"hname\" style=\"border: 3px solid red;\"><h5>course code</h5></th>\n");
-      out.write("                                        <th class=\"hdept\" style=\"border: 3px solid red; \"><h5>file Name</h5></th>\n");
-      out.write("                                        <th class=\"hemail\" style=\"border: 3px solid red;\"><h5>body</h5></th>\n");
-      out.write("                                       <th class=\"hemail\" style=\"border: 3px solid red;\"><h5>course_name</h5></th>\n");
-      out.write("                                        \n");
-      out.write("                                        \n");
-      out.write("                                    </tr>\n");
-      out.write("                                </thead><br>\n");
-      out.write("                                <tbody>\n");
+      out.write("  \n");
+      out.write("      <h2 style=\"text-align: center;color: #000;\"><b><u>All post</u></b></h2>\n");
+      out.write("       <div class=\"postarea\">\n");
       out.write("        ");
 
                 ArrayList<post> postlist =(ArrayList) request.getAttribute("postlist");
@@ -111,35 +111,36 @@ public final class postlist_jsp extends org.apache.jasper.runtime.HttpJspBase
                 
         
       out.write("\n");
-      out.write("        <tr>\n");
-      out.write("            <td class=\"bname\">");
-      out.print( po.getCode());
-      out.write("</td>\n");
-      out.write("            <td class=\"bdept\"><a href=\"getImage.jsp?name=");
+      out.write("        <div class=\"bodypost\">\n");
+      out.write("            <h4>Text Message:</h4>\n");
+      out.write("            <h3>");
+      out.print( po.getBody());
+      out.write("</h3><p>***********************------------------------------***********************</p>\n");
+      out.write("            \n");
+      out.write("          <h4>Uploaded File/Image : <a href=\"getImage.jsp?name=");
       out.print(po.getName());
       out.write("\"> ");
       out.print(po.getName());
-      out.write("</a></td>\n");
+      out.write("</a></h4><br>\n");
+      out.write("          <h5>post creation time:  ");
+      out.print(po.getTime());
+      out.write("</h5>\n");
       out.write("           \n");
-      out.write("            <td class=\"bemail\">");
-      out.print( po.getBody());
-      out.write("</td>\n");
-      out.write("      \n");
+      out.write("        </div><br>\n");
+      out.write("       \n");
       out.write("        \n");
-      out.write("      </tr>  \n");
+      out.write("      \n");
       out.write("      ");
 
       }
       
       out.write("\n");
       out.write("      \n");
-      out.write("    </tbody>\n");
-      out.write("                            \n");
-      out.write("    </table>\n");
+      out.write("    </div>\n");
       out.write("      \n");
       out.write("     \n");
       out.write("        \n");
-      out.write("        </div>\n");
+      out.write("        \n");
       out.write("      <div class=\"home\">\n");
       out.write("          <a href=\"index.jsp\" style=\"color: white; align-content: right; \"><h5>Home</h5></a>\n");
       out.write("      </div>\n");

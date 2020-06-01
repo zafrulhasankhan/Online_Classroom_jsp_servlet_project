@@ -14,8 +14,12 @@
     </head>
     <body>
         <h1>${errorMsg}</h1>
-       <div class="container">
+        <div class="container" style=" height: 375px; ">
             <form action="add_course_controller" method="POST">
+                <div class="username">
+                               
+                               <input type="text" name="tecname" placeholder="Course Teacher Name" required="" class="name"/>
+                           </div><br>
                            <div class="username">
                                
                                <input type="text" name="name" placeholder="Course Name" required="" class="name"/>

@@ -15,54 +15,43 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1>
-        <div class="container">
-        <form action="course_login_controller" method="Post">
+        <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1><br>
+        <h2 style="text-align: center;color: #ffffff"><u>Register</u></h2>
+        <div class="container" style="width: 400px;
+    height: 410px;  margin: 25px auto;">
+            
+            <form action="student_list_controller" method="Post" style="position: relative;
+    top: 5%;
+    transform: translateY(5%);">
                            <div class="username">
                                
-                               <input type="text" name="code" placeholder="Course code" required="" class="name"/>
+                               <input type="text" name="name" placeholder="Your name" required="" class="name"/>
                            </div><br>
-                             
+                             <div class="username">
+                               
+                               <input type="text" name="email" placeholder="Your email id" required="" class="name"/>
+                           </div><br>
+                           <div class="username">
+                               
+                               <input type="text" name="id" placeholder="Your class id" required="" class="name"/>
+                           </div><br>
                             
-                            <div class="pass"><br>
-								
-			    
+                            <div class="pass">
+				<div class="username">
+                               
+                               <input type="text" name="code" placeholder="course code" required="" class="name"/>
+                                </div><br>				
+			     <div class="pass">
                             <input type="password" name="pass" placeholder="PassWord" required="" class="password" />
 							</div>
                             
                              
                             <br><div class="st">
-                                <button class="button button2" type="submit" name="login">Login</button>
-                                
+                                <button class="button button2" type="submit" name="login"> Register </button>
+                                <h5>Already hava account?? <a href="course_login_form.jsp">Enter the Course</a></h5>
                             </div>
                             
                         </form>
         </div>
     </body>
 </html>
-<div class="topnav">
-           <!-- Centered link -->
-           <div class="topnav-centered">
-               <a href="" class="active">${name} | ${code}</a>
-           </div>
-           <!-- Left-aligned links (default) -->
-           <a href="#news">News</a>
-           <a href="#contact">Contact</a>
-             <div class="dropdown">
-    <button class="dro 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </div> 
-           <!-- Right-aligned links -->
-           <div class="tovnav-right">
-           <a href="#news">News</a>
-           <a href="#contact">Contact</a>
-           </div>
-           
-           
-           </div>

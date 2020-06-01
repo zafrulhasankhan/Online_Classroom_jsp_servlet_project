@@ -25,8 +25,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Zafrul Hasan Nasim
  */
-@WebServlet(urlPatterns = {"/select_file_controller"})
-public class select_file_controller extends HttpServlet {
+@WebServlet(urlPatterns = {"/select_course_controller"})
+public class select_course_controller extends HttpServlet {
 
     
 
@@ -60,19 +60,21 @@ public class select_file_controller extends HttpServlet {
                 
             }
        
-             PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select course_name from add_course where course_code=? ");
+             PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from add_course where course_code=? ");
              ps1.setString(1, code1);
              ResultSet rs1=ps1.executeQuery();
              if(rs1.next()){
                  String name = rs1.getString("course_name");
                  HttpSession session = request.getSession();
                 session.setAttribute("name", name);
+                 String tecname = rs1.getString("teacher_name");
+                session.setAttribute("tecname", tecname);
                 
              }
         } catch (SQLException ex) {
-            Logger.getLogger(select_file_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(select_course_controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(select_file_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(select_course_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
          request.getRequestDispatcher("postlist.jsp").forward(request,response);
     }

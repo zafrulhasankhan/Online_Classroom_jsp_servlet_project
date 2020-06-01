@@ -24,8 +24,8 @@ import db.course;
  *
  * @author Zafrul Hasan Nasim
  */
-@WebServlet(urlPatterns = {"/all_course_controller"})
-public class all_course_controller extends HttpServlet {
+@WebServlet(urlPatterns = {"/courselist_controller"})
+public class courselist_controller extends HttpServlet {
 
     
 
@@ -54,9 +54,9 @@ public class all_course_controller extends HttpServlet {
                 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(all_course_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(courselist_controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(all_course_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(courselist_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.getRequestDispatcher("course_list.jsp").forward(request,response);
     }

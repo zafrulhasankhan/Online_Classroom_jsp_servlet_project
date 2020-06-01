@@ -55,8 +55,8 @@
             <td class="bname"><%= u.getId()%></td>
             <td class="bdept"><%= u.getName()%></td>
         <td class="bemail"><%= u.getCode()%></td>
-        <td class="bview"><%out.print("<a href='select_file_controller?code="+u.getCode()+"'</a>");%><%=u.getCode()%></td>
-        <td class="bdelete"><%out.print("<a href='get_course_servlet?code="+u.getCode()+"'</a>");%> Add post</td>
+        <td class="bview"><%out.print("<a href='select_course_controller?code="+u.getCode()+"'</a>");%><%=u.getCode()%></td>
+        <td class="bdelete"><%out.print("<a href='course_code_from_courselist_servlet?code="+u.getCode()+"'</a>");%> Add post</td>
         
         
       </tr>  

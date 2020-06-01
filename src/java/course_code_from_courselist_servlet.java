@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Zafrul Hasan Nasim
  */
-@WebServlet(urlPatterns = {"/get_course_servlet"})
-public class get_course_servlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/course_code_from_courselist_servlet"})
+public class course_code_from_courselist_servlet extends HttpServlet {
 
     
 
@@ -28,7 +28,7 @@ public class get_course_servlet extends HttpServlet {
     System.out.println(code);
         
     request.setAttribute("code", code);
-    request.getRequestDispatcher("input.jsp").forward(request,response);
+    request.getRequestDispatcher("post_form.jsp").forward(request,response);
     }
 
 }

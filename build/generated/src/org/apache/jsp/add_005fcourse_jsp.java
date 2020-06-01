@@ -52,8 +52,15 @@ public final class add_005fcourse_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("       <div class=\"container\">\n");
+      out.write("        <h1>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${errorMsg}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h1>\n");
+      out.write("        <div class=\"container\" style=\" height: 375px; \">\n");
       out.write("            <form action=\"add_course_controller\" method=\"POST\">\n");
+      out.write("                <div class=\"username\">\n");
+      out.write("                               \n");
+      out.write("                               <input type=\"text\" name=\"tecname\" placeholder=\"Course Teacher Name\" required=\"\" class=\"name\"/>\n");
+      out.write("                           </div><br>\n");
       out.write("                           <div class=\"username\">\n");
       out.write("                               \n");
       out.write("                               <input type=\"text\" name=\"name\" placeholder=\"Course Name\" required=\"\" class=\"name\"/>\n");

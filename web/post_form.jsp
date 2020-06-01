@@ -18,7 +18,7 @@
 <h1>Image Uploading</h1>
 <table>
     
- <form action="ImageUpload" method="post" enctype="multipart/form-data">
+ <form action="post_form_controller" method="post" enctype="multipart/form-data">
      <tr><td>Course code</td><td><input type="text" value="${code}" name="code"/></td></tr>
 <tr><td>File Name</td><td><input type="text" name="name"/></td></tr>
 <tr><td>Image</td><td><input type="file" name="image"/></td></tr>
