@@ -16,7 +16,7 @@
     </head>
     <body>
         <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1>
-        <div class="container">
+        <div class="container" style="height: 250px;">
         <form action="course_login_controller" method="Post">
                            <div class="username">
                                

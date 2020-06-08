@@ -19,65 +19,52 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Zafrul Hasan Nasim
  */
-@WebServlet(urlPatterns = {"/peoplelist_controller"})
-public class peoplelist_controller extends HttpServlet {
+@WebServlet(urlPatterns = {"/attendence_sheet_controller"})
+public class attendence_sheet_controller extends HttpServlet {
 
+   
    
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
         String code = request.getParameter("code");
         System.out.println(code);
         //String cod="ict-2207";
-        ArrayList<people> peoplelist = new ArrayList<people>();
+        ArrayList<people> attendlist = new ArrayList<people>();
         try {
-            PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from student_list  where course_code=? ");
-            ps1.setString(1, code);
-            ResultSet rs=ps1.executeQuery();
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from student_list  where course_code=?  ");
+            ps.setString(1, code);
+            ResultSet rs=ps.executeQuery();
              while(rs.next()){
                 
                 people po =new people();
                 
                 po.setStudentlist(rs.getString("name"));
                po.setClass_id(rs.getString("id"));
-               po.setEmail(rs.getString("email"));
+               
                  
                 
                 //po.setCourse_name(rs.getString("course_name"));
                 System.out.println(po);
-                peoplelist.add(po);
+                attendlist.add(po);
                 
-                request.setAttribute("peoplelist",peoplelist);
+                request.setAttribute("attendlist",attendlist);
                 request.setAttribute("code",code);
                 
             }
-             PreparedStatement ps2 = DBConnection.getConnection().prepareStatement("select * from add_course where course_code=? ");
-             ps1.setString(1, code);
-             ResultSet rs1=ps1.executeQuery();
-             if(rs1.next()){
-                 
-                HttpSession session = request.getSession();
-                
-                String tecname = rs1.getString("teacher_name");
-                session.setAttribute("tecname", tecname);
-                String course_name = rs1.getString("course_name");
-                session.setAttribute("name", course_name);
-                
-                
-             }
         } catch (SQLException ex) {
-            Logger.getLogger(peoplelist_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(attendence_sheet_controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(peoplelist_controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(attendence_sheet_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("peoplelist.jsp").forward(request,response);
+         request.getRequestDispatcher("attendence_sheet.jsp").forward(request,response);
     }
 
 }

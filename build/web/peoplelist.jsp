@@ -11,16 +11,47 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/peoplelist.css">
         <link rel="stylesheet" href="css/courselist.css">
+        <link href="css/postlist.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-      <div class="heading" align="center">
-            <h4>People's details</h4>
+        
+      
+        
+       <div class="navbar1">
+  <a href="select_course_controller?code=${code}">Home</a>
+  <a href="#news">News</a>
+  <div class="navbar-centered1">
+      <a  class="active1">${code} | ${name}</a>
+  </div>
+  <div class="dropdown1">
+    <button class="dropbtn1">Dropdown 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content1">
+        
+       
+      
+      
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div> 
+</div>
+      
+      
+      
+       
+      <div class="heading1" align="center">
+          &ensp;<h4><u>People's details</u></h4>
             
       </div><br>
       <h4 style="color: red">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Course Teacher Name: ${tecname}</h4><br>
+      <h4 style="color:red">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Student List : </h4><br>
     <div class="table-responsive">
                             <table class="table">
                                 <thead class="theading">

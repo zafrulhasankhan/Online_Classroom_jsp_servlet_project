@@ -31,7 +31,7 @@ String tecname = session.getAttribute("tecname").toString();
             
   <div class="navbar">
   <a href="#home">Home</a>
-  <a href="#news">News</a>
+  <a href="attendence_sheet_controller?code=${code}">Take </a>
   <div class="navbar-centered">
       <a  class="active">${name} | ${code}</a>
   </div>

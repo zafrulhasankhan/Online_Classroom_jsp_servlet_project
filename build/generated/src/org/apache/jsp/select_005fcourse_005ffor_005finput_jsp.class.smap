@@ -1,0 +1,12 @@
+SMAP
+select_005fcourse_005ffor_005finput_jsp.java
+JSP
+*S JSP
+*F
++ 0 select_course_for_input.jsp
+select_course_for_input.jsp
+*L
+5,15:44
+20:59,3
+21,6:62
+*E

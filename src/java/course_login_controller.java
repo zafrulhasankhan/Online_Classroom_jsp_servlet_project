@@ -42,7 +42,7 @@ public class course_login_controller extends HttpServlet {
                String code1 = rs.getString("course_code");
                 String pass1 = rs.getString("password");
                request.setAttribute("code", code);
-                 request.getRequestDispatcher("select_file_for_input.jsp").forward(request,response);
+                 request.getRequestDispatcher("select_course_for_input.jsp").forward(request,response);
            }
                     
         } catch (SQLException ex) {

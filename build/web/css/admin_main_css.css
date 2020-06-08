@@ -47,7 +47,7 @@ body{
          
 }
 .container.dashboard .stats a.first { margin-left: 25px;  }
-.container.dashboard .stats a:hover { cursor: pointer; background-color: aqua; }
+.container.dashboard .stats a:hover { cursor: pointer; background-color: black; }
 .container.dashboard .buttons { margin-left: 15px;position:absolute;
         left:500;  }
 .container.dashboard .buttons a {

@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class course_005flogin_005fform_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class select_005fcourse_005ffor_005finput_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -44,38 +44,23 @@ public final class course_005flogin_005fform_jsp extends org.apache.jasper.runti
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
+      out.write("     <link rel=\"stylesheet\" href=\"css/login.css\">\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/login.css\">\n");
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <br><br><br><<h1 class=\"welcome-title\">Welcome To Nasim's Classroom</h1>\n");
-      out.write("        <div class=\"container\" style=\"height: 350;\">\n");
-      out.write("        <form action=\"course_login_controller\" method=\"Post\">\n");
-      out.write("                           <div class=\"username\">\n");
-      out.write("                               \n");
-      out.write("                               <input type=\"text\" name=\"code\" placeholder=\"Course code\" required=\"\" class=\"name\"/>\n");
-      out.write("                           </div><br>\n");
-      out.write("                             \n");
-      out.write("                            \n");
-      out.write("                            <div class=\"pass\"><br>\n");
-      out.write("\t\t\t\t\t\t\t\t\n");
-      out.write("\t\t\t    \n");
-      out.write("                            <input type=\"password\" name=\"pass\" placeholder=\"PassWord\" required=\"\" class=\"password\" />\n");
-      out.write("\t\t\t\t\t\t\t</div>\n");
-      out.write("                            \n");
-      out.write("                             \n");
-      out.write("                            <br><div class=\"st\">\n");
-      out.write("                                <button class=\"button button2\" type=\"submit\" name=\"login\">Login</button>\n");
-      out.write("                                \n");
-      out.write("                            </div>\n");
-      out.write("                            \n");
-      out.write("                        </form>\n");
+      out.write("        <div class=\"container-select-file\">\n");
+      out.write("            <br><h3 class=\"welcome-title\">Enter your course code Again</h3>\n");
+      out.write("        <form action=\"select_course_controller\" method=\"Get\">\n");
+      out.write("            <input type=\"text\" name=\"code\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${code}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" placeholder=\"Confirm course code\" class=\"name\"/><br><br>\n");
+      out.write("            <input type=\"submit\" class=\"button\" value=\"Join Class\"/>\n");
+      out.write("        </form>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
