@@ -87,11 +87,11 @@ and open the template in the editor.
     height: 100;
     text-align: center;
 }
-.home input:hover{
+.save input:hover{
     
 background: greenyellow;
 }
-.home {
+.save {
     border:2px solid white;
     width:50px;
    text-align: center;
@@ -100,6 +100,41 @@ background: greenyellow;
     position: center;
     
 }
-.home input{
+.save input{
     
+}
+.date{
+    position: absolute;
+    top: 200;
+    right: 40;
+}
+.datebf{
+    position: absolute;
+    top: 200;
+    right: 220;
+    font-size: 20;
+    color: red;
+}
+.classno{
+     position: absolute;
+    top: 135;
+    right: 587;
+    font-size: 14;
+    width: 100;
+    height: 30;
+   
+}
+.classbf{
+    position: absolute;
+    top: 135;
+    right: 695;
+    font-size: 20;
+    color: red;
+}
+.lastclass{
+    position: absolute;
+    top: 200;
+    right: 595;
+    font-size: 16;
+    color: red;
 }

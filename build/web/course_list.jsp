@@ -41,7 +41,7 @@
                                         <th class="hdelete" style="border: 3px solid red;"><h5>Add Feature</h5></th>
                                          <th class="hview" style="border: 3px solid red;"><h5>Attendence</h5></th>
                                          <th class="hdelete" style="border: 3px solid red;"><h5>Delete</h5></th>
-                                        
+                                        <th class="hview" style="border: 3px solid red;"><h5>All Student Reports</h5></th>
                                         
                                     </tr>
                                 </thead><br>
@@ -62,6 +62,7 @@
         <td class="bdelete"><%out.print("<a href='course_code_from_courselist_servlet?code="+u.getCode()+"'</a>");%> Add post</td>
         <td class="bview"><%out.print("<a href='attendence_sheet_controller?code="+u.getCode()+"'</a>");%>Take Attendence</td>
         <td class="bdelete"><%out.print("<a href='delete_course_cotroller?code="+u.getCode()+"'</a>");%>Delete Course</td>
+         <td class="bview"><%out.print("<a href='all_student_report_controller?code="+u.getCode()+"'</a>");%>view reports</td>
         
       </tr>  
       <%

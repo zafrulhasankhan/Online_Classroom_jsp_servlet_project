@@ -33,16 +33,23 @@ public class attendence_insert_controller extends HttpServlet {
         String ids="";
        String names="";
        String attends="";
+       String codes="";
 String id[]=request.getParameterValues("id");
 String name[]=request.getParameterValues("name");
 String attend[]=request.getParameterValues("attend");
+//String code[]=request.getParameterValues("code");
+        
 for(int i=0;i<id.length;i++){
     ids=id[i];
     names=name[i];
     attends=attend[i];
+    //codes=code[i];
+    String date=request.getParameter("date");
+     String classno=request.getParameter("classno");
+     String code=request.getParameter("code");
     System.out.println(names);
             try {
-                PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into attendence_list values('"+ids+"','"+names+"','"+attends+"')");
+                PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into attendence_list values('"+classno+"','"+ids+"','"+names+"','"+attends+"','"+date+"','"+code+"')");
                 ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(attendence_insert_controller.class.getName()).log(Level.SEVERE, null, ex);
