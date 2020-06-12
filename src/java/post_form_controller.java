@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import db.DBConnection;
 import java.io.InputStream;
+import static java.lang.System.out;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 /**
@@ -48,13 +50,36 @@ public class post_form_controller extends HttpServlet {
 			    ps.setBlob(3, is);
                 ps.setString(4, body);
                 java.util.Date now = new java.util.Date();
-java.sql.Timestamp c = new java.sql.Timestamp(now.getTime());
-             ps.setTimestamp(5, c);
+                java.sql.Timestamp c = new java.sql.Timestamp(now.getTime());
+                ps.setTimestamp(5, c);
 		int n=ps.executeUpdate();
+                PrintWriter out = response.getWriter();
 		if(n>0) {
-			response.getWriter().println("Successfully uploaded");
+			//response.getWriter().println("Successfully uploaded");
+                        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal ( 'Yes' ,  'successfully sent and save post !' ,  'success' );");
+			out.println("});");
+			out.println("</script>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("post_form.jsp");
+			rd.include(request, response);
                         
                         
+		}
+                else{
+			out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal ( 'incorrect id or password !' ,  ' ' ,  'error' );");
+			out.println("});");
+			out.println("</script>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("post_form.jsp");
+			rd.include(request, response);
 		}
 		}catch(Exception e) {System.out.println(e);}
 	}

@@ -7,10 +7,12 @@
 import db.DBConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +34,8 @@ public class delete_course_cotroller extends HttpServlet {
         try {
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("Delete from add_course where course_code = ?");
             ps.setString(1, code);
-            ps.executeUpdate();
+            int n=ps.executeUpdate();
+              
             
         } catch (SQLException ex) {
             Logger.getLogger(delete_course_cotroller.class.getName()).log(Level.SEVERE, null, ex);

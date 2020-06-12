@@ -16,7 +16,7 @@
     </head>
     <body>
         <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1><br>
-        <h2 style="text-align: center;color: #ffffff"><u>Register</u></h2>
+        <h2 style="text-align: center;color: #ffffff"><u>Student Register</u></h2>
         <div class="container" style="width: 400px;
     height: 410px;  margin: 25px auto;">
             
@@ -48,7 +48,7 @@
                              
                             <br><div class="st">
                                 <button class="button button2" type="submit" name="login"> Register </button>
-                                <h5>Already hava account?? <a href="course_login_form.jsp">Enter the Course</a></h5>
+                                <h5>Already create account?? <a href="student_login.jsp">Login</a></h5>
                             </div>
                             
                         </form>

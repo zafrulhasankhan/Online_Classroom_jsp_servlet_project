@@ -54,8 +54,8 @@ public final class course_005flogin_005fform_jsp extends org.apache.jasper.runti
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <br><br><br><<h1 class=\"welcome-title\">Welcome To Nasim's Classroom</h1>\n");
-      out.write("        <div class=\"container\" style=\"height: 350;\">\n");
+      out.write("        <br><br><br><<h1 class=\"welcome-title\">Login for Enter the course</h1>\n");
+      out.write("        <div class=\"container\" style=\"height: 250px;\">\n");
       out.write("        <form action=\"course_login_controller\" method=\"Post\">\n");
       out.write("                           <div class=\"username\">\n");
       out.write("                               \n");

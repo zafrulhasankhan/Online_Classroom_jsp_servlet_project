@@ -76,10 +76,7 @@ public final class admin_005fmain_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\t\t\t</a>\n");
       out.write("\t\t</div>\n");
       out.write("\t\t<br><br><br>\n");
-      out.write("\t\t<div class=\"buttons\">\n");
-      out.write("\t\t\t<a href=\"users.php\">Add Users</a>\n");
-      out.write("                        <a href=\"create_post_form.php\">Add Posts</a>\n");
-      out.write("\t\t</div>\n");
+      out.write("\t\t\n");
       out.write("\t</div>\n");
       out.write("    </body>\n");
       out.write("</html>");

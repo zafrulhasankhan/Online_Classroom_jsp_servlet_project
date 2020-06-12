@@ -26,7 +26,7 @@
                                                         
                                                         
         <div class="heading" align="center">
-            <h2><u>Student Attendence Report</u></h2>
+            <h2><u>Student Attendance Report</u></h2>
         </div>
              
              

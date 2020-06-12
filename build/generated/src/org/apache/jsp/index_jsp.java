@@ -55,7 +55,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <br><br><br><<h1 class=\"welcome-title\">Welcome To Nasim's Classroom</h1><br>\n");
-      out.write("        <h2 style=\"text-align: center;color: #ffffff\"><u>Register</u></h2>\n");
+      out.write("        <h2 style=\"text-align: center;color: #ffffff\"><u>Student Register</u></h2>\n");
       out.write("        <div class=\"container\" style=\"width: 400px;\n");
       out.write("    height: 410px;  margin: 25px auto;\">\n");
       out.write("            \n");
@@ -87,7 +87,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                             \n");
       out.write("                            <br><div class=\"st\">\n");
       out.write("                                <button class=\"button button2\" type=\"submit\" name=\"login\"> Register </button>\n");
-      out.write("                                <h5>Already hava account?? <a href=\"course_login_form.jsp\">Enter the Course</a></h5>\n");
+      out.write("                                <h5>Already create account?? <a href=\"student_login.jsp\">Login</a></h5>\n");
       out.write("                            </div>\n");
       out.write("                            \n");
       out.write("                        </form>\n");

@@ -29,7 +29,7 @@
       <a  class="active1">${code} | ${name}</a>
   </div>
   <div class="dropdown1">
-    <button class="dropbtn1">Dropdown 
+    <button class="dropbtn1">Menu 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content1">

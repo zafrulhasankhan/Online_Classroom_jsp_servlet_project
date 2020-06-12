@@ -6,6 +6,8 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,11 +32,30 @@ public class admin_login_controller extends HttpServlet {
         System.out.println(name);
         String name1="nasim";
         String pass1="123";
+        PrintWriter out = response.getWriter();
         if(( name1.equals(name))&&pass1.equals(pass)){
-           request.getRequestDispatcher("admin_main.jsp").forward(request,response);
+          out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal (  'successfully !' ,'login',  'success' );");
+			out.println("});");
+			out.println("</script>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
+			rd.include(request, response);
         }
         else{
-             request.getRequestDispatcher("index.jsp").forward(request,response);
+             out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal ( 'incorrect id or password !' ,  ' ' ,  'error' );");
+			out.println("});");
+			out.println("</script>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("admin_login_form.jsp");
+			rd.include(request, response);
         }
     }
 

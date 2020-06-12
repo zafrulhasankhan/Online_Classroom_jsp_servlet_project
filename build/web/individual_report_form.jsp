@@ -13,6 +13,9 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <br><div class="heading" align="center" style=" color: white">
+     <h2><u>Attendance Report Form</u></h2>
+  </div>
        <div class="container" style=" height: 225px; ">
             <form action="individual_report_controller" method="get">
                 

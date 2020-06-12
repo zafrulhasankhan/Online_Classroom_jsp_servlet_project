@@ -37,10 +37,7 @@
 			</a>
 		</div>
 		<br><br><br>
-		<div class="buttons">
-			<a href="users.php">Add Users</a>
-                        <a href="create_post_form.php">Add Posts</a>
-		</div>
+		
 	</div>
     </body>
 </html>

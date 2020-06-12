@@ -15,7 +15,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1>
+        <br><br><br><<h1 class="welcome-title">Login for Enter the course</h1>
         <div class="container" style="height: 250px;">
         <form action="course_login_controller" method="Post">
                            <div class="username">
@@ -27,7 +27,7 @@
                             <div class="pass"><br>
 								
 			    
-                            <input type="password" name="pass" placeholder="PassWord" required="" class="password" />
+                            <input type="password" name="pass" placeholder="course pin number" required="" class="password" />
 							</div>
                             
                              
