@@ -11,7 +11,7 @@
 <html>
     <head>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-      <link rel="stylesheet" href="css/courselist.css">
+      <link rel="stylesheet" href="css/course_list.css">
      <style>
            
             
@@ -41,7 +41,7 @@
                                         <th class="hdelete" style="border: 3px solid red;"><h5>Add Feature</h5></th>
                                          <th class="hview" style="border: 3px solid red;"><h5>Attendance</h5></th>
                                          <th class="hdelete" style="border: 3px solid red;"><h5>Delete</h5></th>
-                                        <th class="hview" style="border: 3px solid red;"><h5>All Student Reports</h5></th>
+                                        <th class="hview" style="border: 3px solid red;"><h5> Classwork</h5></th>
                                         
                                     </tr>
                                 </thead><br>
@@ -62,7 +62,7 @@
         <td class="bdelete"><%out.print("<a href='course_code_from_courselist_servlet?code="+u.getCode()+"'</a>");%> Add post</td>
         <td class="bview"><%out.print("<a href='attendance_sheet_controller?code="+u.getCode()+"'</a>");%>Take Attendance</td>
         <td class="bdelete"><%out.print("<a href='delete_course_cotroller?code="+u.getCode()+"'</a>");%>Delete Course</td>
-         <td class="bview"><%out.print("<a href='all_student_report_controller?code="+u.getCode()+"'</a>");%>view reports</td>
+         <td class="bview"><%out.print("<a href='create_classwork_from.jsp?code="+u.getCode()+"'</a>");%>Create Classwork</td>
         
       </tr>  
       <%

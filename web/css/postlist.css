@@ -71,10 +71,10 @@ and open the template in the editor.
 .navbar-centered a {
   float: none;
    
-  position: absolute;
+  position:absolute;
   color: white;
   background:green;
-  top: 5.8%;
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
  

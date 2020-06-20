@@ -1,0 +1,100 @@
+.topnav {
+  position: relative;
+  overflow: hidden;
+  background-color:  #cc0033;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #4CAF50;
+  color:white;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.topnav-right {
+  float: right;
+}
+.container
+{
+    
+   width: 600px;
+    margin: 40px auto;
+    
+    position: center;
+}
+
+.container form{
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+    font-size: 50 cm;
+    color: #000000;
+    text-transform:none;
+    position: relative;
+    top: 8%;
+    transform: translateY(5%);
+    text-align: center;
+    
+}
+.post-title{
+    height: 35px;
+    width: 600px;
+    color:black;
+     background-color:#ffcccc;
+     font-style: italic;
+     border:2px #4CAF50 solid;
+}
+.image{
+   height: 25px;
+    width: 600px;
+    color:black;
+     background-color:#ffcccc;
+     font-style: italic;
+     border:2px #4CAF50 solid; 
+}
+.btnn{
+    background: green;
+    color: white;
+    position: relative;
+    top:8;
+    left: 340;
+    width:70px;
+    height: 30px;
+}
+.btnn:hover{
+    background: red;
+}
+.btn{
+    text-align: center;
+    width: 400px;
+    height: 30px;
+   
+}
+.btn:hover{
+    background: #ff3333;
+}
+.cre_po_title{
+    text-align: center;
+    
+    
+}

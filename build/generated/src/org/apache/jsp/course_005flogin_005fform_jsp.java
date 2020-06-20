@@ -55,6 +55,9 @@ public final class course_005flogin_005fform_jsp extends org.apache.jasper.runti
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <br><br><br><<h1 class=\"welcome-title\">Login for Enter the course</h1>\n");
+      out.write("       <h1 style=\"text-align: center;color:black;\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${msg}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h1>\n");
       out.write("        <div class=\"container\" style=\"height: 250px;\">\n");
       out.write("        <form action=\"course_login_controller\" method=\"Post\">\n");
       out.write("                           <div class=\"username\">\n");
@@ -66,7 +69,7 @@ public final class course_005flogin_005fform_jsp extends org.apache.jasper.runti
       out.write("                            <div class=\"pass\"><br>\n");
       out.write("\t\t\t\t\t\t\t\t\n");
       out.write("\t\t\t    \n");
-      out.write("                            <input type=\"password\" name=\"pass\" placeholder=\"PassWord\" required=\"\" class=\"password\" />\n");
+      out.write("                            <input type=\"password\" name=\"pass\" placeholder=\"course pin number\" required=\"\" class=\"password\" />\n");
       out.write("\t\t\t\t\t\t\t</div>\n");
       out.write("                            \n");
       out.write("                             \n");

@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-      <link rel="stylesheet" href="css/courselist.css">
+      <link rel="stylesheet" href="css/course_list.css">
         <title>JSP Page</title>
     </head>
     <body>

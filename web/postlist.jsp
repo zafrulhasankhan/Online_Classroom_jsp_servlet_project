@@ -31,12 +31,13 @@ String tecname = session.getAttribute("tecname").toString();
             
   <div class="navbar">
   <a href="#home">Home</a>
-  <a href="individual_report_form.jsp">Your attendance report</a>
+  
+  <a href="individual_report_form.jsp?code=${code}">Your attendance report</a>
   <div class="navbar-centered">
       <a  class="active">${name} | ${code}</a>
   </div>
   <div class="dropdown">
-    <button class="dropbtn">Dropdown 
+    <button class="dropbtn">Menu 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">

@@ -7,7 +7,6 @@ and open the template in the editor.
     Created on : Jun 2, 2020, 12:06:45 PM
     Author     : Zafrul Hasan Nasim
 */
-
 .navbar1 {
   overflow: hidden;
   background-color: #cc0033;
@@ -74,7 +73,7 @@ and open the template in the editor.
   position: absolute;
   color: white;
   background:green;
-  top: 4.8%;
+  top: 4.2%;
   left: 50%;
   transform: translate(-50%, -50%);
  

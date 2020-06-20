@@ -36,8 +36,8 @@
                             
                              
                             <br><div class="st">
-                                <button class="button button2" type="submit" name="login"> Register </button>
-                                <h5>not yet register?? <a href="index.jsp">Login</a></h5>
+                                <button class="button button2" type="submit" name="login"> Login </button>
+                                <h5>not yet register?? <a href="index.jsp">Register</a></h5>
                             </div>
                             
                         </form>

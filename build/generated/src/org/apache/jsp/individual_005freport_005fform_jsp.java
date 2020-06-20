@@ -47,12 +47,30 @@ public final class individual_005freport_005fform_jsp extends org.apache.jasper.
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
+      out.write("        <style>\n");
+      out.write("closebtn:hover {\n");
+      out.write("  background-color: yellow;\n");
+      out.write("}\n");
+      out.write("</style>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link href=\"css/login.css\" rel=\"stylesheet\">\n");
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("       <div class=\"container\" style=\" height: 225px; \">\n");
+      out.write("        <br><div class=\"heading\" align=\"center\" style=\" color: white\">\n");
+      out.write("     <h2><u>Attendance Report Form</u></h2>\n");
+      out.write("  </div>\n");
+      out.write("        <h1 style=\"text-align: center;color:black; animation: bymove 3s infinite\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${msg}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h1>\n");
+      out.write("     ");
+
+         String code = request.getParameter("code");
+         
+      out.write("\n");
+      out.write("         \n");
+      out.write("       <div class=\"container\" style=\" height: 170px; \">\n");
+      out.write("           \n");
       out.write("            <form action=\"individual_report_controller\" method=\"get\">\n");
       out.write("                \n");
       out.write("                             \n");
@@ -65,7 +83,9 @@ public final class individual_005freport_005fform_jsp extends org.apache.jasper.
       out.write("                            <div class=\"pass\"><br>\n");
       out.write("\t\t\t\t\t\t\t\t\n");
       out.write("\t\t\t    \n");
-      out.write("                            <input type=\"text\" name=\"code\" placeholder=\"Enter the course code\" required=\"\" class=\"password\" />\n");
+      out.write("                                <input type=\"text\" name=\"code\" hidden=\"\" placeholder=\"Enter the course code\" value=");
+      out.print(code);
+      out.write(" required=\"\" class=\"password\" />\n");
       out.write("\t\t\t\t\t\t\t</div>\n");
       out.write("                            \n");
       out.write("                             \n");

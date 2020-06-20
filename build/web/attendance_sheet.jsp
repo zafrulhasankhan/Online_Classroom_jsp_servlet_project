@@ -7,7 +7,8 @@
 <%@page import="dao.people"%>
 <%@page import="java.util.ArrayList"%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/courselist.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/course_list.css">
 <link rel="stylesheet" href="css/peoplelist.css">
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
        
       
       
-      <a href="individual_report_form.jsp">Individual Attendance report</a>
+      <a href="individual_report_form.jsp?code=${code}">Individual Attendance report</a>
       <a href="datewiz_attendance_report.jsp">Datewise attendance Report</a>
     </div>
   </div> 

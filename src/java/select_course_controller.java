@@ -39,6 +39,20 @@ public class select_course_controller extends HttpServlet {
         System.out.println(code);
          ArrayList<post> postlist = new ArrayList<post>();
         try {
+            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM post WHERE course_code=?),\"post not yet\") as course_code  ");
+             ps0.setString(1, code);
+            ResultSet rs0 =   ps0.executeQuery();
+            if(rs0.next()){
+                int present = Integer.parseInt(rs0.getString(1));
+                if(present==0){
+                    String msg = "<div class=\"alert alert-warning\" style=\"display:inline-table; background:red; \">\n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:red;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>Oh,Blank!</strong> No post uploaded yet in your course !Try again...  \n" +
+"            </div>";
+                request.setAttribute("msg", msg);
+                    request.getRequestDispatcher("select_course_for_input.jsp").forward(request,response);
+                }
+                else{
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from post where course_code=? ");
             ps.setString(1, code);
             ResultSet rs =   ps.executeQuery();
@@ -49,7 +63,7 @@ public class select_course_controller extends HttpServlet {
                 po.setName(rs.getString("filename"));
                 po.setBody(rs.getString("body"));
                  po.setTime(rs.getTimestamp("date"));
-                 
+                
                 
                 //po.setCourse_name(rs.getString("course_name"));
                 System.out.println(po);
@@ -59,7 +73,8 @@ public class select_course_controller extends HttpServlet {
                 request.setAttribute("code", code);
                 
             }
-       
+                }
+            }
              PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from add_course where course_code=? ");
              ps1.setString(1, code1);
              ResultSet rs1=ps1.executeQuery();

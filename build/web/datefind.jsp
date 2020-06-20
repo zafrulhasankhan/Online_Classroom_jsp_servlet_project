@@ -4,14 +4,40 @@
     Author     : Zafrul Hasan Nasim
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>${name}</h1>
-    </body>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/classwork.css">
+        <script langauge="JavaScript">
+    function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.8.0/ckeditor.js"></script>
+</head>
+<body>
+
+
+
+
+
+<form action="nyform.jsp" method="post">
+    <div id="myDIV" hidden="">
+This is my DIV element.
+</div>
+    <input type="button" value="Reset" onClick="myFunction()">
+    
+    <input type="date" class="post-title" name="title" value="" placeholder="Title">
+    <input type="submit"/>
+</form>
+</body>
+
 </html>
+
+

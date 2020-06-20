@@ -14,6 +14,7 @@
     </head>
     <body>
         <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1>
+         <h1 style="text-align: center;color:black; animation: bymove 3s infinite;">${msg}</h1>
         <div class="container-select-file">
             <br><h3 class="welcome-title">Enter your course code Again</h3>
         <form action="select_course_controller" method="Get">

@@ -8,7 +8,7 @@
 <%@page import="dao.people"%>
 <%@page import="java.util.ArrayList"%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/courselist.css">
+<link rel="stylesheet" href="css/course_list.css">
 <link rel="stylesheet" href="css/peoplelist.css">
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@
        
       
       
-      <a href="individual_report_form.jsp">Individual Attendance report</a>
+      <a href="individual_report_form.jsp?code=${code}">Individual Attendance report</a>
      
     </div>
   </div> 

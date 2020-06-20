@@ -36,14 +36,28 @@ public class individual_report_controller extends HttpServlet {
         String classid = request.getParameter("classid");
         String code = request.getParameter("code");
         try {
-            PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT COUNT(Attendence) FROM `attendence_list` WHERE course_code=?  and class_id=? and Attendence='present'");
+           // PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT COUNT(Attendence) FROM `attendence_list` WHERE course_code=?  and class_id=? and Attendence='present'");
+           PreparedStatement ps = DBConnection.getConnection().prepareStatement("SELECT IFNULL((SELECT COUNT(Attendence) FROM `attendence_list` WHERE course_code=? and class_id=? and Attendence='present'), \"1\") as Attendence");
             ps.setString(1, code);
               ps.setString(2, classid);
               ResultSet rs =   ps.executeQuery();
               if(rs.next()){
                  int present =Integer.parseInt(rs.getString(1));
                   System.out.println(present);
+                  if(present==0){
+                      
+                    String msg = "<div class=\"alert alert-warning\" style=\"display:inline-table;background:red  \">\n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:red;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>Sorry</strong> Take No attendence yet !Try again...  \n" +
+"            </div>";
+                    request.setAttribute("msg", msg);
+                     
+                               
+                              request.getRequestDispatcher("individual_report_form.jsp").forward(request,response);  
+                  }
+                  else{
                  request.setAttribute("present",present);
+                  }
                 // request.getRequestDispatcher("individual_report_result.jsp").forward(request,response);
                 
              }
@@ -55,7 +69,7 @@ public class individual_report_controller extends HttpServlet {
              if(rs2.next()){
                  int totalclass =Integer.parseInt(rs2.getString("class_no"));
                
-                 System.out.println(totalclass);
+                 //System.out.println(totalclass);
                  
                 request.setAttribute("totalclass", totalclass);
                  //request.getRequestDispatcher("individual_report_result.jsp").forward(request,response);
