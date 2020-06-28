@@ -59,7 +59,7 @@ public final class student_005flogin_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("        <div class=\"container\" style=\"width: 400px;\n");
       out.write("    height: 270px;  margin: 25px auto;\">\n");
       out.write("            \n");
-      out.write("            <form action=\"student_list_controller\" method=\"Post\" style=\"position: relative;\n");
+      out.write("            <form action=\"student_login_controller\" method=\"Post\" style=\"position: relative;\n");
       out.write("    top: 12%;\n");
       out.write("    transform: translateY(5%);\">\n");
       out.write("                          \n");
@@ -75,7 +75,7 @@ public final class student_005flogin_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                            \n");
       out.write("                             \n");
       out.write("                            <br><div class=\"st\">\n");
-      out.write("                                <button class=\"button button2\" type=\"submit\" name=\"login\"> Register </button>\n");
+      out.write("                                <button class=\"button button2\" type=\"submit\" name=\"login\"> Login </button>\n");
       out.write("                                <h5>not yet register?? <a href=\"index.jsp\">Register</a></h5>\n");
       out.write("                            </div>\n");
       out.write("                            \n");

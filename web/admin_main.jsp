@@ -31,10 +31,11 @@
 				
 				<span>Add new course</span>
 			</a>
-			<a href="posts.php">
+			<a href="courselist_controller_2">
 				
-				<span>Block the user's</span>
+				<span>Classwork and Attendance</span>
 			</a>
+                    
 		</div>
 		<br><br><br>
 		

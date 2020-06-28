@@ -51,10 +51,19 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>Hello World!</h1>\n");
-      out.write("        <form action=\"date\" method=\"get\"/>\n");
-      out.write("         <input type=\"date\" id=\"birthday\"  name=\"date\" class=\"date\">\n");
-      out.write("    </form>\n");
+      out.write("        <form action=\"classwork_submit_controller\" method=\"post\" enctype=\"multipart/form-data\">\n");
+      out.write("              \n");
+      out.write("             <input type=\"text\" class=\"image\" name=\"cw_no\"   placeholder=\"enter cw no\"/>\n");
+      out.write("             <input type=\"text\" class=\"image\" name=\"code\"     placeholder=\"enter course code\"/><br>\n");
+      out.write("             <input type=\"text\" class=\"image\" name=\"sname\"      placeholder=\"enter student name\"/>\n");
+      out.write("             <input type=\"text\" class=\"image\" name=\"sid\"      placeholder=\"enter student id\"/>\n");
+      out.write("             <div id=\"myDIV\">\n");
+      out.write("              <input type=\"file\" class=\"image\" name=\"file\"   placeholder=\"enter file\"/><br>\n");
+      out.write("               </div><br>\n");
+      out.write("             <div >\n");
+      out.write("             <input type=\"submit\" class=\"btnn\" value=\"upload\"/><br>\n");
+      out.write("             </div>\n");
+      out.write("          </form>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

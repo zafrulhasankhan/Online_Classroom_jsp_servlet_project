@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import db.DBConnection;
 import java.io.InputStream;
 import static java.lang.System.out;
+import java.nio.file.Paths;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
@@ -34,9 +35,10 @@ public class post_form_controller extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code=request.getParameter("code");
-		String name=request.getParameter("name");
+		
 		Part part = request.getPart("image");// we get path of the image
                 String body = request.getParameter("body");
+               String name=Paths.get(part.getSubmittedFileName()).getFileName().toString(); 
 		// now we take image file from the given path thats why we use file input stream
 		//FileInputStream fis=new FileInputStream(new File(image));
 		// fis contains bits and binaries of the image

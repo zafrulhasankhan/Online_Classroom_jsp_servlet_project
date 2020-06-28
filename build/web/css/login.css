@@ -130,3 +130,7 @@ body{
     transform: translateY(5%);
 }
 
+margin: 20px auto;
+    position:relative;
+    top:-150%;
+    left:60%;

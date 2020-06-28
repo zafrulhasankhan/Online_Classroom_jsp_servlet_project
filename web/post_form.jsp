@@ -15,13 +15,13 @@
 </head>
 <body>
 <center>
-<h1>Image Uploading</h1>
+<h1>Create Post</h1>
 <table>
     
  <form action="post_form_controller" method="post" enctype="multipart/form-data">
-     <tr><td>Course code</td><td><input type="text" value="${code}" name="code"/></td></tr>
-<tr><td>File Name</td><td><input type="text" name="name"/></td></tr>
-<tr><td>Image</td><td><input type="file" name="image"/></td></tr>
+     <tr><td><input type="text"  hidden="" value="${code}" name="code"/></td></tr>
+
+<tr><td>Enter File</td><td><input type="file" name="image"/></td></tr>
 <tr><td>Body</td><td><textarea class="text_box" name="body" id="body" cols="30" rows="10"></textarea><br>
 </td></tr>
 <tr><td colspan="2"><input type="submit" value="upload"/></td></tr>

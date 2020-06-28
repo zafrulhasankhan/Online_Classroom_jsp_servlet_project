@@ -70,10 +70,11 @@ public final class admin_005fmain_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\t\t\t\t\n");
       out.write("\t\t\t\t<span>Add new course</span>\n");
       out.write("\t\t\t</a>\n");
-      out.write("\t\t\t<a href=\"posts.php\">\n");
+      out.write("\t\t\t<a href=\"courselist_controller_2\">\n");
       out.write("\t\t\t\t\n");
-      out.write("\t\t\t\t<span>Block the user's</span>\n");
+      out.write("\t\t\t\t<span>Classwork and Attendance</span>\n");
       out.write("\t\t\t</a>\n");
+      out.write("                    \n");
       out.write("\t\t</div>\n");
       out.write("\t\t<br><br><br>\n");
       out.write("\t\t\n");

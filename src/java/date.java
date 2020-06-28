@@ -31,6 +31,15 @@ public class date extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        String date=request.getParameter("date");
+       String co =(String) getServletContext().getAttribute("var");
+       String code = request.getParameter("code");
+       String age = request.getParameter("age");
+       String ad = request.getParameter("ad");
+        System.out.println(code);
+        System.out.println(age);
+        System.out.println(ad);
+       //String co = (String) request.getAttribute("var");
+        System.out.println(co);
         try {
             PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from attendence_list where date=? ");
             ps1.setString(1, date);

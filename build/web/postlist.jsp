@@ -45,13 +45,13 @@ String tecname = session.getAttribute("tecname").toString();
        
       
       <a href="peoplelist_controller?code=${code} ">People</a>
-      <a href="#">Link 2</a>
+      <a href="return_create_classwork?code=${code}&email=${email}&spass=${spass}">Classwork</a>
       <a href="#">Link 3</a>
     </div>
   </div> 
 </div>
 
-           
+      <h3 style="text-align: center;">${msg}</h3> 
             
             
        

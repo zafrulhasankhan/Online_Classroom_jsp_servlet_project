@@ -33,14 +33,17 @@ public class select_course_controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        String code = request.getParameter("code");
-        String code1=request.getParameter("code");
-        System.out.println(code);
+       String code =(String) getServletContext().getAttribute("code");
+       String code1 = request.getParameter("code");
+       String email =(String) getServletContext().getAttribute("email");
+       String spass =(String) getServletContext().getAttribute("spass");
+       // String code1=request.getParameter("code");
+        System.out.println(email);
          ArrayList<post> postlist = new ArrayList<post>();
         try {
-            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM post WHERE course_code=?),\"post not yet\") as course_code  ");
+            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM post WHERE course_code=? or course_code=?),\"post not yet\") as course_code  ");
              ps0.setString(1, code);
+             ps0.setString(2, code1);
             ResultSet rs0 =   ps0.executeQuery();
             if(rs0.next()){
                 int present = Integer.parseInt(rs0.getString(1));
@@ -49,12 +52,13 @@ public class select_course_controller extends HttpServlet {
 "                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:red;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
 "                <strong>Oh,Blank!</strong> No post uploaded yet in your course !Try again...  \n" +
 "            </div>";
-                request.setAttribute("msg", msg);
-                    request.getRequestDispatcher("select_course_for_input.jsp").forward(request,response);
+                request.setAttribute("errorMsg", msg);
+                    request.getRequestDispatcher("course_login_form.jsp").forward(request,response);
                 }
                 else{
-            PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from post where course_code=? ");
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from post where course_code=? or  course_code=? ");
             ps.setString(1, code);
+             ps.setString(2, code1);
             ResultSet rs =   ps.executeQuery();
             while(rs.next()){
                 
@@ -71,12 +75,15 @@ public class select_course_controller extends HttpServlet {
                 
                 request.setAttribute("postlist",postlist);
                 request.setAttribute("code", code);
-                
+                request.setAttribute("code", code1);
+                request.setAttribute("email", email);
+                request.setAttribute("spass", spass);
             }
                 }
             }
-             PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from add_course where course_code=? ");
-             ps1.setString(1, code1);
+             PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from add_course where course_code=? or course_code=? ");
+             ps1.setString(1, code);
+              ps1.setString(2, code1);
              ResultSet rs1=ps1.executeQuery();
              if(rs1.next()){
                  String name = rs1.getString("course_name");

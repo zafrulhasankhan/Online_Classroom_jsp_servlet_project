@@ -26,9 +26,7 @@
         
     </head>
     <body>
-        <%
-         String code = request.getParameter("code");
-         %>
+        
          
          <div class="topnav">
 
@@ -52,22 +50,27 @@
   
          <div class="container">
         <form action="create_classwork_controller" method="post" enctype="multipart/form-data">
-            <input type="text" name="code"  hidden=""  placeholder="Course code" value="<%=code%>" class="code" />
+            <div style=" text-align: center">
+                Classwork No. :
+            <input type="text" name="cw_no"  placeholder="Enter classwork no."   required=""  class="code" />
+            </div>
+            <div class="cre_po_title">
+            <h5 style="color: black;"> Last classwork No. : ${cw_no} </h5>            
+            </div>
+  
+            <input type="text" name="code"  placeholder="Course code"  hidden="" value="${code}"  class="code" />
             
              <label>Classwork details :</label><br>
             <textarea class="text_box" name="body" id="body" cols="30" rows="10"></textarea><br>
-            
+            <label>If you want to add file, click below :</label><br>
+            <input type="file" class="image" name="image"   placeholder="enter file"/><br><br>
              <label>Deadline of classwork :</label><br>
              <input type="date" class="post-title" name="date"/><br><br>
              
-             <input type="button" class="btn" value="Double Click here for Add File" class="btn" onClick="myFunction()"><br><br>
-             <div id="myDIV" hidden="">
-            <input type="text" class="post-title"  name="filename"  placeholder="Enter Filename"/><br><br>
-            <input type="file" class="image" name="image"   placeholder="enter file"/><br>
-             </div><br>
-             <input type="submit" class="btnn" value="upload"/>
+            
+             <input type="submit" class="btnn" value="upload"/><br>
 </form>
-         </div>
+         </div><br>
         
     </form>
     </body>

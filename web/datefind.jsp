@@ -36,6 +36,7 @@ This is my DIV element.
     <input type="date" class="post-title" name="title" value="" placeholder="Title">
     <input type="submit"/>
 </form>
+    <a href="date?age='c'&code='fmf'&ad='f'">click here</a>
 </body>
 
 </html>

@@ -41,6 +41,8 @@ public class student_login_controller extends HttpServlet {
             if(rs.next()){
                 String userEmail = rs.getString("email");
                 String pass1= rs.getString("pass");
+                request.setAttribute("email", email);
+                request.setAttribute("pass", pass);
                 out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
 			out.println("<script>");
