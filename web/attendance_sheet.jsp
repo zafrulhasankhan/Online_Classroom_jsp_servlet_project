@@ -34,6 +34,7 @@
       
       
       <a href="individual_report_form.jsp?code=${code}">Individual Attendance report</a>
+       <a href="all_student_attendance_report_controller?code=${code}">All student Attendance report</a>
       <a href="datewiz_attendance_report.jsp">Datewise attendance Report</a>
     </div>
   </div> 

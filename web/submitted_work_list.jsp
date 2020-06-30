@@ -79,7 +79,7 @@
       <tr>
         <td class="bname"><%= po.getStudent_id()%></td>
         <td class="bdept"><%= po.getStudent_name()%></td>
-        <td class="bemail"><a href="getimage_create_classwork.jsp?name=<%=po.getFilename()%>"> <%=po.getFilename()%></a></td>
+        <td class="bemail"><a href="getimage_submitted_classwork.jsp?name=<%=po.getFilename()%>"> <%=po.getFilename()%></a></td>
     
         <td class="bdept"><input type="text" name="mark" placeholder="out of 10"></td>
     

@@ -57,7 +57,7 @@
             <td class="bname"><%= u.getId()%></td>
             <td class="bdept"><%= u.getName()%></td>
         <td class="bemail"><%= u.getCode()%></td>
-        <td class="bview"><%out.print("<a href='attendance_sheet_controller?code="+u.getCode()+"'</a>");%>Take Attendance</td>
+        <td class="bview"><%out.print("<a href='attendance_sheet_controller?code="+u.getCode()+"'</a>");%>Take Attendance & show attendance report</td>
         <td class="bemail"><%out.print("<a href='last_classwork_no?code="+u.getCode()+"'</a>");%>Create Classwork</td>
         <td class="bview"><%out.print("<a href='all_classwork_codewise?code="+u.getCode()+"'</a>");%>click for show</td>
         
