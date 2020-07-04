@@ -52,7 +52,8 @@ public final class admin_005flogin_005fform_jsp extends org.apache.jasper.runtim
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <div class=\"container\">\n");
+      out.write("        <div class=\"container\" style=\"width: 400px;\n");
+      out.write("    height: 410px;  margin: 25px auto;\">\n");
       out.write("            <form action=\"admin_login_controller\" method=\"POST\">\n");
       out.write("                           <div class=\"username\">\n");
       out.write("                               \n");

@@ -93,7 +93,7 @@
     </table>
         </div> 
       <div class="save">
-      <input type="submit" value="click for email to sent Attendance report" />
+          <input type="submit" value="click for email to sent Attendance report" class="saveatr" />
       </div>
            </form>
     </body>

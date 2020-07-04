@@ -65,7 +65,7 @@ public final class student_005flogin_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                          \n");
       out.write("                             <div class=\"username\">\n");
       out.write("                               \n");
-      out.write("                               <input type=\"text\" name=\"email\" placeholder=\"Your email id\" required=\"\" class=\"name\"/>\n");
+      out.write("                               <input type=\"email\" name=\"email\" placeholder=\"Your email id\" required=\"\" class=\"name\"/>\n");
       out.write("                           </div><br>\n");
       out.write("                           \n");
       out.write("                            \t\t\t\t\n");
@@ -75,8 +75,13 @@ public final class student_005flogin_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                            \n");
       out.write("                             \n");
       out.write("                            <br><div class=\"st\">\n");
-      out.write("                                <button class=\"button button2\" type=\"submit\" name=\"login\"> Login </button>\n");
-      out.write("                                <h5>not yet register?? <a href=\"index.jsp\">Register</a></h5>\n");
+      out.write("                                <button class=\"button button2\" type=\"submit\" name=\"login\">Login</button>\n");
+      out.write("                                <h4>Not yet register??\n");
+      out.write("                                    <div class=\"tooltip\">\n");
+      out.write("                                        <a href=\"index.jsp\" style=\"color:black; font-size: 25;\">Register</a>\n");
+      out.write("                                        <span class=\"tooltiptext\"> Click for Register </span>\n");
+      out.write("                                    </div>\n");
+      out.write("                                </h4>\n");
       out.write("                            </div>\n");
       out.write("                            \n");
       out.write("                        </form>\n");

@@ -93,6 +93,7 @@ public class select_course_controller extends HttpServlet {
                 session.setAttribute("tecname", tecname);
                 
              }
+             
         } catch (SQLException ex) {
             Logger.getLogger(select_course_controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

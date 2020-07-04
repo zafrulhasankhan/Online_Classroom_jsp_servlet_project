@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/postlist.css" rel="stylesheet"/>
         <link rel="stylesheet" href="../css/bootstrap.css">
+         <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>JSP Page</title>
     </head>
@@ -70,8 +71,12 @@ String tecname = session.getAttribute("tecname").toString();
         <div class="bodypost">
             <h4>Text Message:</h4>
             <h3><%= po.getBody()%></h3><p>***********************------------------------------***********************</p>
-            
-          <h4>Uploaded File/Image : <a href="getImage.jsp?name=<%=po.getName()%>"> <%=po.getName()%></a></h4><br>
+            <div class="tooltip">
+                <h4>Uploaded File/Image : <a href="getImage.jsp?name=<%=po.getName()%>"><%=po.getName()%> <span class="tooltiptext">Click for Show file </span></a> &ensp;&ensp;&ensp;  ...........<i class="em em-soon" aria-role="presentation" aria-label="SOON WITH RIGHTWARDS ARROW ABOVE"></i> &ensp;&ensp;
+            </div>
+                    <div class="tooltip1">
+                    <a href="downloadFileServlet?name=<%=po.getName()%>">download here  <span class="tooltiptext1">Click for Download file </span></a></h4><br>
+            </div>
           <h5>post creation time:  <%=po.getTime()%></h5>
            
         </div><br>
@@ -86,10 +91,7 @@ String tecname = session.getAttribute("tecname").toString();
       
      
         
-        
-      <div class="home">
-          <a href="index.jsp" style="color: white; align-content: right; "><h5>Home</h5></a>
-      </div>
+     
      
     </body>
 </html>

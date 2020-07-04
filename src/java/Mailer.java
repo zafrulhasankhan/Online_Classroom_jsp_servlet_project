@@ -7,9 +7,9 @@ import java.util.Properties;
  * Created by Asus on 11/27/2019.
  */
 public class Mailer {
-    public static void send(String to,String subject,String msg){
-        final String user="nasimkhan18003@gmail.com";
-        final String pass="01719785542";
+    public static void send(String user,String pass, String to,String subject,String msg){
+         //String user=from;
+        // String pass=password;
         
         
         Properties props=new Properties();

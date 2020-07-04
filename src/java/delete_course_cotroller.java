@@ -30,6 +30,10 @@ public class delete_course_cotroller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String code = request.getParameter("code");
+        String tecname = request.getParameter("tecname");
+         String tecemail = request.getParameter("tecemail");
+        // System.out.println(tecemail);
+        //System.out.println(tecname);
         
         try {
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("Delete from add_course where course_code = ?");
@@ -42,6 +46,9 @@ public class delete_course_cotroller extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(delete_course_cotroller.class.getName()).log(Level.SEVERE, null, ex);
         }
-         request.getRequestDispatcher("courselist_controller").forward(request,response);
+         getServletContext().setAttribute("tecname",tecname);
+         getServletContext().setAttribute("tecemail",tecemail);
+               RequestDispatcher rd=getServletContext().getRequestDispatcher("/courselist_controller");
+               rd.forward(request,response);
     }
 }

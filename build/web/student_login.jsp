@@ -26,7 +26,7 @@
                           
                              <div class="username">
                                
-                               <input type="text" name="email" placeholder="Your email id" required="" class="name"/>
+                               <input type="email" name="email" placeholder="Your email id" required="" class="name"/>
                            </div><br>
                            
                             				
@@ -36,8 +36,13 @@
                             
                              
                             <br><div class="st">
-                                <button class="button button2" type="submit" name="login"> Login </button>
-                                <h5>not yet register?? <a href="index.jsp">Register</a></h5>
+                                <button class="button button2" type="submit" name="login">Login</button>
+                                <h4>Not yet register??
+                                    <div class="tooltip">
+                                        <a href="index.jsp" style="color:black; font-size: 25;">Register</a>
+                                        <span class="tooltiptext"> Click for Register </span>
+                                    </div>
+                                </h4>
                             </div>
                             
                         </form>

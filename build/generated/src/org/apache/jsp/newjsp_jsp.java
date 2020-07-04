@@ -51,19 +51,21 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <form action=\"classwork_submit_controller\" method=\"post\" enctype=\"multipart/form-data\">\n");
-      out.write("              \n");
-      out.write("             <input type=\"text\" class=\"image\" name=\"cw_no\"   placeholder=\"enter cw no\"/>\n");
-      out.write("             <input type=\"text\" class=\"image\" name=\"code\"     placeholder=\"enter course code\"/><br>\n");
-      out.write("             <input type=\"text\" class=\"image\" name=\"sname\"      placeholder=\"enter student name\"/>\n");
-      out.write("             <input type=\"text\" class=\"image\" name=\"sid\"      placeholder=\"enter student id\"/>\n");
-      out.write("             <div id=\"myDIV\">\n");
-      out.write("              <input type=\"file\" class=\"image\" name=\"file\"   placeholder=\"enter file\"/><br>\n");
-      out.write("               </div><br>\n");
-      out.write("             <div >\n");
-      out.write("             <input type=\"submit\" class=\"btnn\" value=\"upload\"/><br>\n");
-      out.write("             </div>\n");
-      out.write("          </form>\n");
+      out.write("        ");
+
+            String email = request.getParameter("tecemail");
+            String code = request.getParameter("code");
+            
+      out.write("\n");
+      out.write("        <form action=\"email_verification_controller\" method=\"get\">\n");
+      out.write("            <div class=\"username\">\n");
+      out.write("                               \n");
+      out.write("                               <input type=\"email\" name=\"email\" placeholder=\"email id\"  value=\"");
+      out.print(email);
+      out.write("\" class=\"name\"/>\n");
+      out.write("                           </div><br>\n");
+      out.write("            <input class=\"button button2\" type=\"submit\" name=\"login\" value=\"Login\">\n");
+      out.write("        </form>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

@@ -98,7 +98,9 @@ background: greenyellow;
    text-align: center;
     margin: .75px auto;
     background: white;
-    position: center;
+    position:absolute;
+    left: 40%;
+    
     
 }
 .save input{

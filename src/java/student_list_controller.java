@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,8 +38,21 @@ public class student_list_controller extends HttpServlet {
        String id = request.getParameter("id");
        String code = request.getParameter("code");
        String pass = request.getParameter("pass");
+       String repass = request.getParameter("repass");
        PrintWriter out = response.getWriter();
+       if(pass == null ? repass == null : pass.equals(repass)){
         try {
+            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(id) FROM student_list WHERE course_code=? AND id=?),\"post not yet\") as id");
+            ps0.setString(1, code);
+            ps0.setString(2, id);
+            ResultSet rs0 =   ps0.executeQuery();
+           
+            if(rs0.next()){
+                int stuno = Integer.parseInt(rs0.getString(1));
+                if(stuno==0){
+                
+            
+                
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into student_list values(?,?,?,?,?)");
              ps.setString(1, name);
               ps.setString(2, email);
@@ -74,13 +88,41 @@ public class student_list_controller extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.include(request, response);
 		}
+                }
+            
+            else{
+                out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal ( 'Already Exists !' ,  ' ' ,  'error' );");
+			out.println("});");
+			out.println("</script>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.include(request, response);
+            }
+            }
               
                     } catch (SQLException ex) {
             Logger.getLogger(student_list_controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(student_list_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
+       }
        //request.getRequestDispatcher("course_login_form.jsp").forward(request,response);
+       else{
+           out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal ( 'password not same !' ,  ' ' ,  'error' );");
+			out.println("});");
+			out.println("</script>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.include(request, response);
+       }
     }
 
     

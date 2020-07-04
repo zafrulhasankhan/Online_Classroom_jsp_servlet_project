@@ -34,9 +34,12 @@ public class courselist_controller_2 extends HttpServlet {
             throws ServletException, IOException {
         
 ArrayList<course> course_list = new ArrayList<course>();
-         
+         String tecname = request.getParameter("name");
+         String tecemail = request.getParameter("email");
         try {
-            PreparedStatement ps = DBConnection.getConnection().prepareStatement("select *from add_course");
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("select *from add_course where teacher_name=? and teacher_email=?");
+             ps.setString(1, tecname);
+            ps.setString(2, tecemail);
             ResultSet rs =   ps.executeQuery();
             while(rs.next()){
                 

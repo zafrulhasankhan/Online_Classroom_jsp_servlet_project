@@ -13,12 +13,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+        <br><<h1 class="welcome-title">Add Course</h1>
         <div class="container" style=" height: 375px; ">
             <form action="add_course_controller" method="POST">
+                <%
+                 String email = request.getParameter("email");
+                  String name = request.getParameter("name");
+                  %>
                 <div class="username">
-                               
-                               <input type="text" name="tecname" placeholder="Course Teacher Name" required="" class="name"/>
+                               <input type="text" name="tecemail" placeholder="Course Teacher Name" value="<%=email%>" hidden="" class="name"/>
+                               <input type="text" name="tecname" placeholder="Course Teacher Name" value="<%=name%>"  hidden="" class="name"/>
                            </div><br>
                            <div class="username">
                                
@@ -26,7 +30,7 @@
                            </div><br>
                              
                             
-                            <div class="pass"><br>
+                            <div class="pass">
 								
 			    
                             <input type="text" name="code" placeholder="Course code" required="" class="code" />
@@ -34,8 +38,12 @@
                             <div class="pass"><br>
 								
 			    
-                            <input type="password" name="pass" placeholder="password" required="" class="password" />
+                            <input type="password" name="pass" placeholder="set pin number" required="" class="password" />
 							</div>
+                           <div class="pass"><br>
+								
+			   <input type="password" name="repass" placeholder="Confirm pin number" required="" class="password" />
+			</div>
                             
                              
                             <br><div class="st">

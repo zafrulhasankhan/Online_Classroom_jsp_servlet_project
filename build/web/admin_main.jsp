@@ -23,15 +23,15 @@
 <div class="container dashboard">
 		<h1>Welcome To Admin Panel</h1>
 		<div class="stats">
-			<a href="courselist_controller" class="first">
+			<a href="courselist_controller?email=${email}&name=${name}" class="first">
 				
 				<span>See All course's</span>
 			</a>
-                    <a href="add_course.jsp">
+                    <a href="add_course.jsp?email=${email}&name=${name}">
 				
 				<span>Add new course</span>
 			</a>
-			<a href="courselist_controller_2">
+			<a href="courselist_controller_2?email=${email}&name=${name}">
 				
 				<span>Classwork and Attendance</span>
 			</a>
@@ -40,5 +40,6 @@
 		<br><br><br>
 		
 	</div>
+        <h1 style="color: white;"> ${email}</h1>
     </body>
 </html>

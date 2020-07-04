@@ -16,9 +16,10 @@
     </head>
     <body>
         <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1><br>
+       
         <h2 style="text-align: center;color: #ffffff"><u>Student Register</u></h2>
         <div class="container" style="width: 400px;
-    height: 410px;  margin: 25px auto;">
+    height: 465px;  margin: 25px auto;">
             
             <form action="student_list_controller" method="Post" style="position: relative;
     top: 5%;
@@ -29,7 +30,7 @@
                            </div><br>
                              <div class="username">
                                
-                               <input type="text" name="email" placeholder="Your email id" required="" class="name"/>
+                               <input type="email" name="email" placeholder="Your email id" required="" class="name"/>
                            </div><br>
                            <div class="username">
                                
@@ -43,15 +44,29 @@
                                 </div><br>				
 			     <div class="pass">
                             <input type="password" name="pass" placeholder="PassWord" required="" class="password" />
+                             </div><br>
+                            <div class="pass">
+                            <input type="password" name="repass" placeholder="Confirm PassWord" required="" class="password" />
 							</div>
-                            
                              
                             <br><div class="st">
-                                <button class="button button2" type="submit" name="login"> Register </button>
-                                <h5>Already create account?? <a href="student_login.jsp">Login</a></h5>
+                                <button class="button button2" type="submit" name="login">Register</button>
+                                <h4>Already have account??
+                                    <div class="tooltip">
+                                        <a href="student_login.jsp" style="color:black; font-size: 25;">Login</a>
+                                        <span class="tooltiptext"> Click for Login  </span>
+                                    </div>
+                                </h4>
                             </div>
                             
                         </form>
+        </div>
+                            <div class="teacher_container">
+                                <h3>&ensp;If you want to use as teacher,click below.</h3>
+            <div class="tooltip">
+            <h3 class="welcome-title"><a href="teacher_register.jsp">Register</a></h3>
+                   <span class="tooltiptext"> Click for Go to teacher's Panel </span>
+            </div>
         </div>
     </body>
 </html>

@@ -128,9 +128,45 @@ body{
     position: relative;
     top: 5%;
     transform: translateY(5%);
+
+}
+.teacher_container{
+    width: 340px;
+    height:100px;
+    margin: -300px auto;
+    background: #009933;
+    color: white;
+    position: absolute;
+    left:100px;
+    border: 2px #ff3333 solid;
+}
+.teacher_container .tooltip{
+    position: relative;
+    top: -30%;
+    left: 40%;
+    transform: translateY(-30%);
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+    
+    position: center;
 }
 
-margin: 20px auto;
-    position:relative;
-    top:-150%;
-    left:60%;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

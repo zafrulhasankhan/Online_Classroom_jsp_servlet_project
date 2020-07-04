@@ -14,11 +14,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,9 +32,10 @@ public class all_student_report_controller extends HttpServlet {
     
    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       String code = request.getParameter("code");
+       String code1="ict-3109";
       ArrayList<people> peoplelist = new ArrayList<people>();
         try {
             PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from attendence_list  where course_code=? ");
@@ -60,5 +63,8 @@ public class all_student_report_controller extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(all_student_report_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
+       RequestDispatcher rd = request.getRequestDispatcher("newjsp.jsp");
+                rd.forward(request, response);
+      
     }
 }

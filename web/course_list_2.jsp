@@ -34,7 +34,7 @@
                             <table class="table">
                                 <thead class="theading">
                                     <tr >
-                                        <th class="hname" style="border: 3px solid red;"><h5>Serial No.</h5></th>
+                                        
                                         <th class="hdept" style="border: 3px solid red; "><h5>Course Name</h5></th>
                                         <th class="hemail" style="border: 3px solid red;"><h5>Course code</h5></th>
                                         
@@ -54,7 +54,7 @@
                 
         %>
         <tr>
-            <td class="bname"><%= u.getId()%></td>
+            
             <td class="bdept"><%= u.getName()%></td>
         <td class="bemail"><%= u.getCode()%></td>
         <td class="bview"><%out.print("<a href='attendance_sheet_controller?code="+u.getCode()+"'</a>");%>Take Attendance & show attendance report</td>
