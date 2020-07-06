@@ -94,7 +94,7 @@ public class post_form_controller extends HttpServlet {
          
         String subject=" Announcement !";
         
-        String msg = String.format("Hi %s , %s posted a new announcement in %s . %n%nAnnouncement: %s  %n'%s' file has been uploaded.......visit classroom to see more",stuname,tecname,course_name,body,name);
+        String msg = String.format("Hi %s , %s posted a new announcement in %s . %n%nAnnouncement: %s  %n%n'%s' file has been uploaded.......visit classroom to see more",stuname,tecname,course_name,body,name);
         
         Mailer.send(user,pass,to,subject,msg);
         

@@ -31,9 +31,25 @@ public class all_classwork_codewise extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
         ArrayList<classwork> worklist = new ArrayList<classwork>();
        String code = request.getParameter("code");
         try {
+            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM classwork WHERE course_code=?),\"post not yet\") as course_code  ");
+            ps0.setString(1, code);
+            ResultSet rs0 =   ps0.executeQuery();
+            if(rs0.next()){
+                int count= Integer.parseInt(rs0.getString(1));
+                if(count==0){
+                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal (  ' Hey ' ,'No classwork created yet',  'error' );");
+			out.println("});");
+			out.println("</script>");
+                }
+                else{
             PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from classwork  where course_code=?");
              ps.setString(1,code);
                     ResultSet rs1 =   ps.executeQuery();
@@ -56,7 +72,9 @@ public class all_classwork_codewise extends HttpServlet {
                         String coursename = rs2.getString("course_name");
                         request.setAttribute("name", coursename);
                     }
-                    
+                 request.getRequestDispatcher("admin_all_classwork.jsp").forward(request,response);
+                }
+            }
                     
         } catch (SQLException ex) {
             Logger.getLogger(all_classwork_codewise.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,7 +82,7 @@ public class all_classwork_codewise extends HttpServlet {
             Logger.getLogger(all_classwork_codewise.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        request.getRequestDispatcher("admin_all_classwork.jsp").forward(request,response);
+        
     }
 
   

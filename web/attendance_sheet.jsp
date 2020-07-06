@@ -22,7 +22,7 @@
   <a href="courselist_controller?code=${code}">Home</a>
   <a href="select_course_controller?code=${code}">view course</a>
   <div class="navbar-centered1">
-      <a  class="active1">${code} | ${name}</a>
+      <a  class="active1"> ${name} | ${code} </a>
   </div>
   <div class="dropdown1">
     <button class="dropbtn1">  Attendance report   
@@ -35,7 +35,7 @@
       
       <a href="individual_report_form.jsp?code=${code}">Individual Attendance report</a>
        <a href="all_student_attendance_report_controller?code=${code}">All student Attendance report</a>
-      <a href="datewiz_attendance_report.jsp">Datewise attendance Report</a>
+      <a href="datewiz_attendance_report.jsp?code=${code}">Datewise attendance Report</a>
     </div>
   </div> 
 </div>

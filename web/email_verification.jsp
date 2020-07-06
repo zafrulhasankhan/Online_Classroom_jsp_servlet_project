@@ -13,21 +13,19 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            String email = request.getParameter("tecemail");
-            String code = request.getParameter("code");
-            %>
+        
         <br><br><br><h1 class="welcome-title">Email verification for sent classes all update to all of students by email</h1><br>
+        <h2 style="text-align: center;color: #ffffff"><u>Email verify</u></h2>
         <div class="container" style="width: 400px;
     height: 310px;  margin: 25px auto;">
-            <form action="email_verification_controller" method="get">
+            <form action="email_verification_controller" method="post">
                            <div class="username">
                                
-                               <input type="email" name="email" hidden="" value="${email}" placeholder="email id"  class="name"/>
+                               <input type="email" name="email" value="${email}" hidden="" required=""  placeholder="email id"  class="name"/>
                            </div><br>
                             <div class="username">
                                
-                                <input type="text" name="name"  hidden="" value="${name}" placeholder="email id"  class="name"/>
+                                <input type="text" name="name" value="${name}" hidden=""   placeholder="email id"  class="password"/>
                            </div>
                            <h3> Don't worry,Your email password will be encrpyted always,don't know anybody</h3>
                             <div class="pass"><br>

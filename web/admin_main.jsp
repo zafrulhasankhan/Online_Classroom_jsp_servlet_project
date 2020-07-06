@@ -21,7 +21,7 @@
 	
         
 <div class="container dashboard">
-		<h1>Welcome To Admin Panel</h1>
+		<h1>Welcome To Teacher Panel</h1>
 		<div class="stats">
 			<a href="courselist_controller?email=${email}&name=${name}" class="first">
 				
@@ -37,7 +37,11 @@
 			</a>
                     
 		</div>
-		<br><br><br>
+		<br><br><br><div class="buttons">
+			
+                        <a href="email_pass_for_verify?email=${email}&name=${name}"> Email verification</a>
+                        
+		</div>
 		
 	</div>
         <h1 style="color: white;"> ${email}</h1>

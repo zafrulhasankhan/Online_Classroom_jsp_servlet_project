@@ -78,7 +78,7 @@
         
       </tr>  
       
-           <input type="text" name="stuemail" value="<%= u.getEmail()%>" hidden="" >
+            <input type="text" name="stuemail" value="<%= u.getEmail()%>" hidden="" >
             <input type="text" name="stuid" value="<%= u.getClassid()%>" hidden="" > 
             <input type="text" name="stuname" value="<%= u.getStudent_name()%>" hidden="" >
             <input type="text" name="present" value="<%= present%>" hidden="" >

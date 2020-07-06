@@ -8,6 +8,7 @@ import db.DBConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,16 +28,16 @@ public class email_verification_controller extends HttpServlet {
 
    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         String name=request.getParameter("name");
         String email=request.getParameter("email");
         String pass=request.getParameter("pass");
-        System.out.println(pass);
+        
         String user=email;
         String to=email;
-         
+        
         String subject="Email verification !";
         
         String msg = "Your email is successfully verified";
@@ -48,6 +49,20 @@ public class email_verification_controller extends HttpServlet {
         String encryp_pass = ae.encrypt(strToEncrypt, secret);
         
         try {
+            PreparedStatement ps3=DBConnection.getConnection().prepareStatement("delete from email where email=?");
+            ps3.setString(1, email);
+            ps3.executeUpdate();
+            
+             PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(email) FROM email WHERE email=? ),\"post not yet\") as email");
+             ps0.setString(1, email);
+           
+            ResultSet rs0 =   ps0.executeQuery();
+           
+            if(rs0.next()){
+                int stuno = Integer.parseInt(rs0.getString(1));
+                if(stuno==0){
+            
+            
             PreparedStatement ps=DBConnection.getConnection().prepareStatement("insert into email values(?,?,?) ");
             ps.setString(1, name);
             ps.setString(2, email);
@@ -59,13 +74,13 @@ public class email_verification_controller extends HttpServlet {
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
 			out.println("<script>");
 			out.println("$(document).ready(function(){");
-			out.println("swal (  'successfully Email verified!' ,'Check your gmail inbox',  'success' );");
+			out.println("swal (  ' Email verified!' ,'Check your gmail inbox either get email yes verfied or try again...click.. Email verification.' ,  'success' );");
 			out.println("});");
 			out.println("</script>");
 			request.setAttribute("name", name);
                         request.setAttribute("email", email);
 			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
-			rd.forward(request, response);
+			rd.include(request, response);
                         
                         
 		}
@@ -77,10 +92,26 @@ public class email_verification_controller extends HttpServlet {
 			out.println("swal (  'sorry!' ,'try again',  'error' );");
 			out.println("});");
 			out.println("</script>");
-			
+                        request.setAttribute("name", name);
+			request.setAttribute("email", email);
 			RequestDispatcher rd = request.getRequestDispatcher("email_verification.jsp");
+			rd.forward(request, response);
+                }
+                }
+                else{
+                     out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal (  'oo!' ,'Already email exists or verified, now check again your gmail box',  'error' );");
+			out.println("});");
+			out.println("</script>");
+			request.setAttribute("name", name);
+                        request.setAttribute("email", email);
+			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
 			rd.include(request, response);
                 }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(email_verification_controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

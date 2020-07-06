@@ -49,7 +49,7 @@ body{
 .container.dashboard .stats a.first { margin-left: 25px;  }
 .container.dashboard .stats a:hover { cursor: pointer; background-color: black; }
 .container.dashboard .buttons { margin-left: 15px;position:absolute;
-        left:500;  }
+        left:510;  }
 .container.dashboard .buttons a {
 	display: inline-block;
 	margin: 10px;
@@ -57,8 +57,11 @@ body{
         color:  #cc0033;
 	padding: 10px 25px;
 	border: none;
-	background-color: #0E7D92;
+        background-color: #cc3300;
 	color: white;
         
         
+}
+.container.dashboard .buttons a:hover{
+    background: black;
 }

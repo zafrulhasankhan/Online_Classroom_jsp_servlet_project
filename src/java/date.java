@@ -30,7 +30,7 @@ public class date extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String date=request.getParameter("date");
+       /*String date=request.getParameter("date");
        String co =(String) getServletContext().getAttribute("var");
        String code = request.getParameter("code");
        String age = request.getParameter("age");
@@ -53,7 +53,15 @@ public class date extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(date.class.getName()).log(Level.SEVERE, null, ex);
         }
-request.getRequestDispatcher("datefind.jsp").forward(request,response);
+request.getRequestDispatcher("datefind.jsp").forward(request,response);*/
+       String emails="";
+      String email[] =request.getParameterValues("stuemail");
+        System.out.println(email);
+   for(int i=0;i<email.length;i++){
+       emails=email[i];
+       System.out.println(emails);
+   }
+       
     }
 
 }

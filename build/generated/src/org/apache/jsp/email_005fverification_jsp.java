@@ -52,29 +52,24 @@ public final class email_005fverification_jsp extends org.apache.jasper.runtime.
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        ");
-
-            String email = request.getParameter("tecemail");
-            String code = request.getParameter("code");
-            
-      out.write("\n");
+      out.write("        \n");
       out.write("        <br><br><br><h1 class=\"welcome-title\">Email verification for sent classes all update to all of students by email</h1><br>\n");
       out.write("        <div class=\"container\" style=\"width: 400px;\n");
       out.write("    height: 310px;  margin: 25px auto;\">\n");
-      out.write("            <form action=\"email_verification_controller\" method=\"get\">\n");
+      out.write("            <form action=\"email_verification_controller\" method=\"post\">\n");
       out.write("                           <div class=\"username\">\n");
       out.write("                               \n");
-      out.write("                               <input type=\"email\" name=\"email\" hidden=\"\" value=\"");
+      out.write("                               <input type=\"email\" name=\"email\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${email}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" placeholder=\"email id\"  class=\"name\"/>\n");
+      out.write("\"  placeholder=\"email id\"  class=\"name\"/>\n");
       out.write("                           </div><br>\n");
       out.write("                            <div class=\"username\">\n");
       out.write("                               \n");
-      out.write("                                <input type=\"text\" name=\"name\"  hidden=\"\" value=\"");
+      out.write("                                <input type=\"text\" name=\"name\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" placeholder=\"email id\"  class=\"name\"/>\n");
+      out.write("\"   placeholder=\"email id\"  class=\"password\"/>\n");
       out.write("                           </div>\n");
-      out.write("                            \n");
+      out.write("                           <h3> Don't worry,Your email password will be encrpyted always,don't know anybody</h3>\n");
       out.write("                            <div class=\"pass\"><br>\n");
       out.write("\t\t\t\t\t\t\t\t\n");
       out.write("\t\t\t    \n");

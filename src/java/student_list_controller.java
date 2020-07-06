@@ -42,17 +42,33 @@ public class student_list_controller extends HttpServlet {
        PrintWriter out = response.getWriter();
        if(pass == null ? repass == null : pass.equals(repass)){
         try {
-            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(id) FROM student_list WHERE course_code=? AND id=?),\"post not yet\") as id");
+            PreparedStatement ps5 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM add_course WHERE   course_code=?),\"post not yet\") as course_code");
+              ps5.setString(1, code);
+            ResultSet rs5 =   ps5.executeQuery();
+           
+            if(rs5.next()){
+                int count = Integer.parseInt(rs5.getString(1));
+                
+            if(count!=0){
+            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(id) FROM student_list WHERE (course_code=? and id=? ) or (course_code=? and email=?)),\"post not yet\") as id");
             ps0.setString(1, code);
             ps0.setString(2, id);
+             ps0.setString(3, code);
+            ps0.setString(4, email);
             ResultSet rs0 =   ps0.executeQuery();
            
             if(rs0.next()){
                 int stuno = Integer.parseInt(rs0.getString(1));
                 if(stuno==0){
                 
-            
+            /*PreparedStatement ps5 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(pass) FROM student_list WHERE   email=?),\"post not yet\") as id");
+              ps5.setString(1, email);
+            ResultSet rs5 =   ps5.executeQuery();
+           
+            if(rs5.next()){
+                int count = Integer.parseInt(rs5.getString(1));
                 
+            if(count==0){*/
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into student_list values(?,?,?,?,?)");
              ps.setString(1, name);
               ps.setString(2, email);
@@ -88,14 +104,13 @@ public class student_list_controller extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.include(request, response);
 		}
-                }
-            
-            else{
+            }
+            /*else{
                 out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
 			out.println("<script>");
 			out.println("$(document).ready(function(){");
-			out.println("swal ( 'Already Exists !' ,  ' ' ,  'error' );");
+			out.println("swal ( 'ohh sorry !' ,  ' password match with other user..change and try again' ,  'error' );");
 			out.println("});");
 			out.println("</script>");
 			
@@ -103,6 +118,34 @@ public class student_list_controller extends HttpServlet {
 			rd.include(request, response);
             }
             }
+            }*/
+            else{
+                out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal ( '  Already Exists !' ,  'change email or student id ' ,  'error' );");
+			out.println("});");
+			out.println("</script>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.include(request, response);
+            }
+            }
+        }
+        else{
+                 out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal ( '  oh sorry !' ,  'There is no account as this course code ' ,  'error' );");
+			out.println("});");
+			out.println("</script>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.include(request, response);
+                }
+       }
               
                     } catch (SQLException ex) {
             Logger.getLogger(student_list_controller.class.getName()).log(Level.SEVERE, null, ex);

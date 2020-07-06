@@ -14,6 +14,7 @@
     </head>
     <body>
         <br><br><br><<h1 class="welcome-title">Register for Teacher panel</h1><br>
+        <h2 style="text-align: center;color: #ffffff"><u>Teacher register</u></h2>
         <div class="container" style="width: 400px;
     height: 410px;  margin: 25px auto;">
             <form action="teacher_register_controller" method="POST">

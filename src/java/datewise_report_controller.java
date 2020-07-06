@@ -33,10 +33,28 @@ public class datewise_report_controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+    
          String code = request.getParameter("code");
           String date= request.getParameter("date");
           ArrayList<attend> attendlist = new ArrayList<attend>();
         try {
+            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(Attendence) FROM attendence_list WHERE course_code=? and date=?),\"post not yet\") as Attendence ");
+            ps0.setString(1, code);
+             ps0.setString(2, date);
+            ResultSet rs0 =   ps0.executeQuery();
+            if(rs0.next()){
+                int present = Integer.parseInt(rs0.getString(1));
+                if(present==0){
+                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal (  ' Hey ' ,'No attendance get in this date',  'error' );");
+			out.println("});");
+			out.println("</script>");
+                }
+                else{
             PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from attendence_list  where course_code=? and date=? ");
             ps1.setString(1, code);
             ps1.setString(2, date);
@@ -51,13 +69,16 @@ public class datewise_report_controller extends HttpServlet {
                  request.setAttribute("code",code);
                  request.setAttribute("date", date);
              }
+              request.getRequestDispatcher("date_attend_list.jsp").forward(request,response);
+                }
+            }
                 
         } catch (SQLException ex) {
             Logger.getLogger(datewise_report_controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(datewise_report_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("date_attend_list.jsp").forward(request,response);
+       
     }
 
     

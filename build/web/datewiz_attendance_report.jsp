@@ -13,10 +13,13 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            String code =request.getParameter("code");
+            %>
         <br><div class="heading" align="center" style=" color: white">
      <h2><u>Attendance Report Form by datewise</u></h2>
   </div>
-       <div class="container" style=" height: 225px; ">
+       <div class="container" style=" height: 200px; ">
             <form action="datewise_report_controller" method="get">
                 
                              
@@ -29,7 +32,7 @@
                             <div class="pass"><br>
 								
 			    
-                            <input type="text" name="code" placeholder="Enter the course code" required="" class="password" />
+                                <input type="text" name="code" placeholder="Enter the course code" value="<%=code%>"  hidden=""  class="password" />
 							</div>
                             
                              

@@ -24,12 +24,12 @@
         
        <div class="navbar1">
   <a href="select_course_controller?code=${code}">Home</a>
-  <a href="#news">News</a>
+  <a href="individual_report_form.jsp?code=${code}"> Attendance report</a>
   <div class="navbar-centered1">
-      <a  class="active1">${code} | ${name}</a>
+      <a  class="active1"> ${name} | ${code}</a>
   </div>
   <div class="dropdown1">
-    <button class="dropbtn1">Menu 
+    <button class="dropbtn1">Menu Bar 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content1">
@@ -37,8 +37,8 @@
        
       
       
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      
+       <a href="return_create_classwork?code=${code}&email=${email}&spass=${spass}">Classwork list for students</a>
     </div>
   </div> 
 </div>

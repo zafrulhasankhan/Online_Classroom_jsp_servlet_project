@@ -31,6 +31,7 @@ public class attendance_sent_email_controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PrintWriter out=response.getWriter();
         String user="";
         String pass="";
         String code1= request.getParameter("code");
@@ -81,11 +82,11 @@ for(int i=0;i<stuid.length;i++){
         totals=total[i];
         pers=per[i];
         String code= request.getParameter("code");
-        
+        System.out.println(stuemails);
         System.out.println();
     
         response.setContentType("text/html");
-        PrintWriter out=response.getWriter();
+        
         String to=stuemails;
          
         String subject="Attendance reports !";
@@ -94,14 +95,18 @@ for(int i=0;i<stuid.length;i++){
         
         Mailer.send(user,pass,to,subject,msg);
 
-        out.print("message has been successfully...");
-        out.close();
-
+        
         //RequestDispatcher rd = request.getRequestDispatcher("newjsp.jsp");
                 //rd.forward(request, response);
     }
 
-   
+   out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal ( 'Yes' ,  'successfully attendance report sent  !' ,  'success' );");
+			out.println("});");
+			out.println("</script>");
     }
 
 }

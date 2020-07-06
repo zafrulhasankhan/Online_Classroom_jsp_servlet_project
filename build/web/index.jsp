@@ -15,11 +15,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1><br>
+        <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1><br><br><br><br><br><br><br>
        
-        <h2 style="text-align: center;color: #ffffff"><u>Student Register</u></h2>
+        <h2 style="text-align: center;color: #ffffff"><u>Student Register</u></h2><br>
         <div class="container" style="width: 400px;
-    height: 465px;  margin: 25px auto;">
+    height: 472px;  margin: -35px auto;">
             
             <form action="student_list_controller" method="Post" style="position: relative;
     top: 5%;
@@ -62,10 +62,10 @@
                         </form>
         </div>
                             <div class="teacher_container">
-                                <h3>&ensp;If you want to use as teacher,click below.</h3>
-            <div class="tooltip">
-            <h3 class="welcome-title"><a href="teacher_register.jsp">Register</a></h3>
-                   <span class="tooltiptext"> Click for Go to teacher's Panel </span>
+                                <h3>&ensp;If you want to use this site as teacher,click below.</h3>
+            <div class="tooltip1">
+                <h3 class="welcome-title" style="color: red;"><a href="teacher_register.jsp">Register or Login as teacher</a></h3>
+                   <span class="tooltiptext1"> Click for Go to teacher's Panel </span>
             </div>
         </div>
     </body>

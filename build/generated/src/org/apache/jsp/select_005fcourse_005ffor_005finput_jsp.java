@@ -53,6 +53,9 @@ public final class select_005fcourse_005ffor_005finput_jsp extends org.apache.ja
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <br><br><br><<h1 class=\"welcome-title\">Welcome To Nasim's Classroom</h1>\n");
+      out.write("         <h1 style=\"text-align: center;color:black; animation: bymove 3s infinite;\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${msg}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h1>\n");
       out.write("        <div class=\"container-select-file\">\n");
       out.write("            <br><h3 class=\"welcome-title\">Enter your course code Again</h3>\n");
       out.write("        <form action=\"select_course_controller\" method=\"Get\">\n");

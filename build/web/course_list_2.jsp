@@ -40,7 +40,7 @@
                                         
                                          <th class="hview" style="border: 3px solid red;"><h5>Attendance</h5></th>
                                         <th class="hemail" style="border: 3px solid red;"><h5> Classwork</h5></th>
-                                        <th class="hview" style="border: 3px solid red;"><h5>Show Classwork</h5></th>
+                                        <th class="hview" style="border: 3px solid red;"><h5>Show Classwork </h5></th>
                                         
                                     </tr>
                                 </thead><br>
@@ -59,7 +59,7 @@
         <td class="bemail"><%= u.getCode()%></td>
         <td class="bview"><%out.print("<a href='attendance_sheet_controller?code="+u.getCode()+"'</a>");%>Take Attendance & show attendance report</td>
         <td class="bemail"><%out.print("<a href='last_classwork_no?code="+u.getCode()+"'</a>");%>Create Classwork</td>
-        <td class="bview"><%out.print("<a href='all_classwork_codewise?code="+u.getCode()+"'</a>");%>click for show</td>
+        <td class="bview"><%out.print("<a href='all_classwork_codewise?code="+u.getCode()+"'</a>");%> show classwork and marks</td>
         
       </tr>  
       <%

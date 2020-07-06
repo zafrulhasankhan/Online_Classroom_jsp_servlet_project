@@ -40,6 +40,7 @@ public class classwork_submit_controller extends HttpServlet {
         String sname = request.getParameter("sname");
         String sid = request.getParameter("sid");
         String email = request.getParameter("email");
+        System.out.println(sid+cw_no);
         Part part = request.getPart("file");
          String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString(); 
         System.out.println(filename);

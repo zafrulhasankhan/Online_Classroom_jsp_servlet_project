@@ -131,27 +131,24 @@ body{
 
 }
 .teacher_container{
-    width: 340px;
+    width: 410px;
     height:100px;
-    margin: -300px auto;
+    margin: -600px auto;
     background: #009933;
     color: white;
-    position: absolute;
-    left:100px;
+    position: relative;
+    left:0px;
     border: 2px #ff3333 solid;
 }
-.teacher_container .tooltip{
-    position: relative;
-    top: -30%;
-    left: 40%;
-    transform: translateY(-30%);
-}
+
 .tooltip {
   position: relative;
   display: inline-block;
     
     position: center;
 }
+
+
 
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -168,5 +165,34 @@ body{
 }
 
 .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.teacher_container .tooltip1 {
+  position: relative;
+  top: -20%;
+  left: 25%;
+  transform: translateY(-20%);
+  display: inline-block;
+  
+   
+}
+
+
+
+.tooltip1 .tooltiptext1 {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip1:hover .tooltiptext1 {
   visibility: visible;
 }

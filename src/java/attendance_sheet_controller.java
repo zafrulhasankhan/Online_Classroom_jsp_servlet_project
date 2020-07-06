@@ -53,12 +53,12 @@ public class attendance_sheet_controller extends HttpServlet {
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
 			out.println("<script>");
 			out.println("$(document).ready(function(){");
-			out.println("swal (  'successfully !' ,'Added This Course',  'success' );");
+			out.println("swal (  'sorry !' ,'no student add in this course yet',  'error' );");
 			out.println("});");
 			out.println("</script>");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("add_course.jsp");
-			rd.include(request, response);
+			/*RequestDispatcher rd = request.getRequestDispatcher("add_course.jsp");
+			rd.include(request, response);*/
                 }
                 else{
                     

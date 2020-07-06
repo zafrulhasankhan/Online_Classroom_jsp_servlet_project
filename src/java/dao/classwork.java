@@ -17,6 +17,15 @@ public class classwork {
 private String Student_name;
 private String Student_id;
 private String Student_email;
+private String mark;
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
 
     public String getStudent_email() {
         return Student_email;

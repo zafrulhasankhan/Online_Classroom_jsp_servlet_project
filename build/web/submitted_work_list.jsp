@@ -48,7 +48,7 @@
       
        
       <div class="heading1" align="center">
-          &ensp;<h4><u>People's classwork details</u></h4>
+          &ensp;<h4><u>Student's classwork details</u></h4>
           <h4 style="color:red; text-align: center;">Classwork no. : ${classworkno} </h4><br>
             
       </div><br>

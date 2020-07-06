@@ -7,7 +7,33 @@ and open the template in the editor.
     Created on : Jun 22, 2020, 8:53:01 PM
     Author     : Zafrul Hasan Nasim
 */
+.welcome-title{
+   
+    text-align: center;
+    animation: bymove 4s infinite;
+}
 
+@keyframes bymove{
+   
+   0%{
+      color:red;
+      
+   }
+   25%{
+       color:green;
+   }
+   50%{
+       color :yellow;
+   }
+   75%{
+       color:orange;
+   }
+   100%{
+       color: white;
+   }
+
+
+}
 .navbar {
   overflow: hidden;
   background-color: #cc0033;
@@ -131,4 +157,49 @@ and open the template in the editor.
 }
 .workbody a:hover{
     background: #cc0033;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+ 
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltip1 {
+  position: relative;
+  display: inline-block;
+ 
+}
+.tooltip1 .tooltiptext1 {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip1:hover .tooltiptext1 {
+  visibility: visible;
 }

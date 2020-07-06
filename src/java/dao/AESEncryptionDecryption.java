@@ -84,8 +84,8 @@ public class AESEncryptionDecryption {
         String encryptedString = aesEncryptionDecryption.encrypt(originalString, secretKey);
         String decryptedString = aesEncryptionDecryption.decrypt(encryptedString, secretKey);
 aesEncryptionDecryption.setEncryp(encryptedString);
-        System.out.println(originalString);
-       System.out.println(encryptedString);
-       System.out.println(decryptedString);
+        //System.out.println(originalString);
+       //System.out.println(encryptedString);
+       //System.out.println(decryptedString);
     }
 }

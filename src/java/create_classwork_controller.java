@@ -37,6 +37,8 @@ public class create_classwork_controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String user="";
+                String pass="";
          PrintWriter out = response.getWriter();
                 String cw_no=request.getParameter("cw_no");
                 String code=request.getParameter("code");
@@ -85,12 +87,51 @@ public class create_classwork_controller extends HttpServlet {
 		int n=ps.executeUpdate();
                
 		if(n>0) {
+                    
+                    PreparedStatement ps3=DBConnection.getConnection().prepareStatement("select * from add_course where course_code=?");
+            ps3.setString(1, code);
+            ResultSet rs3 = ps3.executeQuery();
+           if(rs3.next()){
+              String email = rs3.getString("teacher_email");
+              user=email;
+              PreparedStatement ps4=DBConnection.getConnection().prepareStatement("select * from email where email=?");
+              ps4.setString(1, email);
+            ResultSet rs1 = ps4.executeQuery();
+            if(rs1.next()){
+                 AESEncryptionDecryption ae = new AESEncryptionDecryption();
+              String pass1 = rs1.getString("pass");
+              String decryp_pass= ae.decrypt(pass1, email);
+               pass=decryp_pass;
+              
+            }
+           }
+            PreparedStatement ps5 = DBConnection.getConnection().prepareStatement("select * from student_list,add_course where add_course.course_code=?");
+                        ps5.setString(1, code);
+                        ResultSet rs5 = ps5.executeQuery();
+ 
+       while(rs5.next()){
+        String tecname=rs5.getString("teacher_name");
+        String email = rs5.getString("email");
+        String stuname = rs5.getString("name");
+        String course_name = rs5.getString("course_name");
+        System.out.println(email);
+        
+        String to=email;
+         
+        String subject=" Classwork Announcement !";
+        
+        String msg = String.format("Hi %s , %s posted a new classwork in %s . %n%nClasswork: %s  %nUploaded file: '%s'%n%nDeadline:%s.......visit classroom to see more",stuname,tecname,course_name,body,filename,dl);
+        
+        Mailer.send(user,pass,to,subject,msg);
+       }
+                    
+                    
 			//response.getWriter().println("Successfully uploaded");
                         out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
 			out.println("<script>");
 			out.println("$(document).ready(function(){");
-			out.println("swal ( 'Yes' ,  'successfully sent and save post !' ,  'success' );");
+			out.println("swal ( 'Yes' ,  'successfully created classwork !' ,  'success' );");
 			out.println("});");
 			out.println("</script>");
 			

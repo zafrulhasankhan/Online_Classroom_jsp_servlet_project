@@ -47,8 +47,8 @@ public class teacher_login_controller extends HttpServlet {
                 //String pass1 = rs.getString("password");
                //request.setAttribute("code", code)
                System.out.println(name);
-               request.setAttribute("name", name);
-              request.setAttribute("email", email);
+               //request.setAttribute("name", name);
+              //request.setAttribute("email", email);
               PreparedStatement  ps0 = DBConnection.getConnection().prepareStatement ("SELECT ifnull((SELECT COUNT(email) FROM email WHERE email=?),\"0\" ) as email");
               ps0.setString(1, email);
               ResultSet rs0 =ps0.executeQuery();

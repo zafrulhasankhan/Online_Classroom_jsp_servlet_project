@@ -34,14 +34,14 @@
                             <table class="table">
                                 <thead class="theading">
                                     <tr >
-                                        
+                                        <th class="hemail" style="border: 3px solid red; "><h5>Serial No.</h5></th>
                                         <th class="hdept" style="border: 3px solid red; "><h5>Course Name</h5></th>
                                         <th class="hemail" style="border: 3px solid red;"><h5>Course code</h5></th>
                                         <th class="hview" style="border: 3px solid red;"><h5>view course</h5></th>
                                         <th class="hdelete" style="border: 3px solid red;"><h5>Add Feature</h5></th>
-                                        <th class="hview" style="border: 3px solid red;"><h5>Email Sent to all students </h5></th>
-                                        <th class="hdelete" style="border: 3px solid red;"><h5>Delete</h5></th>
-                                       
+                                        
+                                        <th class="hview" style="border: 3px solid red;"><h5>Delete</h5></th>
+                                      
                                         
                                     </tr>
                                 </thead><br>
@@ -55,14 +55,14 @@
                 
         %>
         <tr>
-           
+           <td class="bemail"><%= i%></td>
             <td class="bdept"><%= u.getName()%></td>
         <td class="bemail"><%= u.getCode()%></td>
         <td class="bview"><%out.print("<a href='select_course_controller?code="+u.getCode()+"'</a>");%><%=u.getCode()%></td>
-        <td class="bdelete"><%out.print("<a href='course_code_from_courselist_servlet?code="+u.getCode()+"'</a>");%> Add post</td>
-        <td class="bview"> <a href="email_verification.jsp?code=<%=u.getCode()%>&tecemail=${tecemail} "><%out.print("Email verification");%></a></td> 
-        <td class="bdelete"> <a href="delete_course_cotroller?code=<%=u.getCode()%>&tecname=${tecname}&tecemail=${tecemail} "><%out.print("Delete course");%></a></td>
-                                            
+        <td class="bdelete"><%out.print("<a href='post_form.jsp?code="+u.getCode()+"'</a>");%> Add post</td>
+         
+        <td class="bview"> <a href="delete_course_cotroller?code=<%=u.getCode()%>&tecname=${tecname}&tecemail=${tecemail} "><%out.print("Delete course");%></a></td>
+                                           
       </tr>  
       <%
       }
@@ -71,10 +71,7 @@
     </tbody>
                             
     </table>
-        </div>
-      <div class="home">
-          <a href="index.jsp" style="color: white; align-content: right; "><h5>Home</h5></a>
-      </div>
+       
         
     </body>
 </html>

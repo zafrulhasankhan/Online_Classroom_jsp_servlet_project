@@ -8,6 +8,7 @@ import db.DBConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,8 +36,18 @@ public class teacher_register_controller extends HttpServlet {
        String name = request.getParameter("name");
         System.out.println(pass);
        
-       if(pass==repass){ 
+       if(pass == null ? repass == null : pass.equals(repass)){ 
        try {
+            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(email) FROM teacher_list WHERE email=? ),\"post not yet\") as email");
+            ps0.setString(1, email);
+           
+            ResultSet rs0 =   ps0.executeQuery();
+           
+            if(rs0.next()){
+                int stuno = Integer.parseInt(rs0.getString(1));
+                if(stuno==0){
+                
+                
            PreparedStatement  ps = DBConnection.getConnection().prepareStatement("insert into teacher_list values(?,?,?) ");
            ps.setString(1, name);
            ps.setString(2, email);
@@ -70,6 +81,20 @@ public class teacher_register_controller extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("teacher_register.jsp");
 			rd.include(request, response);
 		}
+                }
+                else{
+                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+			out.println("<script>");
+			out.println("$(document).ready(function(){");
+			out.println("swal ( ' Email Already exists  !' ,  ' ' ,  'error' );");
+			out.println("});");
+			out.println("</script>");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("teacher_register.jsp");
+			rd.include(request, response);
+                }
+            }
        } catch (SQLException ex) {
            Logger.getLogger(teacher_register_controller.class.getName()).log(Level.SEVERE, null, ex);
        } catch (ClassNotFoundException ex) {

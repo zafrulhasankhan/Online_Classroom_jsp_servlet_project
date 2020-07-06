@@ -59,8 +59,8 @@ public class peoplelist_controller extends HttpServlet {
                 
             }
              PreparedStatement ps2 = DBConnection.getConnection().prepareStatement("select * from add_course where course_code=? ");
-             ps1.setString(1, code);
-             ResultSet rs1=ps1.executeQuery();
+             ps2.setString(1, code);
+             ResultSet rs1=ps2.executeQuery();
              if(rs1.next()){
                  
                 HttpSession session = request.getSession();
