@@ -24,10 +24,14 @@
       
         
        <div class="navbar1">
-  <a href="select_course_controller?code=${code}">Home</a>
-  <a href="#news">News</a>
-  <div class="navbar-centered1">
-      <a  class="active1">${code} | ${name}</a>
+  <a href="select_course_controller?code=${code}">All post</a>
+  <a href="#news"></a>
+  <a href="#news"></a>
+  <a href="#news"></a>
+  <a href="#news"></a>
+  <a href="#news"></a>
+ <div class="active11">
+      <a  class="active1"> ${name} | ${code}</a>
   </div>
   <div class="dropdown1">
     <button class="dropbtn1">Menu 

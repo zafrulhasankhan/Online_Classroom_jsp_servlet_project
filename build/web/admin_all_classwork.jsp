@@ -30,8 +30,8 @@
   <a href="#">Home</a>
   
   <a href="individual_report_form.jsp?code=${code}"> Attendance report</a>
-  <div class="navbar-centered">
-      <a  class="active">${name} | ${code}</a>
+  <div class="active1">
+  <a  class="active">${name} | ${code}</a>
   </div>
   <div class="dropdown">
     <button class="dropbtn">Menu Bar 

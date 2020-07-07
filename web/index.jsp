@@ -6,6 +6,9 @@
 
 
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.DBConnection"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,11 +18,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <br><br><br><<h1 class="welcome-title">Welcome To Nasim's Classroom</h1><br><br><br><br><br><br><br>
+        <br><br><br><h1 class="welcome-title">Welcome To Nasim's Classroom</h1><br><br><br><br><br><br><br>
        
         <h2 style="text-align: center;color: #ffffff"><u>Student Register</u></h2><br>
         <div class="container" style="width: 400px;
-    height: 472px;  margin: -35px auto;">
+    height: 492px;  margin: -35px auto;">
             
             <form action="student_list_controller" method="Post" style="position: relative;
     top: 5%;
@@ -37,17 +40,29 @@
                                <input type="text" name="id" placeholder="Your class id" required="" class="name"/>
                            </div><br>
                             
-                            <div class="pass">
+                            
+                           <label class="" style="color: black">Course code:</label>
 				<div class="username">
-                               
-                               <input type="text" name="code" placeholder="course code" required="" class="name"/>
-                                </div><br>				
+                                    
+                               <select id="cars" name="code" class="code1">   
+                                <%
+                              PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course");
+                               ResultSet rs = ps.executeQuery();
+                                 while(rs.next()){
+                                String code = rs.getString("course_code");%>
+                                <option  value="<%=code%>"><%=code%></option>
+                                 <% }%>
+                               </select>                          
+                               </div><br>
+                                
+                                
+                                
 			     <div class="pass">
                             <input type="password" name="pass" placeholder="PassWord" required="" class="password" />
                              </div><br>
                             <div class="pass">
                             <input type="password" name="repass" placeholder="Confirm PassWord" required="" class="password" />
-							</div>
+			    </div>
                              
                             <br><div class="st">
                                 <button class="button button2" type="submit" name="login">Register</button>
@@ -67,6 +82,8 @@
                 <h3 class="welcome-title" style="color: red;"><a href="teacher_register.jsp">Register or Login as teacher</a></h3>
                    <span class="tooltiptext1"> Click for Go to teacher's Panel </span>
             </div>
-        </div>
+                             </div>
+        
+        
     </body>
 </html>

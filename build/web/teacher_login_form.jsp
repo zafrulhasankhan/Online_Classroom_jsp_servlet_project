@@ -16,7 +16,7 @@
         <br><br><br><<h1 class="welcome-title">Login for Teacher panel</h1><br>
         <h2 style="text-align: center;color: #ffffff"><u>Teacher Login</u></h2>
         <div class="container" style="width: 400px;
-    height: 310px;  margin: 25px auto;">
+    height: 320px;  margin: 25px auto;">
             <form action="teacher_login_controller" method="get">
                            <div class="username">
                                
@@ -27,7 +27,11 @@
                             <div class="pass"><br>
 								
 			    
-                            <input type="password" name="pass" placeholder="PassWord" required="" class="password" />
+                                <input type="password" name="pass" placeholder="PassWord" required="" class="password" /><br><br>
+                            <div class="tooltip">
+                                 <a href="forget_pass_teacher.jsp" style="color: black;"><b>Forget password?</b></a>
+                            <span class="tooltiptext"> Click for find password </span>
+                             </div>
 							</div>
                             
                              

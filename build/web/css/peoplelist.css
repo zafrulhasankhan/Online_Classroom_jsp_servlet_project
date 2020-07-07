@@ -78,10 +78,15 @@ and open the template in the editor.
   transform: translate(-50%, -50%);
  
 }
-.topnav1 a.active {
-  background-color: #4CAF50;
+.navbar1 a.active1 {
+  background-color:green;
   color: white;
   
+}
+.navbar1 .active11{
+    position: relative;
+    left: 23%;
+    background: green;
 }
 heading1{
     color: aliceblue;

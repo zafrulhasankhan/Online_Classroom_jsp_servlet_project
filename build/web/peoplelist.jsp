@@ -25,7 +25,7 @@
        <div class="navbar1">
   <a href="select_course_controller?code=${code}">Home</a>
   <a href="individual_report_form.jsp?code=${code}"> Attendance report</a>
-  <div class="navbar-centered1">
+  <div class="active11">
       <a  class="active1"> ${name} | ${code}</a>
   </div>
   <div class="dropdown1">

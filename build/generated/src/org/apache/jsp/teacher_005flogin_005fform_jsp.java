@@ -53,6 +53,7 @@ public final class teacher_005flogin_005fform_jsp extends org.apache.jasper.runt
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <br><br><br><<h1 class=\"welcome-title\">Login for Teacher panel</h1><br>\n");
+      out.write("        <h2 style=\"text-align: center;color: #ffffff\"><u>Teacher Login</u></h2>\n");
       out.write("        <div class=\"container\" style=\"width: 400px;\n");
       out.write("    height: 310px;  margin: 25px auto;\">\n");
       out.write("            <form action=\"teacher_login_controller\" method=\"get\">\n");
@@ -66,6 +67,10 @@ public final class teacher_005flogin_005fform_jsp extends org.apache.jasper.runt
       out.write("\t\t\t\t\t\t\t\t\n");
       out.write("\t\t\t    \n");
       out.write("                            <input type=\"password\" name=\"pass\" placeholder=\"PassWord\" required=\"\" class=\"password\" />\n");
+      out.write("                            <div class=\"tooltip\">\n");
+      out.write("                                 <a href=\"forget_pass.jsp\" style=\"color: black;\"><b>Forget password?</b></a>\n");
+      out.write("                            <span class=\"tooltiptext\"> Click for find password </span>\n");
+      out.write("                             </div>\n");
       out.write("\t\t\t\t\t\t\t</div>\n");
       out.write("                            \n");
       out.write("                             \n");

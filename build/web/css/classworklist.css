@@ -105,12 +105,16 @@ and open the template in the editor.
   transform: translate(-50%, -50%);
  
 }
-.topnav a.active {
-  background-color: #4CAF50;
+.navbar a.active {
+  background-color: green;
   color: white;
   
 }
-
+.navbar .active1{
+    position: relative;
+    left: 23%;
+    background: green;
+}
 .workarea{
     width: 700px;
     height: 370px;

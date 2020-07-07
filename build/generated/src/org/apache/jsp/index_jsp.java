@@ -3,6 +3,9 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.sql.ResultSet;
+import db.DBConnection;
+import java.sql.PreparedStatement;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -46,6 +49,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -58,7 +64,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("       \n");
       out.write("        <h2 style=\"text-align: center;color: #ffffff\"><u>Student Register</u></h2><br>\n");
       out.write("        <div class=\"container\" style=\"width: 400px;\n");
-      out.write("    height: 465px;  margin: -35px auto;\">\n");
+      out.write("    height: 472px;  margin: -35px auto;\">\n");
       out.write("            \n");
       out.write("            <form action=\"student_list_controller\" method=\"Post\" style=\"position: relative;\n");
       out.write("    top: 5%;\n");
@@ -77,6 +83,29 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                           </div><br>\n");
       out.write("                            \n");
       out.write("                            <div class=\"pass\">\n");
+      out.write("                            <select id=\"cars\" name=\"cars\">   \n");
+      out.write("                                ");
+
+           PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course");
+           ResultSet rs = ps.executeQuery();
+           while(rs.next()){
+              String code = rs.getString("course_code");
+      out.write("\n");
+      out.write("\n");
+      out.write("           \n");
+      out.write("  \n");
+      out.write("    <option value=\"");
+      out.print(code);
+      out.write("\">Volvo</option>\n");
+      out.write("    \n");
+      out.write("    \n");
+      out.write("  \n");
+      out.write("           \n");
+      out.write("           ");
+ }
+
+      out.write("\n");
+      out.write("      </select>                          \n");
       out.write("\t\t\t\t<div class=\"username\">\n");
       out.write("                               \n");
       out.write("                               <input type=\"text\" name=\"code\" placeholder=\"course code\" required=\"\" class=\"name\"/>\n");
@@ -103,7 +132,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <div class=\"teacher_container\">\n");
       out.write("                                <h3>&ensp;If you want to use this site as teacher,click below.</h3>\n");
       out.write("            <div class=\"tooltip1\">\n");
-      out.write("            <h3 class=\"welcome-title\"><a href=\"teacher_register.jsp\">Register as teacher</a></h3>\n");
+      out.write("                <h3 class=\"welcome-title\" style=\"color: red;\"><a href=\"teacher_register.jsp\">Register or Login as teacher</a></h3>\n");
       out.write("                   <span class=\"tooltiptext1\"> Click for Go to teacher's Panel </span>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");

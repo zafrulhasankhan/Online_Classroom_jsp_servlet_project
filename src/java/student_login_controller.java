@@ -30,13 +30,15 @@ public class student_login_controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String code = request.getParameter("code");
        String email = request.getParameter("email");
         String pass = request.getParameter("pass");
          PrintWriter out = response.getWriter();
         try {
-            PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from student_list where email = ? and pass = ?");
-            ps.setString(1, email);
-            ps.setString(2, pass);
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from student_list where course_code=? and  email = ? and pass = ?");
+            ps.setString(1, code);
+            ps.setString(2, email);
+            ps.setString(3, pass);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 String userEmail = rs.getString("email");

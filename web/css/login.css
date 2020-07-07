@@ -75,10 +75,10 @@ body{
    
     height: 35px;
     width: 280px;
-    color:black;
-     background-color:#ffcccc;
+    color:  #330033;
+    background-color: #ffcccc;
      font-style: italic;
-    
+     border: 2px black solid;
     
 }
 .code{
@@ -87,7 +87,7 @@ body{
     color:black;
     font-style: italic;
     background-color:#ffcccc;
-   
+    border: 2px black solid;
 }
 .password
 {
@@ -96,13 +96,13 @@ body{
      color: black;
      font-style: italic;
     background-color:#ffcccc;
-    
+     border: 2px black solid;
 }
 .button{
     margin-left: 15px; 
     font-size: large;
     color:white;
-    background: blue;
+    background: #0000ff;
     border: 1px blue solid;
 }
 .button:hover{
@@ -131,9 +131,9 @@ body{
 
 }
 .teacher_container{
-    width: 410px;
+    width: 480px;
     height:100px;
-    margin: -600px auto;
+    margin: -640px auto;
     background: #009933;
     color: white;
     position: relative;
@@ -195,4 +195,12 @@ body{
 
 .tooltip1:hover .tooltiptext1 {
   visibility: visible;
+}
+.code1{
+    height: 41px;
+    width: 286px;
+     color: black;
+     font-style: italic;
+    background-color:#ffcccc;
+    border: 2px black solid;
 }

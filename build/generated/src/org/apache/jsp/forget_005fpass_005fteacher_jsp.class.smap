@@ -1,0 +1,10 @@
+SMAP
+forget_005fpass_005fteacher_jsp.java
+JSP
+*S JSP
+*F
++ 0 forget_pass_teacher.jsp
+forget_pass_teacher.jsp
+*L
+5,64:47
+*E

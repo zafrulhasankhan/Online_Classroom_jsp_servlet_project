@@ -21,8 +21,8 @@
         <div class="navbar1">
   <a href="courselist_controller?code=${code}">Home</a>
   <a href="select_course_controller?code=${code}">view course</a>
-  <div class="navbar-centered1">
-      <a  class="active1"> ${name} | ${code} </a>
+  <div class="active11">
+      <a  class="active1"> ${name} | ${code}</a>
   </div>
   <div class="dropdown1">
     <button class="dropbtn1">  Attendance report   
