@@ -37,6 +37,8 @@ public class create_classwork_controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String tecname="";
+                String course_name="";
         String user="";
                 String pass="";
          PrintWriter out = response.getWriter();
@@ -105,15 +107,24 @@ public class create_classwork_controller extends HttpServlet {
               
             }
            }
-            PreparedStatement ps5 = DBConnection.getConnection().prepareStatement("select * from student_list,add_course where add_course.course_code=?");
+            PreparedStatement ps5 = DBConnection.getConnection().prepareStatement("select * from add_course where course_code=?");
                         ps5.setString(1, code);
                         ResultSet rs5 = ps5.executeQuery();
  
-       while(rs5.next()){
-        String tecname=rs5.getString("teacher_name");
-        String email = rs5.getString("email");
-        String stuname = rs5.getString("name");
-        String course_name = rs5.getString("course_name");
+       if(rs5.next()){
+         tecname=rs5.getString("teacher_name");
+          course_name = rs5.getString("course_name");
+       }
+           
+                        PreparedStatement ps6 = DBConnection.getConnection().prepareStatement("select * from student_list where course_code=?");
+                        ps6.setString(1, code);
+                        ResultSet rs6 = ps6.executeQuery();
+ 
+       while(rs6.next()){
+        
+        String email = rs6.getString("email");
+        String stuname = rs6.getString("name");
+       
         System.out.println(email);
         
         String to=email;

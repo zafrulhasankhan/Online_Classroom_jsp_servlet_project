@@ -28,8 +28,24 @@ public class date extends HttpServlet {
 
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String hidden = request.getParameter("tot"); 
+        String names="";
+        int j=Integer.parseInt(hidden);
+        String s[] = new String[j];
+        int k=0;
+        String name[]=request.getParameterValues("name");
+        for (int i=0; i<j; i++){
+        k++;
+        names=name[i];
+        System.out.println(names);
+    s[i] = request.getParameter(Integer.toString(k)); 
+    System.out.println(s[i]);
+    }
+        
+        
+        
        /*String date=request.getParameter("date");
        String co =(String) getServletContext().getAttribute("var");
        String code = request.getParameter("code");
@@ -54,14 +70,14 @@ public class date extends HttpServlet {
             Logger.getLogger(date.class.getName()).log(Level.SEVERE, null, ex);
         }
 request.getRequestDispatcher("datefind.jsp").forward(request,response);*/
-       String emails="";
+      /* String emails="";
       String email[] =request.getParameterValues("stuemail");
         System.out.println(email);
    for(int i=0;i<email.length;i++){
        emails=email[i];
-       System.out.println(emails);
+       System.out.println(emails);*/
    }
        
     }
 
-}
+

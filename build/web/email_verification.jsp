@@ -1,25 +1,51 @@
 <%-- 
-    Document   : email_verification
-    Created on : Jul 3, 2020, 5:06:53 PM
+    Document   : email_verificaton
+    Created on : Jul 13, 2020, 8:53:14 PM
     Author     : Zafrul Hasan Nasim
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="db.DBConnection"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link rel="stylesheet" href="css/login.css">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        
-        <br><br><br><h1 class="welcome-title">Email verification for sent classes all update to all of students by email</h1><br>
-        <h2 style="text-align: center;color: #ffffff"><u>Email verify</u></h2>
-        <div class="container" style="width: 400px;
-    height: 310px;  margin: 25px auto;">
-            <form action="email_verification_controller" method="post">
-                           <div class="username">
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Online classroom</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+  </head>
+  <body>
+      <%
+          String email=request.getParameter("email");
+          session.setAttribute("email", email);
+          String name=request.getParameter("name");
+          session.setAttribute("name", name);
+          String filename=request.getParameter("filename");
+          session.setAttribute("filename", filename);
+   %>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row w-100 m-0">
+          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-4 mx-auto">
+              <div class="card-body px-5 py-5">
+                  <h3  style="text-align: center"><u>Email - Verification</u></h3><br>
+                <form action="email_verification_controller" method="post">
+                 
+                    <div class="username">
                                
                                <input type="email" name="email" value="${email}" hidden="" required=""  placeholder="email id"  class="name"/>
                            </div><br>
@@ -27,20 +53,45 @@
                                
                                 <input type="text" name="name" value="${name}" hidden=""   placeholder="email id"  class="password"/>
                            </div>
-                           <h3> Don't worry,Your email password will be encrpyted always,don't know anybody</h3>
-                            <div class="pass"><br>
-								
-			    
-                            <input type="password" name="pass" placeholder=" Your email PassWord" required="" class="password" />
-							</div>
-                            
+                     <input type="text" name="filename" value="${filename}" hidden="" required=""  placeholder="filename"  class="name"/>
+                    <h4 style="text-align: center"> Don't worry,Your email password will be encrpyted always,don't know anybody</h4><br>
+                  
+                  <div class="form-group">
+                    <label>Your email password </label>
+                    <input type="password"  name="pass" class="form-control p_input" onmouseover="this.type='text'"
+       onmouseout="this.type='password'" style="color: white;">
+                  </div>
                              
-                            <br><div class="st">
-                                <button class="button button2" type="submit" name="login">Login</button>
-                                
-                            </div>
-                            
-                        </form>
+                               
+                  
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
+                  </div>
+                  
+                  
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
         </div>
-    </body>
+        <!-- row ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- endinject -->
+  </body>
 </html>

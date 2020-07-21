@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,11 +31,12 @@ public class email_verification_controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         PrintWriter out = response.getWriter();
         String name=request.getParameter("name");
         String email=request.getParameter("email");
         String pass=request.getParameter("pass");
-        
+        String filename=request.getParameter("filename");
         String user=email;
         String to=email;
         
@@ -77,10 +79,12 @@ public class email_verification_controller extends HttpServlet {
 			out.println("swal (  ' Email verified!' ,'Check your gmail inbox either get email yes verfied or try again...click.. Email verification.' ,  'success' );");
 			out.println("});");
 			out.println("</script>");
-			request.setAttribute("name", name);
-                        request.setAttribute("email", email);
+                        session.setAttribute("email", email);
+			session.setAttribute("name", name);
+                        
+                        request.setAttribute("filename",filename);
 			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
-			rd.include(request, response);
+			rd.forward(request, response);
                         
                         
 		}

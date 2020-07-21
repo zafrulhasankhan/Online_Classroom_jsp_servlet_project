@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,6 +45,7 @@ public class teacher_login_controller extends HttpServlet {
            ResultSet rs = ps.executeQuery();
            if(rs.next()){
               String name = rs.getString("name");
+              String filename=rs.getString("filename");
                 //String pass1 = rs.getString("password");
                //request.setAttribute("code", code)
                System.out.println(name);
@@ -58,14 +60,21 @@ public class teacher_login_controller extends HttpServlet {
                    int count=Integer.parseInt(rs0.getString(1));
                     if(count==0)
                     {
+                        
                     request.setAttribute("email", email);
                     request.setAttribute("name", name);
+                    request.setAttribute("filename", filename);
                     RequestDispatcher rd = request.getRequestDispatcher("email_verification.jsp");
                     rd.forward(request,response);
                     }
                     else{
-                         request.setAttribute("name", name);
+                        HttpSession session = request.getSession();
+                session.setAttribute("email", email);
+                session.setAttribute("name", name);
+                
+                 request.setAttribute("name", name);
               request.setAttribute("email", email);
+              request.setAttribute("filename", filename);
                RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
                rd.forward(request,response);
            }

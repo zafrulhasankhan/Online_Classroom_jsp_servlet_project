@@ -35,9 +35,12 @@ public class attendance_sheet_controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+       String tecemail2 = request.getParameter("email");
+       String tecname2 = request.getParameter("name");
+       String tecfilename=request.getParameter("filename");
+        //System.out.println(tecname2);
         String code = request.getParameter("code");
-        //System.out.println(code);
+       // System.out.println(code);
        
         //String cod="ict-2207";
         ArrayList<people> attendlist = new ArrayList<people>();
@@ -73,7 +76,7 @@ public class attendance_sheet_controller extends HttpServlet {
                 po.setStudentlist(rs.getString("name"));
                po.setClass_id(rs.getString("id"));
                
-                 
+                 po.setPhoto(rs.getString("filename"));
                 
                 //po.setCourse_name(rs.getString("course_name"));
                 //System.out.println(po);
@@ -108,6 +111,12 @@ public class attendance_sheet_controller extends HttpServlet {
                   //session.setAttribute("class_no", clasno);
                   //if(rs2.getString("class_no")!=null){
                  // int classno=class_no+0;
+                 request.setAttribute("filename",tecfilename);
+                 
+                         
+                         
+                 session.setAttribute("tecemail2", tecemail2);
+                session.setAttribute("tecname2", tecname2);
                       session.setAttribute("class_no", class_no);
                   /*}
                   else if(rs.getString("class_no")==null){
@@ -117,7 +126,15 @@ public class attendance_sheet_controller extends HttpServlet {
               //}
                 System.out.println(class_no);
                  //else{
-                
+                 PreparedStatement ps3 = DBConnection.getConnection().prepareStatement("select * from teacher_list where name=? and email=?");
+                ps3.setString(1, tecname2);
+                ps3.setString(2, tecemail2);
+                ResultSet rs3=ps3.executeQuery();
+             if(rs3.next()){
+             String filename= rs3.getString("filename");
+                 System.out.println(filename);
+             request.setAttribute("filename",filename);
+             }
                          //}
                  
                 

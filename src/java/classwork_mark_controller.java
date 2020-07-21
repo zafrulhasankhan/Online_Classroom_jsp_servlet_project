@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,7 +33,12 @@ public class classwork_mark_controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         
+        
+        String tec_filename=request.getParameter("filename");
+        String tecname=request.getParameter("tecname");
+        String tecemail=request.getParameter("tecemail");
         PrintWriter out = response.getWriter();
         ArrayList<classwork> worklist = new ArrayList<classwork>();
        String code = request.getParameter("code");
@@ -59,17 +65,31 @@ public class classwork_mark_controller extends HttpServlet {
             ps.setString(2,cwno);
                     ResultSet rs1 =   ps.executeQuery();
                     while(rs1.next()){
-                        classwork cw = new classwork();
                         
-                         
+                        classwork cw = new classwork();
+                         String stu_id=rs1.getString("student_id");
                           cw.setStudent_id(rs1.getString("student_id"));
                            cw.setMark(rs1.getString("mark"));
                            cw.setStudent_email(rs1.getString("student_email"));
-                           worklist.add(cw);
+                           
+                        
+                        PreparedStatement  ps2 = DBConnection.getConnection().prepareStatement("Select * from student_list  where id=? ");
+                        ps2.setString(1, stu_id);
+                         ResultSet rs2 =   ps2.executeQuery();
+                        if(rs2.next()){
+                       
+                         cw.setFilephoto(rs2.getString("filename"));
+                            System.out.println(rs2.getString("filename"));
+                        cw.setStudent_name(rs2.getString("name"));
+                        }
+                        worklist.add(cw);
                         System.out.println(cw);
-                request.setAttribute("worklist",worklist);
-                request.setAttribute("code", code);
-                request.setAttribute("cwno", cwno);
+                        request.setAttribute("worklist",worklist);
+                        request.setAttribute("code", code);
+                        request.setAttribute("cwno", cwno);
+                        request.setAttribute("filename", tec_filename);
+                        session.setAttribute("name", tecname);
+                        session.setAttribute("email", tecemail);
                     }
                     request.getRequestDispatcher("classwork_mark_list.jsp").forward(request,response);
                 }

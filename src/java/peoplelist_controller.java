@@ -48,6 +48,7 @@ public class peoplelist_controller extends HttpServlet {
                 po.setStudentlist(rs.getString("name"));
                po.setClass_id(rs.getString("id"));
                po.setEmail(rs.getString("email"));
+               po.setPhoto(rs.getString("filename"));
                  
                 
                 //po.setCourse_name(rs.getString("course_name"));
@@ -64,12 +65,22 @@ public class peoplelist_controller extends HttpServlet {
              if(rs1.next()){
                  
                 HttpSession session = request.getSession();
-                
+                String tecemail=rs1.getString("teacher_email");
+                session.setAttribute("tecemail", tecemail);
                 String tecname = rs1.getString("teacher_name");
                 session.setAttribute("tecname", tecname);
                 String course_name = rs1.getString("course_name");
                 session.setAttribute("name", course_name);
-                
+                PreparedStatement ps3 = DBConnection.getConnection().prepareStatement("select * from teacher_list where name=? and email=?");
+                ps3.setString(1, tecname);
+                ps3.setString(2, tecemail);
+                ResultSet rs3=ps3.executeQuery();
+             if(rs3.next()){
+             String filename= rs3.getString("filename");
+                 System.out.println(filename);
+             request.setAttribute("filename",filename);
+             }
+                 
                 
              }
         } catch (SQLException ex) {

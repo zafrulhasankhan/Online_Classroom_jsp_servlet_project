@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,8 +31,9 @@ public class delete_course_cotroller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String code = request.getParameter("code");
-        String tecname = request.getParameter("tecname");
-         String tecemail = request.getParameter("tecemail");
+        String tecname = request.getParameter("name");
+         String tecemail = request.getParameter("email");
+         String filename= request.getParameter("filename");
         // System.out.println(tecemail);
         //System.out.println(tecname);
         
@@ -46,9 +48,11 @@ public class delete_course_cotroller extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(delete_course_cotroller.class.getName()).log(Level.SEVERE, null, ex);
         }
-         getServletContext().setAttribute("tecname",tecname);
-         getServletContext().setAttribute("tecemail",tecemail);
-               RequestDispatcher rd=getServletContext().getRequestDispatcher("/courselist_controller");
+        HttpSession session = request.getSession();
+         session.setAttribute("name",tecname);
+         session.setAttribute("email",tecemail);
+         request.setAttribute("filename", filename);
+               RequestDispatcher rd=request.getRequestDispatcher("admin_main.jsp");
                rd.forward(request,response);
     }
 }

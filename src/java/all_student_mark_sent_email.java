@@ -71,16 +71,18 @@ public class all_student_mark_sent_email extends HttpServlet {
        
        String stuids="";
        String stuemails="";
-       
+       String stunames="";
        String stumarks="";
        
         
 String stuid[]=request.getParameterValues("stuid");
+String stuname[]=request.getParameterValues("stuname");
 String stuemail[]=request.getParameterValues("stuemail");
 String stumark[]=request.getParameterValues("stumark");
 for(int i=0;i<stuid.length;i++){
         
         stuids=stuid[i];
+        stunames=stuname[i];
         stuemails=stuemail[i];
         stumarks=stumark[i];
         String code= request.getParameter("code");
@@ -90,10 +92,10 @@ for(int i=0;i<stuid.length;i++){
         
         String to=stuemails;
         
-         System.out.println(user+pass);
+        
         String subject="Casswork marks!";
         
-        String msg = String.format("course code: %s%n%nYour ID :%s%n%nclasswork no: %s%n%nYour Marks:%s",code,stuids,cwno,stumarks );
+        String msg = String.format("Hi %s%n%ncourse code: %s%n%nYour ID :%s%n%nclasswork no: %s%n%nYour Marks:%s",stunames,code,stuids,cwno,stumarks );
         
         Mailer.send(user,pass,to,subject,msg);
 

@@ -38,6 +38,8 @@ public class post_form_controller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code=request.getParameter("code");
                 //String code="ict-3109";
+                String tecname="";
+                String course_name="";
 		String user="";
                 String pass="";
 		Part part = request.getPart("image");// we get path of the image
@@ -77,17 +79,25 @@ public class post_form_controller extends HttpServlet {
               
             }
            }
-                      
            
-                        PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from student_list,add_course where add_course.course_code=?");
+                      PreparedStatement ps5 = DBConnection.getConnection().prepareStatement("select * from add_course where course_code=?");
+                        ps5.setString(1, code);
+                        ResultSet rs5 = ps5.executeQuery();
+ 
+       if(rs5.next()){
+         tecname=rs5.getString("teacher_name");
+          course_name = rs5.getString("course_name");
+       }
+           
+                        PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from student_list where course_code=?");
                         ps1.setString(1, code);
                         ResultSet rs = ps1.executeQuery();
  
        while(rs.next()){
-        String tecname=rs.getString("teacher_name");
+        
         String email = rs.getString("email");
         String stuname = rs.getString("name");
-        String course_name = rs.getString("course_name");
+        
         System.out.println(email);
         
         String to=email;

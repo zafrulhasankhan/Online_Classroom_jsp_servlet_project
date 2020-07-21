@@ -14,7 +14,17 @@ public class people {
     private String studentlist;
     private String email;
     private String class_id;
+    private String photo;
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+    
+    
     public String getEmail() {
         return email;
     }

@@ -56,24 +56,36 @@ public class attendance_insert_controller extends HttpServlet {
                         request.getRequestDispatcher("admin_main.jsp").include(request,response);
                     }
                     else{
-                         String ids="";
+         /*multiple radio */               
+        String te=request.getParameter("te");
+        int j=Integer.parseInt(te);
+        String attend[] = new String[j];
+        int k=0;
+        /*multiple radio */
+        
+       String ids="";
        String names="";
        String attends="";
        String codes="";
 String id[]=request.getParameterValues("id");
 String name[]=request.getParameterValues("name");
-String attend[]=request.getParameterValues("attend");
+//String attend[]=request.getParameterValues("attend");
 //String code[]=request.getParameterValues("code");
         
-for(int i=0;i<id.length;i++){
+for(int i=0;i<j;i++){
+    k++;
     ids=id[i];
     names=name[i];
-    attends=attend[i];
+   // attends=attend[i];
     //codes=code[i];
     String date=request.getParameter("date");
      String classno1=request.getParameter("classno");
      String code1=request.getParameter("code");
-    System.out.println(names);
+     /*multiple radio */
+     attend[i] = request.getParameter(Integer.toString(k));
+     attends=attend[i];
+     /*multiple radio */
+    System.out.println(attends);
             try {
                 
                 PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into attendence_list values('"+classno1+"','"+ids+"','"+names+"','"+attends+"','"+date+"','"+code1+"')");

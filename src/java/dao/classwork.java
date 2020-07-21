@@ -18,6 +18,19 @@ private String Student_name;
 private String Student_id;
 private String Student_email;
 private String mark;
+private String filephoto;
+
+    public String getFilephoto() {
+        return filephoto;
+    }
+
+    public void setFilephoto(String filephoto) {
+        this.filephoto = filephoto;
+    }
+
+
+   
+
 
     public String getMark() {
         return mark;

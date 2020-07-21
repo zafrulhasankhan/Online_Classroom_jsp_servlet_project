@@ -6,8 +6,10 @@
 
 import db.DBConnection;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,16 +17,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Zafrul Hasan Nasim
  */
 @WebServlet(urlPatterns = {"/student_list_controller"})
+@MultipartConfig(maxFileSize =32354432)
 public class student_list_controller extends HttpServlet {
 
  
@@ -34,6 +39,8 @@ public class student_list_controller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       String name = request.getParameter("name");
+      Part part = request.getPart("image");
+      String filename=Paths.get(part.getSubmittedFileName()).getFileName().toString(); 
        String email = request.getParameter("email");
        String id = request.getParameter("id");
        String code = request.getParameter("code");
@@ -69,12 +76,15 @@ public class student_list_controller extends HttpServlet {
                 int count = Integer.parseInt(rs5.getString(1));
                 
             if(count==0){*/
-            PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into student_list values(?,?,?,?,?)");
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into student_list values(?,?,?,?,?,?,?)");
              ps.setString(1, name);
               ps.setString(2, email);
               ps.setString(3, id);
               ps.setString(4, code);
               ps.setString(5, pass);
+              InputStream is = part.getInputStream();
+              ps.setBlob(6, is);
+                ps.setString(7, filename);             
               int n=ps.executeUpdate();
                 
 		if(n>0) {

@@ -1,33 +1,49 @@
 <%-- 
-    Document   : index
-    Created on : May 15, 2020, 3:51:49 PM
+    Document   : course_login_form1
+    Created on : Jul 12, 2020, 8:53:25 PM
     Author     : Zafrul Hasan Nasim
 --%>
 
-
-
-<%@page import="java.sql.ResultSet"%>
 <%@page import="db.DBConnection"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/login.css">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <br><br><br><<h1 class="welcome-title">Login for Enter the course</h1>
-        <h1 style="text-align: center; color: wheat;">${errorMsg}</h1>
-        <div class="container" style="height: 250px;">
-        <form action="course_login_controller" method="get">
-                           
-                        
-                           <label class="" style="color: black">Course code:</label>
-				<div class="username">
-                                    
-                               <select id="cars" name="code" class="code1">   
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Online classroom</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row w-100 m-0">
+          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+            <div class="card col-lg-4 mx-auto">
+              <div class="card-body px-5 py-5">
+                  <h3  style="text-align: center"><u>Course - Login</u></h3><br>
+                <form action="course_login_controller" method="get">
+                 
+                    
+                     
+                    <div class="form-group">
+                    <label>Course code</label>
+                    <select id="cars" name="code" class="js-example-basic-single" style="width:100%;">   
                                 <%
                               PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course");
                                ResultSet rs = ps.executeQuery();
@@ -35,24 +51,47 @@
                                 String code = rs.getString("course_code");%>
                                 <option  value="<%=code%>"><%=code%></option>
                                  <% }%>
-                               </select>                          
-                               </div><br>
-                           
-                           <input type="text" name="email" placeholder="Course code" hidden=""  value="${email}" class="name"/>
-                           <input type="text" name="spass" placeholder="Course code" hidden=""  value="${pass}"  class="name"/>
-                            
-                           
-                           <div class="pass"><br>
-				 <input type="password" name="pass" placeholder="course pin number" required="" class="password" />
-			</div>
-                            
+                               </select>   
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Course pin </label>
+                    <input type="password"  name="pass" class="form-control p_input" onmouseover="this.type='text'"
+       onmouseout="this.type='password'" style="color: white;">
+                  </div>
                              
-                            <br><div class="st">
-                                <button class="button button2" type="submit" name="login">Login</button>
-                                
-                            </div>
-                            
-                        </form>
+                               
+                  
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
+                  </div>
+                  
+                  
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
         </div>
-    </body>
+        <!-- row ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <script src="assets/vendors/select2/select2.min.js"></script>
+     <script src="assets/js/select2.js"></script>
+    <!-- endinject -->
+  </body>
 </html>

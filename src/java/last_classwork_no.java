@@ -33,6 +33,9 @@ public class last_classwork_no extends HttpServlet {
             throws ServletException, IOException {
         
      String code = request.getParameter("code");
+     String name = request.getParameter("name");
+     String email = request.getParameter("email");
+     String filename = request.getParameter("filename");
         System.out.println(code);
         try {
             PreparedStatement ps2= DBConnection.getConnection().prepareStatement("SELECT IFNULL((SELECT classworkno FROM classwork WHERE course_code= ?  ORDER by classworkno desc LIMIT 1), \"No classwork create Yet\") as body");
@@ -45,6 +48,9 @@ public class last_classwork_no extends HttpServlet {
               
                       session.setAttribute("cw_no", cw_no);
                       session.setAttribute("code", code);
+                      request.setAttribute("name", name);
+                      request.setAttribute("email", email);
+                      request.setAttribute("filename", filename);
                 System.out.println(cw_no);
              }
                  //else{

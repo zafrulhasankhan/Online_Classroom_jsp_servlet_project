@@ -3,8 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import java.sql.ResultSet;
 import db.DBConnection;
+import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 
 public final class student_005flogin_jsp extends org.apache.jasper.runtime.HttpJspBase
@@ -33,7 +33,7 @@ public final class student_005flogin_jsp extends org.apache.jasper.runtime.HttpJ
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html;charset=UTF-8");
+      response.setContentType("text/html");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -44,84 +44,35 @@ public final class student_005flogin_jsp extends org.apache.jasper.runtime.HttpJ
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
+      out.write('n');
       out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/login.css\">\n");
-      out.write("        <title>JSP Page</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        \n");
-      out.write("        <br><br><br><<h1 class=\"welcome-title\">Welcome To Nasim's Classroom</h1><br>\n");
-      out.write("        <h2 style=\"text-align: center;color: #ffffff\"><u>Student Login</u></h2>\n");
-      out.write("        <div class=\"container\" style=\"width: 400px;\n");
-      out.write("    height: 375px;  margin: 25px auto;\">\n");
-      out.write("            \n");
-      out.write("            <form action=\"student_login_controller\" method=\"Post\" style=\"position: relative;\n");
-      out.write("    top: 12%;\n");
-      out.write("    transform: translateY(5%);\">\n");
-      out.write("                          \n");
-      out.write("                <label class=\"\" style=\"color: black\">Course code:</label>\n");
-      out.write("\t\t\t\t<div class=\"username\">\n");
-      out.write("                                    \n");
-      out.write("                               <select id=\"cars\" name=\"code\" class=\"code1\">   \n");
-      out.write("                                ");
-
-                              PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course");
-                               ResultSet rs = ps.executeQuery();
-                                 while(rs.next()){
-                                String code = rs.getString("course_code");
-      out.write("\n");
-      out.write("                                <option  value=\"");
-      out.print(code);
-      out.write('"');
-      out.write('>');
-      out.print(code);
-      out.write("</option>\n");
-      out.write("                                 ");
- }
-      out.write("\n");
-      out.write("                               </select>                          \n");
-      out.write("                               </div><br>\n");
-      out.write("                               \n");
-      out.write("                             <div class=\"username\">\n");
-      out.write("                               \n");
-      out.write("                               <input type=\"email\" name=\"email\" placeholder=\"Your email id\" required=\"\" class=\"name\"/>\n");
-      out.write("                           </div><br>\n");
-      out.write("                           \n");
-      out.write("                            \t\t\t\t\n");
-      out.write("\t\t\t     <div class=\"pass\">\n");
-      out.write("                                 \n");
-      out.write("                             <input type=\"password\" name=\"pass\" placeholder=\"PassWord\" required=\"\" class=\"password\" /><br><br>\n");
-      out.write("                             <div class=\"tooltip\">\n");
-      out.write("                                 <a href=\"forget_pass.jsp\" style=\"color: black;\"><b>Forget password?</b></a>\n");
-      out.write("                            <span class=\"tooltiptext\"> Click for find password </span>\n");
-      out.write("                             </div>\n");
-      out.write("\t\t\t    </div>\n");
-      out.write("                            \n");
-      out.write("                             \n");
-      out.write("                            <br><div class=\"st\">\n");
-      out.write("                                <button class=\"button button2\" type=\"submit\" name=\"login\">Login</button>\n");
-      out.write("                                <h4>Not yet register??\n");
-      out.write("                                    <div class=\"tooltip\">\n");
-      out.write("                                        <a href=\"index.jsp\" style=\"color:black; font-size: 25;\">Register</a>\n");
-      out.write("                                        <span class=\"tooltiptext\"> Click for Register </span>\n");
-      out.write("                                    </div>\n");
-      out.write("                                </h4>\n");
-      out.write("                            </div>\n");
-      out.write("                            \n");
-      out.write("                        </form>\n");
-      out.write("        </div>\n");
-      out.write("    </body>\n");
+      out.write("<html lang=\"en\">\n");
+      out.write("  <head>\n");
+      out.write("    <!-- Required meta tags -->\n");
+      out.write("    <meta charset=\"utf-8\">\n");
+      out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n");
+      out.write("    <title>Online classroom</title>\n");
+      out.write("    <!-- plugins:css -->\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/vendors/mdi/css/materialdesignicons.min.css\">\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/vendors/css/vendor.bundle.base.css\">\n");
+      out.write("    <!-- endinject -->\n");
+      out.write("    <!-- Plugin css for this page -->\n");
+      out.write("    <!-- End plugin css for this page -->\n");
+      out.write("    <!-- inject:css -->\n");
+      out.write("    <!-- endinject -->\n");
+      out.write("    <!-- Layout styles -->\n");
+      out.write("    <link rel=\"stylesheet\" href=\"assets/css/style.css\">\n");
+      out.write("    <!-- End layout styles -->\n");
+      out.write("    <link rel=\"shortcut icon\" href=\"assets/images/favicon.png\">\n");
+      out.write("  </head>\n");
+      out.write("  <body>\n");
+      out.write("    \n");
+      out.write("  </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

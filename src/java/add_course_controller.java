@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author Zafrul Hasan Nasim
@@ -29,9 +30,11 @@ public class add_course_controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
          PrintWriter out = response.getWriter();
         String tecname = request.getParameter("tecname");
          String tecemail = request.getParameter("tecemail");
+         String filename=request.getParameter("filename");
        String name = request.getParameter("name");
        String code = request.getParameter("code");
        String pass = request.getParameter("pass");
@@ -68,8 +71,11 @@ public class add_course_controller extends HttpServlet {
 			out.println("});");
 			out.println("</script>");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("add_course.jsp");
-			rd.include(request, response);
+                session.setAttribute("email", tecemail);
+                session.setAttribute("name", tecname);
+                request.setAttribute("filename", filename);
+			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
+			rd.forward(request, response);
                         
                         
 		}
@@ -95,8 +101,11 @@ public class add_course_controller extends HttpServlet {
 			out.println("});");
 			out.println("</script>");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("add_course.jsp");
-			rd.include(request, response);  
+                session.setAttribute("email", tecemail);
+                session.setAttribute("name", tecname);
+                request.setAttribute("filename", filename);
+			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
+			rd.forward(request, response);  
                 }
             }
         } catch (SQLException ex) {
