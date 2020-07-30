@@ -16,15 +16,37 @@ public class post {
     private String name;
     private String body;
     private String course_name;
-     private java.sql.Timestamp time;
+     
+private String poster_filename;
+private String poster_name;
+private String time;
 
-    public Timestamp getTime() {
+    public String getPoster_name() {
+        return poster_name;
+    }
+
+    public void setPoster_name(String poster_name) {
+        this.poster_name = poster_name;
+    }
+
+
+    public String getPoster_filename() {
+        return poster_filename;
+    }
+
+    public void setPoster_filename(String poster_filename) {
+        this.poster_filename = poster_filename;
+    }
+
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(String time) {
         this.time = time;
     }
+
+      
      
 
      
@@ -62,3 +84,4 @@ public class post {
     }
     
 }
+   

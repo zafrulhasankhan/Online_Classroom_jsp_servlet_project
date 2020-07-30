@@ -31,7 +31,7 @@ try{
     Class.forName("com.mysql.jdbc.Driver");
     con = DriverManager.getConnection(connectionURL, user, pass);
     
-    PreparedStatement ps = con.prepareStatement("select * from student_list where filename=?");
+    PreparedStatement ps = con.prepareStatement("select * from student_account where filename=?");
     ps.setString(1, id);
     ResultSet rs = ps.executeQuery();
  

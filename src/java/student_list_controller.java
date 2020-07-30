@@ -43,25 +43,25 @@ public class student_list_controller extends HttpServlet {
       String filename=Paths.get(part.getSubmittedFileName()).getFileName().toString(); 
        String email = request.getParameter("email");
        String id = request.getParameter("id");
-       String code = request.getParameter("code");
+      // String code = request.getParameter("code");
        String pass = request.getParameter("pass");
        String repass = request.getParameter("repass");
        PrintWriter out = response.getWriter();
        if(pass == null ? repass == null : pass.equals(repass)){
         try {
-            PreparedStatement ps5 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM add_course WHERE   course_code=?),\"post not yet\") as course_code");
+            /*PreparedStatement ps5 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM add_course WHERE   course_code=?),\"post not yet\") as course_code");
               ps5.setString(1, code);
             ResultSet rs5 =   ps5.executeQuery();
            
             if(rs5.next()){
                 int count = Integer.parseInt(rs5.getString(1));
                 
-            if(count!=0){
-            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(id) FROM student_list WHERE (course_code=? and id=? ) or (course_code=? and email=?)),\"post not yet\") as id");
-            ps0.setString(1, code);
-            ps0.setString(2, id);
-             ps0.setString(3, code);
-            ps0.setString(4, email);
+            if(count!=0){*/
+            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(id) FROM student_account WHERE  id=?  or email=?),\"post not yet\") as id");
+            //ps0.setString(1, code);
+            ps0.setString(1, id);
+             
+            ps0.setString(2, email);
             ResultSet rs0 =   ps0.executeQuery();
            
             if(rs0.next()){
@@ -74,47 +74,42 @@ public class student_list_controller extends HttpServlet {
            
             if(rs5.next()){
                 int count = Integer.parseInt(rs5.getString(1));
-                
+               
             if(count==0){*/
-            PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into student_list values(?,?,?,?,?,?,?)");
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("insert into student_account values(?,?,?,?,?,?)");
              ps.setString(1, name);
               ps.setString(2, email);
               ps.setString(3, id);
-              ps.setString(4, code);
-              ps.setString(5, pass);
+             // ps.setString(4, code);
+             
               InputStream is = part.getInputStream();
-              ps.setBlob(6, is);
-                ps.setString(7, filename);             
+              ps.setBlob(4, is);
+                ps.setString(5, filename); 
+                 ps.setString(6, pass);
               int n=ps.executeUpdate();
                 
 		if(n>0) {
 			//response.getWriter().println("Successfully uploaded");
-                        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal (  'successfully !' ,'registered',  'success' );");
-			out.println("});");
-			out.println("</script>");
+                        out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Yes, successfully registered');");
+                         out.println("</script>");
 			
 			RequestDispatcher rd = request.getRequestDispatcher("student_login.jsp");
 			rd.include(request, response);
                         
                         
 		}
+                
                 else{
-			out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'something went wrong !' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+			out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Incorrect id or password');");
+                         out.println("</script>");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("student_register.jsp");
 			rd.include(request, response);
 		}
-            }
+                }
+            
             /*else{
                 out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
@@ -130,32 +125,25 @@ public class student_list_controller extends HttpServlet {
             }
             }*/
             else{
-                out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( '  Already Exists !' ,  'change email or student id ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
-			
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                
+			out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Already exists, match email or Student ID with others');");
+                         out.println("</script>");
+			RequestDispatcher rd = request.getRequestDispatcher("student_register.jsp");
 			rd.include(request, response);
             }
-            }
+            
         }
-        else{
-                 out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( '  oh sorry !' ,  'There is no account as this course code ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+        /*else{
+                 
+			out.println("<script type=\"text/javascript\">");
+                         out.println("alert('There is no course in this course ');");
+                         out.println("</script>");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("student_register.jsp");
 			rd.include(request, response);
-                }
-       }
+                }*/
+      // }
               
                     } catch (SQLException ex) {
             Logger.getLogger(student_list_controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -165,15 +153,11 @@ public class student_list_controller extends HttpServlet {
        }
        //request.getRequestDispatcher("course_login_form.jsp").forward(request,response);
        else{
-           out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'password not same !' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+           out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Entered both password not same');");
+                         out.println("</script>");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("student_register.jsp");
 			rd.include(request, response);
        }
     }

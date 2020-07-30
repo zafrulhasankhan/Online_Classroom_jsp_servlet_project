@@ -66,40 +66,34 @@ public class teacher_register_controller extends HttpServlet {
                 
 		if(n>0) {
 			//response.getWriter().println("Successfully uploaded");
-                        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                        /*out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
 			out.println("<script>");
 			out.println("$(document).ready(function(){");
 			out.println("swal ( 'Yes' ,  'successfully registered !' ,  'success' );");
 			out.println("});");
-			out.println("</script>");
-			
+			out.println("</script>");*/
+			 out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Yes, successfully registered');");
+                         out.println("</script>");
 			RequestDispatcher rd = request.getRequestDispatcher("teacher_login_form.jsp");
 			rd.include(request, response);
                         
                         
 		}
                 else{
-			out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'incorrect id or password !' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+			out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Incorrect id or password');");
+                         out.println("</script>");
 			
 			RequestDispatcher rd = request.getRequestDispatcher("teacher_register.jsp");
 			rd.include(request, response);
 		}
                 }
                 else{
-                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( ' Email Already exists  !' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+                    out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Email already exists');");
+                         out.println("</script>");
 			
 			RequestDispatcher rd = request.getRequestDispatcher("teacher_register.jsp");
 			rd.include(request, response);
@@ -112,13 +106,9 @@ public class teacher_register_controller extends HttpServlet {
        }
        }
        else{
-           out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( ' password not same !' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+                         out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Entered Both password not same ');");
+                         out.println("</script>");
 			
 			RequestDispatcher rd = request.getRequestDispatcher("teacher_register.jsp");
 			rd.include(request, response);

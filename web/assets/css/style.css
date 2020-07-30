@@ -20763,9 +20763,7 @@ div.tagsinput {
               white-space: nowrap; }
           .sidebar .nav .nav-item.profile .profile-desc .profile-pic {
             display: flex;
-            align-items: center;
-          
-          }
+            align-items: center; }
             .sidebar .nav .nav-item.profile .profile-desc .profile-pic .count-indicator {
               position: relative; }
               .sidebar .nav .nav-item.profile .profile-desc .profile-pic .count-indicator .count-symbol,

@@ -44,9 +44,9 @@ public class add_course_controller extends HttpServlet {
         System.out.println(name);
        if(pass == null ? repass == null : pass.equals(repass)){
         try {
-            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM add_course WHERE course_code=?),\"post not yet\") as course_code");
+            PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM add_course WHERE course_code=? or password=?),\"post not yet\") as course_code");
             ps0.setString(1, code);
-           
+           ps0.setString(2, pass);
             ResultSet rs0 =   ps0.executeQuery();
            
             if(rs0.next()){
@@ -63,49 +63,55 @@ public class add_course_controller extends HttpServlet {
                  int n=ps.executeUpdate();
                 if(n>0) {
 			//response.getWriter().println("Successfully uploaded");
-                        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal (  'successfully !' ,'Added This Course',  'success' );");
-			out.println("});");
-			out.println("</script>");
-			
-                session.setAttribute("email", tecemail);
-                session.setAttribute("name", tecname);
-                request.setAttribute("filename", filename);
-			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
-			rd.forward(request, response);
+                        
+                            session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "sac");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                             session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
+                            session.setAttribute("name", tecname);
+                            session.setAttribute("email", tecemail);
+                            request.setAttribute("filename", filename);        
+                            request.getRequestDispatcher("admin_main.jsp").forward(request,response);
                         
                         
 		}
                 else{
-			out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'incorrect id or password !' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
-			
-			RequestDispatcher rd = request.getRequestDispatcher("add_course.jsp");
-			rd.include(request, response);
+			 session.setAttribute("email", tecemail);
+                session.setAttribute("name", tecname);
+                request.setAttribute("filename", filename);
+			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp?");
+			rd.forward(request, response);  
 		}
                 }
                 else{
-                  out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'Course already Exists!' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
-			
+                  
+		           session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "ae");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                             session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
                 session.setAttribute("email", tecemail);
                 session.setAttribute("name", tecname);
                 request.setAttribute("filename", filename);
-			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
-			rd.forward(request, response);  
+	        RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp?");
+		rd.forward(request, response);  
                 }
             }
         } catch (SQLException ex) {
@@ -115,16 +121,23 @@ public class add_course_controller extends HttpServlet {
         }
        }
        else{
-           out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( ' password not same!' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
-			
-			RequestDispatcher rd = request.getRequestDispatcher("add_course.jsp");
-			rd.include(request, response);
+                          session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "cp");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                             session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                session.setAttribute("email", tecemail);
+                session.setAttribute("name", tecname);
+                request.setAttribute("filename", filename);
+	        RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp?");
+		rd.forward(request, response);  
        }
     }
 }

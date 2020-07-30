@@ -41,18 +41,7 @@
                  
                     
                      
-                    <div class="form-group">
-                    <label>Course code</label>
-                    <select  name="code" class="js-example-basic-single" style="width:100%;">   
-                                <%
-                              PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course");
-                               ResultSet rs = ps.executeQuery();
-                                 while(rs.next()){
-                                String code = rs.getString("course_code");%>
-                                <option  value="<%=code%>"><%=code%></option>
-                                 <% }%>
-                               </select>   
-                  </div>
+                    
                   <div class="form-group">
                     <label>Email</label>
                     <input type="email" name="email" class="form-control p_input" style="color: white;">
@@ -67,7 +56,7 @@
                       <label class="form-check-label">
                           <input type="checkbox" required="" class="form-check-input"> Remember me </label>
                     </div>
-                    <a href="#" class="forgot-pass">Forgot password</a>
+                    <a href="forget_pass_student.jsp" class="forgot-pass">Forgot password</a>
                   </div>        
                                
                   

@@ -52,7 +52,7 @@
                       <label class="form-check-label">
                         <input type="checkbox" class="form-check-input"> Remember me </label>
                     </div>
-                    <a href="#" class="forgot-pass">Forgot password</a>
+                    <a href="forget_pass_teacher.jsp" class="forgot-pass">Forgot password</a>
                   </div>
                               
                                

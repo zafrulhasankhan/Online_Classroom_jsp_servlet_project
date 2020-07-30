@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,34 +36,31 @@ public class student_login_controller extends HttpServlet {
         String pass = request.getParameter("pass");
          PrintWriter out = response.getWriter();
         try {
-            PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from student_list where course_code=? and  email = ? and pass = ?");
-            ps.setString(1, code);
-            ps.setString(2, email);
-            ps.setString(3, pass);
+            PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from student_account where   email = ? and pass = ?");
+           // ps.setString(1, code);
+            ps.setString(1, email);
+            ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 String userEmail = rs.getString("email");
                 String pass1= rs.getString("pass");
                 request.setAttribute("email", email);
                 request.setAttribute("pass", pass);
-                out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                /*out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
 			out.println("<script>");
 			out.println("$(document).ready(function(){");
 			out.println("swal (  'successfully !' ,'Login',  'success' );");
 			out.println("});");
-			out.println("</script>");
-			
+			out.println("</script>");*/
+			HttpSession session =request.getSession();
+                        session.setAttribute("npu", "no");
                  request.getRequestDispatcher("course_login_form.jsp").include(request, response);
             }
             else{
-                out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'incorrect id or password !' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+                         out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Incorrect id or password');");
+                         out.println("</script>");
 			
                  request.getRequestDispatcher("student_login.jsp").include(request, response);
             }

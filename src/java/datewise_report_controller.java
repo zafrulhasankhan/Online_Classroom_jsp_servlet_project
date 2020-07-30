@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,7 +35,10 @@ public class datewise_report_controller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-    
+        HttpSession session =request.getSession();
+        String tecemail=request.getParameter("email");
+        String tecname=request.getParameter("name");
+        String tecfilename=request.getParameter("filename");
          String code = request.getParameter("code");
           String date= request.getParameter("date");
           ArrayList<attend> attendlist = new ArrayList<attend>();
@@ -46,13 +50,23 @@ public class datewise_report_controller extends HttpServlet {
             if(rs0.next()){
                 int present = Integer.parseInt(rs0.getString(1));
                 if(present==0){
-                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal (  ' Hey ' ,'No attendance get in this date',  'error' );");
-			out.println("});");
-			out.println("</script>");
+                        session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "asa");
+                            session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                             session.setAttribute("se", "no");
+                            session.setAttribute("name", tecname);
+                            session.setAttribute("email", tecemail);
+                            request.setAttribute("filename", tecfilename);        
+                            request.getRequestDispatcher("admin_main.jsp").forward(request,response);
                 }
                 else{
             PreparedStatement ps1 = DBConnection.getConnection().prepareStatement("select * from attendence_list  where course_code=? and date=? ");
@@ -61,14 +75,32 @@ public class datewise_report_controller extends HttpServlet {
             ResultSet rs=ps1.executeQuery();
              while(rs.next()){
                  attend a = new attend();
+                 String class_id= rs.getString("class_id");
                  a.setId(rs.getString("class_id"));
                  a.setName(rs.getString("Student_name"));
                  a.setAttendance(rs.getString("Attendence"));
-                 attendlist.add(a);
+                 
                  request.setAttribute("attendlist",attendlist);
                  request.setAttribute("code",code);
                  request.setAttribute("date", date);
+                 
+             PreparedStatement ps4= DBConnection.getConnection().prepareStatement("SELECT filename FROM `student_list` WHERE id=? and course_code=?");
+             ps4.setString(1, class_id);
+             ps4.setString(2, code);
+             ResultSet rs4=ps4.executeQuery();
+             if(rs4.next()){
+                
+               
+                 String sfilename = rs4.getString("filename");
+                 System.out.println();
+                
+                 a.setSfilename(sfilename);
              }
+             attendlist.add(a);
+             }
+             session.setAttribute("tecemail", tecemail);
+             session.setAttribute("tecname", tecname);
+             request.setAttribute("filename", tecfilename);
               request.getRequestDispatcher("date_attend_list.jsp").forward(request,response);
                 }
             }

@@ -19,6 +19,16 @@ private String Student_id;
 private String Student_email;
 private String mark;
 private String filephoto;
+private String comment;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
 
     public String getFilephoto() {
         return filephoto;

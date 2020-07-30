@@ -43,7 +43,7 @@
                   </p>
                   <h3  style="text-align: center;font-size: 20px;"><u>Add - Course</u></h3><br>
                 <form action="add_course_controller" method="POST">
-                     <input type="text" name="filename" placeholder="Course Teacher Name" value="<%=filename%>" hidden="" class="name"/>
+                    <input type="text" name="filename" placeholder="Course Teacher Name" value="<%=filename%>" hidden="" class="name"/>
                     <input type="text" name="tecemail" placeholder="Course Teacher Name" value="<%=email%>" hidden="" class="name"/>
                     <input type="text" name="tecname" placeholder="Course Teacher Name" value="<%=name%>" hidden="" class="name"/>
                   <div class="form-group">

@@ -86,14 +86,15 @@ public final class teacher_005flogin_005fform_jsp extends org.apache.jasper.runt
       out.write("                     \n");
       out.write("                  <div class=\"form-group\">\n");
       out.write("                    <label>Password</label>\n");
-      out.write("                    <input type=\"password\"  name=\"pass\" class=\"form-control p_input\" style=\"color: white;\">\n");
+      out.write("                    <input type=\"password\"  name=\"pass\" class=\"form-control p_input\" onmouseover=\"this.type='text'\"\n");
+      out.write("       onmouseout=\"this.type='password'\" style=\"color: white;\">\n");
       out.write("                  </div>\n");
       out.write("                    <div class=\"form-group d-flex align-items-center justify-content-between\">\n");
       out.write("                    <div class=\"form-check\">\n");
       out.write("                      <label class=\"form-check-label\">\n");
       out.write("                        <input type=\"checkbox\" class=\"form-check-input\"> Remember me </label>\n");
       out.write("                    </div>\n");
-      out.write("                    <a href=\"#\" class=\"forgot-pass\">Forgot password</a>\n");
+      out.write("                    <a href=\"forget_pass_teacher.jsp\" class=\"forgot-pass\">Forgot password</a>\n");
       out.write("                  </div>\n");
       out.write("                              \n");
       out.write("                               \n");

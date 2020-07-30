@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,6 +34,10 @@ public class all_student_attendance_report_controller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+        HttpSession session =request.getSession();
+        String tecemail=request.getParameter("email");
+        String tecname=request.getParameter("name");
+        String tecfilename=request.getParameter("filename");
        String code = request.getParameter("code");
        //String code="ict-3109";
         ArrayList<allstu_report> allreportlist = new ArrayList<allstu_report>();
@@ -85,21 +90,33 @@ public class all_student_attendance_report_controller extends HttpServlet {
                  allreportlist.add(ar);
                  request.setAttribute("allreportlist",allreportlist);
              }
-                
+                session.setAttribute("tecemail", tecemail);
+                session.setAttribute("tecname", tecname);
+                request.setAttribute("filename", tecfilename);
                 request.setAttribute("code",code);
-                
+                request.setAttribute("tecname", tecname);
             }
-             request.getRequestDispatcher("All_student_attendance_report.jsp").forward(request,response);
+             request.getRequestDispatcher("all_student_attendance_report.jsp").forward(request,response);
                 }
                 else
                 {
-                   out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'ohh sorry !' ,  ' No Attendance added yet ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");  
+                           session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "asa");
+                             session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
+                            session.setAttribute("name", tecname);
+                            session.setAttribute("email", tecemail);
+                            request.setAttribute("filename", tecfilename);        
+                            request.getRequestDispatcher("admin_main.jsp").forward(request,response);
                 }
             }
              

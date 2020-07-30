@@ -37,22 +37,15 @@
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
                   <h3  style="text-align: center"><u>Course - Login</u></h3><br>
+                  <h4 style="text-align: center;">${ncerror}</h4>
                 <form action="course_login_controller" method="get">
                  
-                    
                      
-                    <div class="form-group">
-                    <label>Course code</label>
-                    <select id="cars" name="code" class="js-example-basic-single" style="width:100%;">   
-                                <%
-                              PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course");
-                               ResultSet rs = ps.executeQuery();
-                                 while(rs.next()){
-                                String code = rs.getString("course_code");%>
-                                <option  value="<%=code%>"><%=code%></option>
-                                 <% }%>
-                               </select>   
-                  </div>
+                           <input type="text" name="email" placeholder="Course code" hidden=""  value="${email}" class="name"/>
+                           <input type="text" name="spass" placeholder="Course code" hidden=""  value="${pass}"  class="name"/>
+                            
+                     
+                    
                   
                   <div class="form-group">
                     <label>Course pin </label>
@@ -92,6 +85,15 @@
     <script src="assets/js/todolist.js"></script>
     <script src="assets/vendors/select2/select2.min.js"></script>
      <script src="assets/js/select2.js"></script>
+    <% String npu = session.getAttribute("npu").toString();  
+            String npu1="npu"; 
+            
+               if(npu1==npu){
+            %>
+            <script type="text/javascript">
+            alert('So far no post upload in this course');
+            </script>
+                  <% } %>
     <!-- endinject -->
   </body>
 </html>

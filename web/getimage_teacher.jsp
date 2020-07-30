@@ -30,6 +30,15 @@ Connection con = null;
 try{
     Class.forName("com.mysql.jdbc.Driver");
     con = DriverManager.getConnection(connectionURL, user, pass);
+     PreparedStatement ps0 = con.prepareStatement("SELECT ifnull((SELECT COUNT(file) FROM student_account WHERE filename=?),'post not yet') as file");
+     ps0.setString(1, id);
+    ResultSet rs0 = ps0.executeQuery();
+ 
+    if(rs0.next()){
+        
+        int count = Integer.parseInt(rs0.getString(1));
+                if(count==0){
+    
     
     PreparedStatement ps = con.prepareStatement("select * from teacher_list where filename=?");
     ps.setString(1, id);
@@ -46,6 +55,25 @@ try{
         os.close();
        
         
+    }
+           }
+                
+                else{
+                    PreparedStatement ps = con.prepareStatement("select * from student_account where filename=?");
+    ps.setString(1, id);
+    ResultSet rs = ps.executeQuery();
+ 
+    if(rs.next()){
+        Blob blob = rs.getBlob("file");
+        byte byteArray[] = blob.getBytes(1, (int)blob.length());
+ 
+        response.setContentType("application/pdf");
+        OutputStream os = response.getOutputStream();
+        os.write(byteArray);
+        os.flush();
+        os.close();
+                }
+    }
     }
 }
 catch(Exception e){

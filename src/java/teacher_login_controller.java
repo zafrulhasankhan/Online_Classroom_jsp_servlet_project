@@ -69,11 +69,42 @@ public class teacher_login_controller extends HttpServlet {
                     }
                     else{
                         HttpSession session = request.getSession();
-                session.setAttribute("email", email);
-                session.setAttribute("name", name);
-                
-                 request.setAttribute("name", name);
-              request.setAttribute("email", email);
+                        session.setAttribute("email", email);
+                        session.setAttribute("name", name);
+                        //session.setAttribute("nos", name);
+                       // session.setAttribute("ssp", name);
+                 //request.setAttribute("name", name);
+                          session.setAttribute("ssp", "no");
+                         // session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                            session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
+                    PreparedStatement  ps3 = DBConnection.getConnection().prepareStatement ("SELECT ifnull((SELECT COUNT(course_code) FROM add_course WHERE teacher_email=?),\"0\" ) as course_code");
+                     ps3.setString(1, email);
+              ResultSet rs3 =ps3.executeQuery();
+                if(rs3.next()){
+                    //String clasno = rs.getString("class_no");
+                   // System.out.println(clasno);
+                   int count1=Integer.parseInt(rs3.getString(1));
+                    if(count1==0)
+                    {
+                        String ncourse = "<div class=\"alert alert-warning\" style=\"display:inline-table; color:white; background:green; \">\n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:red;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>Oh,sorry!</strong> No course added yet !.....  \n" +
+"            </div>"; 
+                      request.setAttribute("ncd", ncourse);
+                    }
+                }
+              //request.setAttribute("email", email);
               request.setAttribute("filename", filename);
                RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
                rd.forward(request,response);
@@ -81,13 +112,9 @@ public class teacher_login_controller extends HttpServlet {
                 }
            }
            else{
-              out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'incorrect id or password !' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+                         out.println("<script type=\"text/javascript\">");
+                         out.println("alert('User or password incorrect');");
+                         out.println("</script>");
 			
 			RequestDispatcher rd = request.getRequestDispatcher("teacher_login_form.jsp");
 			rd.include(request, response); 

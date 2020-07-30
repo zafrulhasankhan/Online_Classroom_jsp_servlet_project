@@ -1,62 +1,315 @@
 <%-- 
-    Document   : admin_all_classwork
-    Created on : Jun 26, 2020, 9:23:43 PM
+    Document   : admin_all_classwork1
+    Created on : Jul 24, 2020, 11:40:02 AM
     Author     : Zafrul Hasan Nasim
 --%>
 
 <%@page import="dao.classwork"%>
-<%@page import="dao.people"%>
 <%@page import="dao.post"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.DBConnection"%>
+<%@page import="java.sql.PreparedStatement"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
-        <link href="css/classworklist.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-        <title>JSP Page</title>
-    </head>
-    <body>
-        
-           
-            
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Corona Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    
+  </head>
+  <body>
+    <%
+            String tecemail = session.getAttribute("email").toString();
+            String tecname = session.getAttribute("name").toString();
+               
                 
+            PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course where teacher_name=? and teacher_email=?");
+            ps.setString(1, tecname);
+            ps.setString(2, tecemail);
+            ResultSet rs = ps.executeQuery();%>
             
-  <div class="navbar">
-  <a href="#">Home</a>
-  
-  <a href="individual_report_form.jsp?code=${code}"> Attendance report</a>
-  <div class="active1">
-  <a  class="active">${name} | ${code}</a>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Menu Bar 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-        
-       
-      
-      <a href="peoplelist_controller?code=${code}">People</a>
-      
-      <a href="classwork_mark_form.jsp?code=${code}">All Student classwork mark</a>
-    </div>
-  </div> 
-</div>
-
-      <h3 style="text-align: center;">${msg}</h3> 
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+            <a class="sidebar-brand brand-logo" href="index.html" style="color: white">Online Classroom</a>
+            <a class="sidebar-brand brand-logo-mini" href="index.html" style="color: white;">OC</a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                    <img class="img-xs rounded-circle " src="getimage_teacher.jsp?filename=${filename}" alt="" style="width: 80px; height: 80px">
+                  
+                </div>
+                <div class="profile-name">
+                    <h5 class="mb-0 font-weight-normal"><%=tecname%></h5>
+                  <span>Course Teacher</span>
+                </div>
+              </div>
+              <a href="#" id="profile-dropdown" data-toggle="dropdown"></a>
+              
+            </div>
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Navigation</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="admin_home_redirect?email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} ">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Home </span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="add_course.jsp?email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} ">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Add Course </span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ed" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Edit Course and pin</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ed">
+              <ul class="nav flex-column sub-menu">
+                 <% 
+                      PreparedStatement  psed = DBConnection.getConnection().prepareStatement("Select * from add_course where teacher_name=? and teacher_email=?");
+                      psed.setString(1, tecname);
+                      psed.setString(2, tecemail);
+                      ResultSet rsed = psed.executeQuery();
+                      while(rsed.next()){
+                    String code = rsed.getString("course_code");%>
             
+                    <li class="nav-item"> <a class="nav-link" href="edit_course.jsp?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}"><%=code%></a></li>
+                <% }%>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">View Course</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                 <% while(rs.next()){
+                    String code = rs.getString("course_code");%>
             
-       
-             
-  <h1 class="welcome-title"> Teacher panel</h1><br>
-      <h2 style="text-align: center;color: #000;"><b><u>Classwork</u></b></h2>
-       <div class="workarea">
-        <%
+                    <li class="nav-item"> <a class="nav-link" href="select_course_controller?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}"><%=code%></a></li>
+                <% }%>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#auth1" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Add post in course</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth1">
+              <ul class="nav flex-column sub-menu">
+                  <% 
+                      PreparedStatement  ps1 = DBConnection.getConnection().prepareStatement("Select * from add_course where teacher_name=? and teacher_email=?");
+                      ps1.setString(1, tecname);
+                      ps1.setString(2, tecemail);
+                      ResultSet rs1 = ps1.executeQuery();
+                      while(rs1.next()){
+                    String code = rs1.getString("course_code");%>
+                   <li class="nav-item"> <a class="nav-link" href="post_form.jsp?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} "> <%=code%> </a></li>
+                <%}%>
+              </ul>
+            </div>
+          </li>
+          
+          
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#authcw" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Create Classwork </span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="authcw">
+              <ul class="nav flex-column sub-menu">
+                  <% 
+                      PreparedStatement  pscw = DBConnection.getConnection().prepareStatement("Select * from add_course where teacher_name=? and teacher_email=?");
+                      pscw.setString(1, tecname);
+                      pscw.setString(2, tecemail);
+                      ResultSet rscw = pscw.executeQuery();
+                      while(rscw.next()){
+                    String code = rscw.getString("course_code");%>
+                   <li class="nav-item"> <a class="nav-link" href="last_classwork_no?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} "> <%=code%> </a></li>
+                <%}%>
+              </ul>
+            </div>
+          </li>
+          
+         
+                  
+           <li class="nav-item menu-items"> 
+           
+           <a class="nav-link" data-toggle="collapse" href="#authta" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Take Attendance</span>
+              <i class="menu-arrow"></i>
+            </a>
+               <div class="collapse" id="authta">
+                   <ul class="nav flex-column sub-menu">
+                     <% 
+                      PreparedStatement  psta = DBConnection.getConnection().prepareStatement("Select * from add_course where teacher_name=? and teacher_email=?");
+                      psta.setString(1, tecname);
+                      psta.setString(2, tecemail);
+                      ResultSet rsta = psta.executeQuery();
+                      while(rsta.next()){
+                    String code = rsta.getString("course_code");%>
+                   <li class="nav-item"> <a class="nav-link" href="attendance_sheet_controller?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}" > <%=code%> </a></li>
+                <%}%>  
+                   </ul>
+               </div>
+           </li>
+             <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#authsl" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Student List</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="authsl">
+              <ul class="nav flex-column sub-menu">
+                  <% 
+                      PreparedStatement  pssl= DBConnection.getConnection().prepareStatement("Select * from add_course where teacher_name=? and teacher_email=?");
+                      pssl.setString(1, tecname);
+                      pssl.setString(2, tecemail);
+                      ResultSet rssl = pssl.executeQuery();
+                      while(rssl.next()){
+                    String code = rssl.getString("course_code");%>
+                   <li class="nav-item"> <a class="nav-link" href="peoplelist_controller?code=<%=code%>"> <%=code%> </a></li>
+                <%}%>
+              </ul>
+            </div>
+          </li>   
+              
+          
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Delete course</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                  <% 
+                      PreparedStatement  ps3 = DBConnection.getConnection().prepareStatement("Select * from add_course where teacher_name=? and teacher_email=?");
+                      ps3.setString(1, tecname);
+                      ps3.setString(2, tecemail);
+                      ResultSet rs3 = ps3.executeQuery();
+                      while(rs3.next()){
+                    String code = rs3.getString("course_code");%>
+                   <li class="nav-item"> <a class="nav-link" href="delete_course_cotroller?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} "> <%=code%> </a></li>
+                <%}%>
+              </ul>
+            </div>
+          </li>
+         
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+            <ul class="navbar-nav w-100">
+              
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item dropdown border-left">
+                <a class="nav-link btn btn-inverse-secondary create-new-button "  href="edit_teacher.jsp?email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}" >
+                <i class="mdi mdi-lead-pencil"></i> Edit Profile
+                  
+                </a>
+              </li>
+              <li class="nav-item dropdown border-left">
+                <a class="nav-link btn btn-inverse-secondary create-new-button" href="teacher_login_form.jsp" >
+                    <i class="mdi mdi-logout text-danger"></i> Log out
+                  
+                </a>
+              </li>
+              
+              <li class="nav-item dropdown d-none d-lg-block">
+                
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                  <div class="navbar-profile">
+                    <img class="img-xs rounded-circle" src="getimage_teacher.jsp?filename=${filename}" alt="" style=" width:50px; height:50px;">
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name"><%=tecname%></p>
+                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                  </div>
+                </a>
+                
+              </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+          </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+              <h4 style=" text-align: center"><u>ClassWork List</u></h4><br>
+            <div class="page-header">
+                
+              <h3 class="page-title">Course code: ${code} </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <h4> Course Name: ${name}</h4>
+                </ol>
+              </nav>
+            </div>
+              <%
                 ArrayList<classwork> worklist =(ArrayList) request.getAttribute("worklist");
                 
                 int i = 0;
@@ -64,36 +317,66 @@
                     i++;
                 String num= cw.getBody();
         %>
-        <div class="workbody" >
-             <div class="workbody2">
-                 <p style=" text-align: center; color: #3300ff;"> <u><b>Classwork No:<%=cw.getClasswork_no()%></b></u></p>
-                 <p style="color: #3300ff;"><b>Text message:</b></p>
-                 <h4 style="text-align: center;"><%=cw.getBody()%></h4>
-            
-            <div class="tooltip">
-                 <h4 style=" color:  #ff3333;">Uploaded File/Image : <a href="getimage_create_classwork.jsp?name=<%=cw.getFilename()%>"> <%=cw.getFilename()%><span class="tooltiptext">Click for Show file </span></a>&ensp;&ensp;&ensp;  ...........<i class="em em-soon" aria-role="presentation" aria-label="SOON WITH RIGHTWARDS ARROW ABOVE"></i> &ensp;&ensp;
+              <div class="row">
+                 
+                  <div class="col-12 grid-margin stretch-card" style="position: center">
+                <div class="card">
+                  <div class="card-body">
+                      
+                      
+                     
+                      <p style=" text-align: center;"> <u><b>Classwork No : <%=cw.getClasswork_no()%></b></u></p>         
+                    <p class="card-description"><%=cw.getBody()%></p>
+                    <a href="getimage_create_classwork.jsp?name=<%=cw.getFilename()%>"><u> <%=cw.getFilename()%></u> </a><br><br>
+                        <h6 style="text-align:left;">Deadline:  <%=cw.getDeadline()%> &ensp; 11:59 PM</h6>
+                    <p style="text-align: right; font-size: 35px">
+                    <a href="downloadFileServletcw?name=<%=cw.getFilename()%>"><i class="mdi mdi-download"></i></a> 
+                    </p>
+                    <p align="center">
+                        <a type="button" class="btn btn-success btn-rounded btn-fw" style="color: black;" href="show_submitted_all_classwork_codewise?code=${code}&classworkno=<%=cw.getClasswork_no()%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} "> Show submitted Classwork </a>
+                    </p>
+                    
+                  </div>
+                </div>
+              </div> 
+                  
+              
             </div>
-             <div class="tooltip1">
-                    <a href="downloadFileServletcw?name=<%=cw.getFilename()%>">download here  <span class="tooltiptext1">Click for Download file </span></a></h4><br>
-                   </div>
-            <h5 style=" color: red;">Deadline:  <%=cw.getDeadline()%></h5>
+                    <%}%>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
+              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+            </div>
+          </footer>
+          <!-- partial -->
         </div>
-        <p style=" text-align:  center;">***********************-------------------**********************</p>
-        <h4 style=" text-align:  center; color: green;"><b>Click below for Show all student ClassWork</b></h4>
-        <p style="text-align:  center; color: green; animation:bymove 4s infinite;">Link: <a href="show_submitted_all_classwork_codewise?code=${code}&classworkno=<%=cw.getClasswork_no()%>">Show all Classwork </a></p>
-          </div><br>
-         <%
-      }
-      %>
-      
-     
-      
-        
-      
-    
-        
-      
-     
-    </body>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/select2/select2.min.js"></script>
+    <script src="assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/file-upload.js"></script>
+    <script src="assets/js/typeahead.js"></script>
+    <script src="assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+  </body>
 </html>
-

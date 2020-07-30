@@ -39,10 +39,10 @@ public class email_verification_controller extends HttpServlet {
         String filename=request.getParameter("filename");
         String user=email;
         String to=email;
+        System.out.println(user+pass);
+        String subject="Email verification from Nasim Classroom!";
         
-        String subject="Email verification !";
-        
-        String msg = "Your email is successfully verified";
+        String msg = String.format("Your email is successfully verified");
         Mailer.send(user,pass,to,subject,msg);
         
          String secret = email;
@@ -72,15 +72,23 @@ public class email_verification_controller extends HttpServlet {
             int n=ps.executeUpdate();
                 if(n>0) {
 			//response.getWriter().println("Successfully uploaded");
-                        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal (  ' Email verified!' ,'Check your gmail inbox either get email yes verfied or try again...click.. Email verification.' ,  'success' );");
-			out.println("});");
-			out.println("</script>");
+                       
+                        session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                            session.setAttribute("ev", "ev");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
+                            
                         session.setAttribute("email", email);
-			session.setAttribute("name", name);
+                       session.setAttribute("name", name);
                         
                         request.setAttribute("filename",filename);
 			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");

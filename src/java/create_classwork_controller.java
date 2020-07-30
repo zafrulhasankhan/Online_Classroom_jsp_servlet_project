@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -41,7 +42,11 @@ public class create_classwork_controller extends HttpServlet {
                 String course_name="";
         String user="";
                 String pass="";
+                String atecemail =request.getParameter("email");
+                 String atecname =request.getParameter("name");
+                  String afilename =request.getParameter("filename");
          PrintWriter out = response.getWriter();
+         HttpSession session= request.getSession();
                 String cw_no=request.getParameter("cw_no");
                 String code=request.getParameter("code");
 	        String body=request.getParameter("body");
@@ -54,8 +59,9 @@ public class create_classwork_controller extends HttpServlet {
            
              PreparedStatement ps0;
         try {
-            ps0 = DBConnection.getConnection().prepareStatement(" SELECT ifnull((SELECT COUNT(course_code) FROM classwork WHERE classworkno=?),\"0\" ) as classworkno");
+            ps0 = DBConnection.getConnection().prepareStatement(" SELECT ifnull((SELECT COUNT(course_code) FROM classwork WHERE classworkno=? and course_code=?),\"0\" ) as classworkno");
             ps0.setString(1, cw_no);
+            ps0.setString(2, code);
             ResultSet rs =ps0.executeQuery();
                 if(rs.next()){
                     //String clasno = rs.getString("class_no");
@@ -63,15 +69,26 @@ public class create_classwork_controller extends HttpServlet {
                    int clasno=Integer.parseInt(rs.getString(1));
                     if(clasno!=0)
                     {
-                        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'Classwork No. Already Exists !' ,  ' ' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+                         session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                            session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                             session.setAttribute("se", "no");
+                session.setAttribute("email", atecemail);
+                session.setAttribute("name", atecname);
+                request.setAttribute("filename", afilename);
+	        RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp?");
+		rd.forward(request, response);  
                         
-                        request.getRequestDispatcher("create_classwork_form.jsp").include(request,response);
+                       // request.getRequestDispatcher("create_classwork_form.jsp").include(request,response);
                     }
                     else{
                         try {  
@@ -136,18 +153,26 @@ public class create_classwork_controller extends HttpServlet {
         Mailer.send(user,pass,to,subject,msg);
        }
                     
-                    
+                     session.setAttribute("ssp", "ssp");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                            session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
 			//response.getWriter().println("Successfully uploaded");
-                        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'Yes' ,  'successfully created classwork !' ,  'success' );");
-			out.println("});");
-			out.println("</script>");
+                session.setAttribute("email", atecemail);
+                session.setAttribute("name", atecname);
+                request.setAttribute("filename", afilename);
+	        RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp?");
+		rd.forward(request, response);  
 			
-			RequestDispatcher rd = request.getRequestDispatcher("create_classwork_form.jsp");
-			rd.include(request, response);
+			
                         
                         
 		}

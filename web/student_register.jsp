@@ -43,7 +43,7 @@
                     <input type="text" name="name" class="form-control p_input" style="color: white;" required="">
                   </div>
                     <div class="form-group">
-                        <label>File upload</label>
+                        <label>CLick 'select' button for your Photo upload</label>
                         <input type="file" name="image" class="file-upload-default">
                         <div class="input-group col-xs-12">
                             <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" required="">
@@ -60,19 +60,7 @@
                     <label>Student ID</label>
                     <input type="text" name="id" class="form-control p_input" style="color: white;" required="">
                   </div>
-                    <div class="form-group">
-                    <label>Course code</label>
                     
-                    <select  name="code" class="js-example-basic-single" required="" style="width:100%;">   
-                                <%
-                              PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course");
-                               ResultSet rs = ps.executeQuery();
-                                 while(rs.next()){
-                                String code = rs.getString("course_code");%>
-                                <option  value="<%=code%>"><%=code%></option>
-                                 <% }%>
-                               </select>   
-                  </div>
                   <div class="form-group">
                     <label>Password</label>
                     <input type="password"  name="pass" class="form-control p_input" onmouseover="this.type='text'"

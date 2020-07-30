@@ -33,12 +33,21 @@ public class select_course_controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+          HttpSession session = request.getSession();
        String code =(String) getServletContext().getAttribute("code");
        String code1 = request.getParameter("code");
+       
+       String atecname = request.getParameter("name");
+       String atecemail = request.getParameter("email");
+       String afilename = request.getParameter("filename");
        String email =(String) getServletContext().getAttribute("email");
        String spass =(String) getServletContext().getAttribute("spass");
-       // String code1=request.getParameter("code");
-        System.out.println(email);
+        //String code1="ict-3109";
+       // System.out.println(email);
+       //String pemail =(String) getServletContext().getAttribute("pemail");
+       //String pname =(String) getServletContext().getAttribute("pname");
+       //String pfilename =(String) getServletContext().getAttribute("pfilename");
+        //System.out.println(pfilename);
          ArrayList<post> postlist = new ArrayList<post>();
         try {
             PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM post WHERE course_code=? or course_code=?),\"post not yet\") as course_code  ");
@@ -48,12 +57,23 @@ public class select_course_controller extends HttpServlet {
             if(rs0.next()){
                 int present = Integer.parseInt(rs0.getString(1));
                 if(present==0){
-                    String msg = "<div class=\"alert alert-warning\" style=\"display:inline-table; background:red; \">\n" +
-"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:red;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
-"                <strong>Oh,Blank!</strong> No post uploaded yet in your course !Try again...  \n" +
-"            </div>";
-                request.setAttribute("errorMsg", msg);
-                    request.getRequestDispatcher("course_login_form.jsp").forward(request,response);
+                            session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "np");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                            session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
+                            session.setAttribute("name", atecname);
+                            session.setAttribute("email", atecemail);
+                            request.setAttribute("filename", afilename);        
+                            request.getRequestDispatcher("admin_main.jsp").forward(request,response);
                 }
                 else{
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from post where course_code=? or  course_code=? ");
@@ -66,9 +86,10 @@ public class select_course_controller extends HttpServlet {
                 po.setCode(rs.getString("course_code"));
                 po.setName(rs.getString("filename"));
                 po.setBody(rs.getString("body"));
-                 po.setTime(rs.getTimestamp("date"));
-                
-                
+                 po.setTime(rs.getString("date"));
+                 System.out.println(rs.getString("date"));
+                po.setPoster_filename(rs.getString("poster_filename"));
+                po.setPoster_name(rs.getString("poster_name"));
                 //po.setCourse_name(rs.getString("course_name"));
                 System.out.println(po);
                 postlist.add(po);
@@ -86,12 +107,11 @@ public class select_course_controller extends HttpServlet {
               ps1.setString(2, code1);
              ResultSet rs1=ps1.executeQuery();
              if(rs1.next()){
-                 String name = rs1.getString("course_name");
-                 HttpSession session = request.getSession();
-                session.setAttribute("name", name);
+                 String course_name = rs1.getString("course_name");
+                 session.setAttribute("course_name", course_name);
                  String tecname = rs1.getString("teacher_name");
                 session.setAttribute("tecname", tecname);
-                
+                request.setAttribute("cname", course_name);
              }
              
         } catch (SQLException ex) {
@@ -99,6 +119,10 @@ public class select_course_controller extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(select_course_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-         request.getRequestDispatcher("postlist.jsp").forward(request,response);
+        session.setAttribute("name", atecname);
+        session.setAttribute("email", atecemail);
+          request.setAttribute("filename", afilename);  
+           
+          request.getRequestDispatcher("postlist.jsp").forward(request,response);
     }
 }

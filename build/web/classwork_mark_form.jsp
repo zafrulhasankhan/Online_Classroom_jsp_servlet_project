@@ -65,7 +65,6 @@
                   </div>
                   
                   
-                  <p class="terms">By creating an account you are accepting our<a href="#"> Terms & Conditions</a></p>
                   
                 </form>
               </div>

@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,13 +37,15 @@ public class marks_sent_email_controller extends HttpServlet {
          String user="";
         String pass="";
         String code1= request.getParameter("code");
-        //String code1="ict-3109";
+        String afilename= request.getParameter("afilename");
+        String tecname="";
         try {
             PreparedStatement ps=DBConnection.getConnection().prepareStatement("select * from add_course where course_code=?");
             ps.setString(1, code1);
             ResultSet rs = ps.executeQuery();
            if(rs.next()){
               String email = rs.getString("teacher_email");
+               tecname = rs.getString("teacher_name");
               user=email;
               PreparedStatement ps1=DBConnection.getConnection().prepareStatement("select * from email where email=?");
               ps1.setString(1, email);
@@ -112,22 +115,22 @@ for(int i=0;i<stuid.length;i++){
                //request.getRequestDispatcher("course_login_form.jsp").forward(request,response); 
                //RequestDispatcher rd=getServletContext().getRequestDispatcher("/show_submitted_all_classwork_codewise");
                //rd.forward(request,response);
-               out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+               /*out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
 			out.println("<script>");
 			out.println("$(document).ready(function(){");
 			out.println("swal ( 'Yes' ,  'successfully mark sent and save !' ,  'success' );");
 			out.println("});");
-			out.println("</script>");
+			out.println("</script>");*/
                 }
                 else{
-                   out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                  /* out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
 			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
 			out.println("<script>");
 			out.println("$(document).ready(function(){");
 			out.println("swal ( 'Yes' ,  'Already mark sent and save !' ,  'success' );");
 			out.println("});");
-			out.println("</script>");
+			out.println("</script>");*/
                 }
             }
             } catch (SQLException ex) {
@@ -140,7 +143,17 @@ for(int i=0;i<stuid.length;i++){
 
         
     }
- 
+ HttpSession session = request.getSession();
+String ssa = "<div class=\"alert alert-warning\" style=\"display:inline-table; background:green; color:white\">\n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:white;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>Successfully  !</strong> sent marks to all of students ...  \n" +
+"            </div>";
+                     request.setAttribute("ssa", ssa);
+                     session.setAttribute("email", user);
+                            session.setAttribute("name", tecname);
+                            request.setAttribute("filename", afilename);
+			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
+			rd.forward(request, response);
    
 }
 }

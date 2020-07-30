@@ -31,18 +31,22 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
+    
   </head>
   <body>
        <%
             String tecemail = session.getAttribute("email").toString();
             String tecname = session.getAttribute("name").toString();
-               
-                
+              
             PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course where teacher_name=? and teacher_email=?");
             ps.setString(1, tecname);
             ps.setString(2, tecemail);
             ResultSet rs = ps.executeQuery();%>
             
+            
+            
+                  
+                  
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -56,48 +60,15 @@
               <div class="profile-pic">
                 <div class="count-indicator">
                     <img class="img-xs rounded-circle " src="getimage_teacher.jsp?filename=${filename}" alt="" style="width: 80px; height: 80px">
-                  <span class="count bg-success"></span>
+                  
                 </div>
                 <div class="profile-name">
                     <h5 class="mb-0 font-weight-normal"><%=tecname%></h5>
                   <span>Course Teacher</span>
                 </div>
               </div>
-              <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
-              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-settings text-primary"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-onepassword  text-info"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-calendar-today text-success"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                  </div>
-                </a>
-              </div>
+              <a href="#" id="profile-dropdown" data-toggle="dropdown"></a>
+             
             </div>
           </li>
           <li class="nav-item nav-category">
@@ -120,6 +91,29 @@
             </a>
           </li>
           <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ed" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Edit Course and pin</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ed">
+              <ul class="nav flex-column sub-menu">
+                 <% 
+                      PreparedStatement  psed = DBConnection.getConnection().prepareStatement("Select * from add_course where teacher_name=? and teacher_email=?");
+                      psed.setString(1, tecname);
+                      psed.setString(2, tecemail);
+                      ResultSet rsed = psed.executeQuery();
+                      while(rsed.next()){
+                    String code = rsed.getString("course_code");%>
+            
+                    <li class="nav-item"> <a class="nav-link" href="edit_course.jsp?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}"><%=code%></a></li>
+                <% }%>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
@@ -132,7 +126,7 @@
                  <% while(rs.next()){
                     String code = rs.getString("course_code");%>
             
-                    <li class="nav-item"> <a class="nav-link" href="select_course_controller?code=<%=code%>"><%=code%></a></li>
+                    <li class="nav-item"> <a class="nav-link" href="select_course_controller?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}"><%=code%></a></li>
                 <% }%>
               </ul>
             </div>
@@ -154,7 +148,9 @@
                       ResultSet rs1 = ps1.executeQuery();
                       while(rs1.next()){
                     String code = rs1.getString("course_code");%>
-                   <li class="nav-item"> <a class="nav-link" href="post_form.jsp?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} "> <%=code%> </a></li>
+                   <li class="nav-item"> <a class="nav-link" href="post_form.jsp?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} "> <%=code%> </a>
+                       </li>
+                   </li>
                 <%}%>
               </ul>
             </div>
@@ -226,7 +222,7 @@
                       ResultSet rssl = pssl.executeQuery();
                       while(rssl.next()){
                     String code = rssl.getString("course_code");%>
-                   <li class="nav-item"> <a class="nav-link" href="peoplelist_controller?code=<%=code%>"> <%=code%> </a></li>
+                   <li class="nav-item"> <a class="nav-link" href="peoplelist_controller?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} "> <%=code%> </a></li>
                 <%}%>
               </ul>
             </div>
@@ -250,19 +246,12 @@
                       ResultSet rs3 = ps3.executeQuery();
                       while(rs3.next()){
                     String code = rs3.getString("course_code");%>
-                   <li class="nav-item"> <a class="nav-link" href="delete_course_cotroller?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} "> <%=code%> </a></li>
+                   <li class="nav-item"> <a class="nav-link" href="delete_alert.jsp?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename} "> <%=code%> </a></li>
                 <%}%>
               </ul>
             </div>
           </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-file-document-box"></i>
-              </span>
-              <span class="menu-title">Documentation</span>
-            </a>
-          </li>
+          
         </ul>
       </nav>
       <!-- partial -->
@@ -277,182 +266,33 @@
               <span class="mdi mdi-menu"></span>
             </button>
             <ul class="navbar-nav w-100">
-              <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Search products">
-                </form>
-              </li>
+              <h2 style="margin: 0 auto; color: red;" > </h2>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#"></a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
-                  <h6 class="p-3 mb-0">Projects</h6>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-file-outline text-primary"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1">Software Development</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-web text-info"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1">UI Development</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-layers text-danger"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1">Software Testing</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <p class="p-3 mb-0 text-center">See all projects</p>
-                </div>
-              </li>
-              <li class="nav-item nav-settings d-none d-lg-block">
-                <a class="nav-link" href="#">
-                  <i class="mdi mdi-view-grid"></i>
+              <li class="nav-item dropdown border-left">
+                <a class="nav-link btn btn-inverse-secondary create-new-button "  href="edit_teacher.jsp?email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}" >
+                <i class="mdi mdi-lead-pencil"></i> Edit Profile
+                  
                 </a>
               </li>
               <li class="nav-item dropdown border-left">
-                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                  <i class="mdi mdi-email"></i>
-                  <span class="count bg-success"></span>
+                <a class="nav-link btn btn-inverse-secondary create-new-button" href="teacher_login_form.jsp" >
+                    <i class="mdi mdi-logout text-danger"></i> Log out
+                  
                 </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                  <h6 class="p-3 mb-0">Messages</h6>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <img src="assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
-                      <p class="text-muted mb-0"> 1 Minutes ago </p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <img src="assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
-                      <p class="text-muted mb-0"> 15 Minutes ago </p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <img src="assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
-                      <p class="text-muted mb-0"> 18 Minutes ago </p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <p class="p-3 mb-0 text-center">4 new messages</p>
-                </div>
               </li>
-              <li class="nav-item dropdown border-left">
-                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                  <i class="mdi mdi-bell"></i>
-                  <span class="count bg-danger"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                  <h6 class="p-3 mb-0">Notifications</h6>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-calendar text-success"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Event today</p>
-                      <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event today </p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-settings text-danger"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Settings</p>
-                      <p class="text-muted ellipsis mb-0"> Update dashboard </p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-link-variant text-warning"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Launch Admin</p>
-                      <p class="text-muted ellipsis mb-0"> New admin wow! </p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <p class="p-3 mb-0 text-center">See all notifications</p>
-                </div>
-              </li>
+             
+              
+              
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="getimage_teacher.jsp?filename=${filename}" alt="" style=" width:50px; height:50px;">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">${name}</p>
-                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name"><%=tecname%></p>
+                    
                   </div>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                  <h6 class="p-3 mb-0">Profile</h6>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item" href="edit_teacher.jsp?email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}" >
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-settings text-success"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Edit Profile</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item" href="index.jsp">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-logout text-danger"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                        <p class="preview-subject mb-1" >Log out</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <p class="p-3 mb-0 text-center">Advanced settings</p>
-                </div>
+                
               </li>
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -466,7 +306,8 @@
            
              
               <h3 style="text-align: center">Welcome to Teacher panel</h3><br><br><br>
-              
+              <h4 style="text-align: center;">${ncd}</h4>
+              <h4 style="text-align: center;">${ssa}</h4>
             <div class="row">
               <div class="col-sm-4 grid-margin">
                 <div class="card">
@@ -487,7 +328,7 @@
                       ResultSet rsi = psi.executeQuery();
                       while(rsi.next()){
                     String code = rsi.getString("course_code");%>
-                          <a class="dropdown-item" href="individual_report_form.jsp?code=<%=code%>" ><%=code%></a>
+                          <a class="dropdown-item" href="individual_report_form.jsp?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}" ><%=code%></a>
                           <%}%>
                         </div>
                         </div>
@@ -504,7 +345,7 @@
                       ResultSet rsd = psd.executeQuery();
                       while(rsd.next()){
                     String code = rsd.getString("course_code");%>
-                          <a class="dropdown-item" href="datewiz_attendance_report.jsp?code=<%=code%>"><%=code%></a>
+                          <a class="dropdown-item" href="datewise_attendance_report.jsp?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}"><%=code%></a>
                           <%}%>
                         </div>
                         </div><br>
@@ -521,7 +362,7 @@
                       ResultSet rsa = psa.executeQuery();
                       while(rsa.next()){
                     String code = rsa.getString("course_code");%>
-                          <a class="dropdown-item" href="all_student_attendance_report_controller?code=<%=code%>" ><%=code%></a>
+                          <a class="dropdown-item" href="all_student_attendance_report_controller?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}" ><%=code%></a>
                           <%}%>
                         </div>
                       </div>
@@ -544,7 +385,7 @@
                           
                        
                           <div class="dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuOutlineButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Class report </button>
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuOutlineButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Show classwork </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuOutlineButton1">
                            <h6 class="dropdown-header">Course code</h6>
                             <% 
@@ -554,7 +395,7 @@
                       ResultSet rscr = pscr.executeQuery();
                       while(rscr.next()){
                     String code = rscr.getString("course_code");%>
-                          <a class="dropdown-item" href="datewiz_attendance_report.jsp?code=<%=code%>"><%=code%></a>
+                          <a class="dropdown-item" href="all_classwork_codewise?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}"><%=code%></a>
                           <%}%>
                         </div>
                         </div>
@@ -613,12 +454,7 @@
           
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-          <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-            </div>
-          </footer>
+          
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -648,5 +484,131 @@
     <script src="assets/js/dashboard.js"></script>
  
     <!-- End custom js for this page -->
+    
+    <%
+            String ssp = session.getAttribute("ssp").toString();  
+            String ssp1="ssp"; 
+            
+            String nos = session.getAttribute("nos").toString();  
+            String nos1="nos"; 
+            
+            String sac = session.getAttribute("sac").toString();  
+            String sac1="sac";
+            
+            String dc = session.getAttribute("dc").toString();  
+            String dc1="dc";
+            
+            String ae = session.getAttribute("ae").toString();  
+            String ae1="ae"; 
+            
+            String cp = session.getAttribute("cp").toString();  
+            String cp1="cp";
+            
+            String np = session.getAttribute("np").toString();  
+            String np1="np"; 
+            
+            String nwc = session.getAttribute("nwc").toString();  
+            String nwc1="nwc"; 
+            
+            String ncm = session.getAttribute("ncm").toString();  
+            String ncm1="ncm"; 
+            
+            String asa = session.getAttribute("asa").toString();  
+            String asa1="asa"; 
+            
+            String ev = session.getAttribute("ev").toString();  
+            String ev1="ev"; 
+            
+            String ns = session.getAttribute("ns").toString();  
+            String ns1="ns"; 
+            String se = session.getAttribute("se").toString();  
+            String se1="se"; 
+            
+               if(ssp1==ssp){
+            %>
+            <script type="text/javascript">
+            alert('Successfully save and sent post');
+            </script>
+                  <% } 
+                  
+                  
+                  
+            
+            else if (nos1==nos){
+            %>
+            <script type="text/javascript">
+            alert('No one Submit this work yet');
+            </script>
+                  <% } 
+                  
+                  
+                  
+             
+           else  if(sac1==sac){
+            %>
+            <script type="text/javascript">
+            alert('Course successfully added');
+            </script>
+                  <% }
+                       
+                  
+                  
+                 
+            
+           else  if(dc1==dc){
+            %>
+            <script type="text/javascript">
+            alert('Course successfully deleted');
+            </script>
+                  <% }  
+                  else  if(ae1==ae){
+            %>
+            <script type="text/javascript">
+            alert('Already exists, change course pin or course code because course pin and course code should be unique');
+            </script>
+                  <% }  
+                  else  if(np1==np){
+            %>
+            <script type="text/javascript">
+            alert('No post uploaded Yet');
+            </script>
+                  <% }  
+                  else  if(nwc1==nwc){
+            %>
+            <script type="text/javascript">
+            alert('No classwork created Yet');
+            </script>
+                  <% }
+                  else  if(ncm1==ncm){
+            %>
+            <script type="text/javascript">
+            alert('No classwork mark set Yet');
+            </script>
+                  <% }
+                  else  if(asa1==asa){
+            %>
+            <script type="text/javascript">
+            alert('No Attendance taken  Yet');
+            </script>
+                  <% }
+                  else  if(ev1==ev){
+            %>
+            <script type="text/javascript">
+            alert('Email verified! Check your gmail inbox either get email yes verfied or try again...click.. Email verification');
+            </script>
+                  <% }
+                  else  if(ns1==ns){
+            %>
+            <script type="text/javascript">
+            alert('No Student Found in this course ');
+            </script>
+                  <% }
+                  else  if(se1==se){
+            %>
+            <script type="text/javascript">
+            alert('Successfully course edited ');
+            </script>
+                  <% }%>
+          
   </body>
 </html>

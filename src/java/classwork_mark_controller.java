@@ -51,13 +51,23 @@ public class classwork_mark_controller extends HttpServlet {
             if(rs0.next()){
                 int count= Integer.parseInt(rs0.getString(1));
                 if(count==0){
-                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal (  ' Hey ' ,'No classwork mark get yet',  'error' );");
-			out.println("});");
-			out.println("</script>");
+                          session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "ncm");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                             session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                             session.setAttribute("se", "no");
+                            session.setAttribute("name", tecname);
+                            session.setAttribute("email", tecemail);
+                            request.setAttribute("filename", tec_filename);        
+                            request.getRequestDispatcher("admin_main.jsp").forward(request,response);
                 }
                 else{
             PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from classwork_mark  where course_code=? and classworkno=?");

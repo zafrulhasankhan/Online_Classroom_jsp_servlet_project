@@ -32,7 +32,12 @@ public class individual_report_controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         PrintWriter out = response.getWriter();
+        
+        String tecemail=request.getParameter("name");
+        String tecname=request.getParameter("email");
+        String tecfilename=request.getParameter("filename");
         String classid = request.getParameter("classid");
         String code = request.getParameter("code");
         try {
@@ -47,8 +52,8 @@ public class individual_report_controller extends HttpServlet {
                   if(present==0){
                       
                     String msg = "<div class=\"alert alert-warning\" style=\"display:inline-table;background:red  \">\n" +
-"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:red;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
-"                <strong>Sorry</strong> Take No attendence yet !Try again...  \n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:black;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>ohh</strong> so far You has not attend  any class ...  \n" +
 "            </div>";
                     request.setAttribute("msg", msg);
                      
@@ -88,12 +93,25 @@ public class individual_report_controller extends HttpServlet {
                 //request.getRequestDispatcher("individual_report_result.jsp").forward(request,response);
                 
              }
+             PreparedStatement ps4= DBConnection.getConnection().prepareStatement("SELECT filename FROM `student_list` WHERE id=? and course_code=?");
+             ps4.setString(1, classid);
+             ps4.setString(2, code);
+             ResultSet rs4=ps4.executeQuery();
+             if(rs4.next()){
+                
+               
+                 String sfilename = rs4.getString("filename");
+                 System.out.println();
+                 request.setAttribute("sfilename", sfilename);
+             }
             } catch (SQLException ex) {
             Logger.getLogger(individual_report_controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(individual_report_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        session.setAttribute("email", tecemail);
+        session.setAttribute("name", tecname);
+        request.setAttribute("filename", tecfilename);
         request.getRequestDispatcher("individual_report_result.jsp").forward(request,response);
        
        

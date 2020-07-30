@@ -102,35 +102,16 @@ public final class student_005fregister_jsp extends org.apache.jasper.runtime.Ht
       out.write("                    <label>Student ID</label>\n");
       out.write("                    <input type=\"text\" name=\"id\" class=\"form-control p_input\" style=\"color: white;\" required=\"\">\n");
       out.write("                  </div>\n");
-      out.write("                    <div class=\"form-group\">\n");
-      out.write("                    <label>Course code</label>\n");
       out.write("                    \n");
-      out.write("                    <select  name=\"code\" class=\"js-example-basic-single\" required=\"\" style=\"width:100%;\">   \n");
-      out.write("                                ");
-
-                              PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from add_course");
-                               ResultSet rs = ps.executeQuery();
-                                 while(rs.next()){
-                                String code = rs.getString("course_code");
-      out.write("\n");
-      out.write("                                <option  value=\"");
-      out.print(code);
-      out.write('"');
-      out.write('>');
-      out.print(code);
-      out.write("</option>\n");
-      out.write("                                 ");
- }
-      out.write("\n");
-      out.write("                               </select>   \n");
-      out.write("                  </div>\n");
       out.write("                  <div class=\"form-group\">\n");
       out.write("                    <label>Password</label>\n");
-      out.write("                    <input type=\"password\"  name=\"pass\" class=\"form-control p_input\" style=\"color: white;\" required=\"\">\n");
+      out.write("                    <input type=\"password\"  name=\"pass\" class=\"form-control p_input\" onmouseover=\"this.type='text'\"\n");
+      out.write("       onmouseout=\"this.type='password'\" style=\"color: white;\" required=\"\">\n");
       out.write("                  </div>\n");
       out.write("                    <div class=\"form-group\">\n");
       out.write("                    <label>Confirm Password</label>\n");
-      out.write("                    <input type=\"password\" name=\"repass\" class=\"form-control p_input\" style=\"color: white;\" required=\"\">\n");
+      out.write("                    <input type=\"password\" name=\"repass\" class=\"form-control p_input\" onmouseover=\"this.type='text'\"\n");
+      out.write("       onmouseout=\"this.type='password'\" style=\"color: white;\" required=\"\">\n");
       out.write("                  </div>  \n");
       out.write("                               \n");
       out.write("                \n");

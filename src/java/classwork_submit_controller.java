@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -40,6 +41,7 @@ public class classwork_submit_controller extends HttpServlet {
         String sname = request.getParameter("sname");
         String sid = request.getParameter("sid");
         String email = request.getParameter("email");
+        String pcom = request.getParameter("pcom");
         System.out.println(sid+cw_no);
         Part part = request.getPart("file");
          String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString(); 
@@ -53,18 +55,20 @@ public class classwork_submit_controller extends HttpServlet {
             if(rs0.next()){
                 int count = Integer.parseInt(rs0.getString(1));
                 if(count!=0){
-                
-                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'Hey' ,  'Already submitted this work !' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
+                String csc1 = "<div class=\"alert alert-warning\" style=\"display:inline-table; background:green; color:white\">\n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:white;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>Ohh  !</strong> Classwork Already submitted...  \n" +
+"            </div>";
+                        
+                   request.setAttribute("csc", csc1);
+                   request.setAttribute("email", email);
+                   request.setAttribute("code", code);
+			RequestDispatcher rd = request.getRequestDispatcher("classwork_submit_msg.jsp");
+			rd.forward(request, response); 
                 }else{
                     
                     try {
-            PreparedStatement ps=DBConnection.getConnection().prepareStatement("insert into classwork_submit values(?,?,?,?,?,?,?)");
+            PreparedStatement ps=DBConnection.getConnection().prepareStatement("insert into classwork_submit values(?,?,?,?,?,?,?,?)");
             ps.setString(1, cw_no);
             ps.setString(2, code);
             ps.setString(3, sname);
@@ -73,19 +77,21 @@ public class classwork_submit_controller extends HttpServlet {
             InputStream is = part.getInputStream();
 	    ps.setBlob(6, is);
             ps.setString(7, email);
+            ps.setString(8, pcom);
             int n=ps.executeUpdate();
-              
+              HttpSession session = request.getSession();
 		if(n>0) {
 			//response.getWriter().println("Successfully uploaded");
-                        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'Yes' ,  'classwork successfully submitted !' ,  'success' );");
-			out.println("});");
-			out.println("</script>");
+                        String csc = "<div class=\"alert alert-warning\" style=\"display:inline-table; background:green; color:white\">\n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:white;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>Successfully !</strong> Classwork submitted...  \n" +
+"            </div>";
                         
-			
+                   request.setAttribute("csc", csc);
+                   request.setAttribute("email", email);
+                   request.setAttribute("code", code);
+			RequestDispatcher rd = request.getRequestDispatcher("classwork_submit_msg.jsp");
+			rd.forward(request, response); 
                         
                        
 		}

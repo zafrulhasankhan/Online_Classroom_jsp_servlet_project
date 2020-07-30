@@ -14,11 +14,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,8 +34,12 @@ public class all_classwork_codewise extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
         ArrayList<classwork> worklist = new ArrayList<classwork>();
        String code = request.getParameter("code");
+        String tecname = request.getParameter("name");
+         String tecemail= request.getParameter("email");
+          String filename = request.getParameter("filename");
         try {
             PreparedStatement ps0 = DBConnection.getConnection().prepareStatement("SELECT ifnull((SELECT COUNT(course_code) FROM classwork WHERE course_code=?),\"post not yet\") as course_code  ");
             ps0.setString(1, code);
@@ -41,13 +47,24 @@ public class all_classwork_codewise extends HttpServlet {
             if(rs0.next()){
                 int count= Integer.parseInt(rs0.getString(1));
                 if(count==0){
-                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal (  ' Hey ' ,'No classwork created yet',  'error' );");
-			out.println("});");
-			out.println("</script>");
+                        session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "nwc");
+                            session.setAttribute("asa", "no");
+                             session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
+                session.setAttribute("email", tecemail);
+                session.setAttribute("name", tecname);
+                request.setAttribute("filename", filename);
+	        RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp?");
+		rd.forward(request, response);  
                 }
                 else{
             PreparedStatement  ps = DBConnection.getConnection().prepareStatement("Select * from classwork  where course_code=?");
@@ -72,6 +89,9 @@ public class all_classwork_codewise extends HttpServlet {
                         String coursename = rs2.getString("course_name");
                         request.setAttribute("name", coursename);
                     }
+                    session.setAttribute("email", tecemail);
+                    session.setAttribute("name", tecname);
+                    request.setAttribute("filename", filename);
                  request.getRequestDispatcher("admin_all_classwork.jsp").forward(request,response);
                 }
             }

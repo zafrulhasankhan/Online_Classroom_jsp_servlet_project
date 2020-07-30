@@ -13,7 +13,16 @@ public class attend {
     private String id;
     private String name;
     private String attendance;
+    private String sfilename;
 
+    public String getSfilename() {
+        return sfilename;
+    }
+
+    public void setSfilename(String sfilename) {
+        this.sfilename = sfilename;
+    }
+    
     public String getId() {
         return id;
     }

@@ -52,13 +52,28 @@ public class attendance_sheet_controller extends HttpServlet {
             if(rs0.next()){
                 int stuno = Integer.parseInt(rs0.getString(1));
                 if(stuno==0){
-                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal (  'sorry !' ,'no student add in this course yet',  'error' );");
-			out.println("});");
-			out.println("</script>");
+                    HttpSession session =request.getSession();
+                    session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                            session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "ns");
+                              
+                             session.setAttribute("se", "no");
+                           
+                         //session.setAttribute("ssp", code);
+                         /*msg er jnno */
+                         session.setAttribute("tecemail", tecemail2);
+                         session.setAttribute("tecname", tecname2);
+                         request.setAttribute("filename", tecfilename);
+                         request.getRequestDispatcher("admin_main.jsp").forward(request,response);
 			
 			/*RequestDispatcher rd = request.getRequestDispatcher("add_course.jsp");
 			rd.include(request, response);*/

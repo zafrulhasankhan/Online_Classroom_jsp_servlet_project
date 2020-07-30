@@ -45,6 +45,9 @@
                   <h3 style="text-align: center;font-size: 20px;"><u>Post - From</u></h3><br>
                 <form action="post_form_controller" method="post" enctype="multipart/form-data">
                   <input type="text"  hidden="" value="<%=code%>" name="code">
+                  <input type="text"  hidden="" value="<%=name%>" name="name">
+                  <input type="text"  hidden="" value="<%=email%>" name="email">
+                  <input type="text"  hidden="" value="<%=filename%>" name="filename">
                    <div class="form-group">
                         <label>File upload</label>
                         <input type="file" name="image" class="file-upload-default">

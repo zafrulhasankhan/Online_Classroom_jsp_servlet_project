@@ -67,9 +67,9 @@ public class student_forget_pass_controller extends HttpServlet {
            //System.out.println(stupass1);
            //System.out.println(stupass2);
            if("".equals(request.getParameter("pass"))){
-              PreparedStatement ps5=DBConnection.getConnection().prepareStatement("select * from student_list where course_code=? and email=?");
-               ps5.setString(1, code1);
-               ps5.setString(2, stuemail);
+              PreparedStatement ps5=DBConnection.getConnection().prepareStatement("select * from student_account where  email=?");
+               //ps5.setString(1, code1);
+               ps5.setString(1, stuemail);
                ResultSet rs4 = ps5.executeQuery();
                if(rs4.next()){
                    stupass3=rs4.getString("pass");
@@ -82,31 +82,27 @@ public class student_forget_pass_controller extends HttpServlet {
                    String msg = String.format("course code: %s%n%nYour ID :%s%n%nYour name:%s%n%nyour password:%s%n%n",code1,stuid3,stuname3,stupass3 );
                    
                    Mailer.send(user,pass,to,subject,msg);
-                   out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( ' sucesssfully!' ,  ' password  sent by email' ,  'success' );");
-			out.println("});");
-			out.println("</script>");
-                       
-                   request.getRequestDispatcher("forget_pass.jsp").include(request, response);
+                   
+                       out.println("<script type=\"text/javascript\">");
+                         out.println("alert('sucesssfully! password  sent by email');");
+                         out.println("</script>");
+                   request.getRequestDispatcher("forget_pass_student.jsp").include(request, response);
                }
            }
                else{ 
                if(stupass1 == null ? stupass2 == null : stupass1.equals(stupass2)){
-                   PreparedStatement ps4=DBConnection.getConnection().prepareStatement("update student_list set pass=? where course_code=? and email=? ");
+                   PreparedStatement ps4=DBConnection.getConnection().prepareStatement("update student_account set pass=? where  email=? ");
                    ps4.setString(1, stupass1);
-                   ps4.setString(2, code1);
+                   //ps4.setString(2, code1);
                    
-                   ps4.setString(3, stuemail);
+                   ps4.setString(2, stuemail);
                    ps4.executeUpdate();
                    
                    
                    
-                   PreparedStatement ps3=DBConnection.getConnection().prepareStatement("select * from student_list where course_code=? and email=?");
-                   ps3.setString(1, code1);
-                   ps3.setString(2, stuemail);
+                   PreparedStatement ps3=DBConnection.getConnection().prepareStatement("select * from student_account where email=?");
+                  // ps3.setString(1, code1);
+                   ps3.setString(1, stuemail);
                    ResultSet rs2 = ps3.executeQuery();
                    if(rs2.next()){
                        stupass=rs2.getString("pass");
@@ -119,25 +115,18 @@ public class student_forget_pass_controller extends HttpServlet {
                        String msg = String.format("course code: %s%n%nYour ID :%s%n%nYour name:%s%n%nyour password:%s%n%n",code1,stuid,stuname,stupass );
                        
                        Mailer.send(user,pass,to,subject,msg);
-                       out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( ' sucesssfully!' ,  ' password reset and sent by email' ,  'success' );");
-			out.println("});");
-			out.println("</script>");
-                       request.getRequestDispatcher("forget_pass.jsp").include(request, response);
+                       
+                        out.println("<script type=\"text/javascript\">");
+                         out.println("alert('sucesssfully! password reset and sent by email');");
+                         out.println("</script>");
+                       request.getRequestDispatcher("forget_pass_student.jsp").include(request, response);
                    }
                }
                else{
-                   out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( ' Sorry!' ,  'Set password do not same' ,  'error' );");
-			out.println("});");
-			out.println("</script>");
-                       request.getRequestDispatcher("forget_pass.jsp").include(request, response);
+                  out.println("<script type=\"text/javascript\">");
+                         out.println("alert('Set both password not same');");
+                         out.println("</script>");
+                       request.getRequestDispatcher("forget_pass_student.jsp").include(request, response);
                }
                }
            

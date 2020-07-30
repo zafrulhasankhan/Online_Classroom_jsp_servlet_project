@@ -57,7 +57,7 @@
                     <input type="text" name="name" value="<%=name%>" class="form-control p_input" style="color: white;" required="">
                   </div>
                     <div class="form-group">
-                        <label>Change Your Photo </label>
+                        <label>Change Your Photo ,click 'select' button</label>
                         <input type="file" name="image" class="file-upload-default">
                         <div class="input-group col-xs-12">
                             <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" required="">
@@ -71,22 +71,15 @@
                     <input type="email" name="email" value="<%=email%>" class="form-control p_input" style="color: white;" required="">
                   </div>
                      
-                  <div class="form-group">
-                    <label>Change Password</label>
-                    <input type="password"  name="pass" class="form-control p_input"  style="color: white;" >
-                  </div>
-                    <div class="form-group">
-                    <label>Change Confirm Password</label>
-                    <input type="password" name="repass" class="form-control p_input" style="color: white;" >
-                  </div>           
+                      
                                
                   
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-block enter-btn">Sign up</button>
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">Update Profile</button>
+                    <a href="admin_home_redirect?email=<%=email%>&name=<%=name%>&filename=<%=filename%>" class="btn btn-link btn-fw">Back to Home</a>
                   </div>
                   
-                  <p class="sign-up text-center">Already have an Account?<a href="teacher_login_form.jsp"> Sign In</a></p>
-                  <p class="terms">By creating an account you are accepting our<a href="#"> Terms & Conditions</a></p>
+                 
                 </form>
               </div>
             </div>

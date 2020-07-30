@@ -48,7 +48,7 @@
                     <input type="text" name="name" class="form-control p_input" style="color: white;" required="">
                   </div>
                     <div class="form-group">
-                        <label> Your Photo upload</label>
+                        <label>Click 'select ' button for Your Photo upload</label>
                         <input type="file" name="image" class="file-upload-default">
                         <div class="input-group col-xs-12">
                             <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" required="">

@@ -99,7 +99,11 @@ public class edit_teacher_controller extends HttpServlet {
                 String lfilename = rs2.getString("filename");
                 session.setAttribute("email", tecemail);
 			session.setAttribute("name", tecname);
-                        
+                        String ncerror = "<div class=\"alert alert-warning\" style=\"display:inline-table; background:green; color:white\">\n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:white;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>Successfully !</strong> Edited and update your profile...  \n" +
+"            </div>";
+                        request.setAttribute("ssa", ncerror);
                         request.setAttribute("filename",lfilename);
 			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
 			rd.forward(request, response);

@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,10 +33,15 @@ public class show_submitted_all_classwork_codewise extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         PrintWriter out = response.getWriter();
         ArrayList<classwork> worklist = new ArrayList<classwork>();
         String code = request.getParameter("code");
         String classworkno = request.getParameter("classworkno");
+        String tecname = request.getParameter("name");
+         String tecemail= request.getParameter("email");
+          String filename = request.getParameter("filename");
+          System.out.println(classworkno);
         //String code1 =(String) getServletContext().getAttribute("code");
        //String classworkno1 =(String) getServletContext().getAttribute("classworkno");
        //String code1="ict-3109";
@@ -50,13 +56,29 @@ public class show_submitted_all_classwork_codewise extends HttpServlet {
             if(rs0.next()){
                 int present = Integer.parseInt(rs0.getString(1));
                 if(present==0){
-                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal (  ' Hey ' ,'No one submit this work',  'error' );");
-			out.println("});");
-			out.println("</script>");
+                    /*msg er jnno */
+                         String nos="nos";
+                         
+                           session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "nos");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                            session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                             session.setAttribute("se", "no");
+                           
+                         //session.setAttribute("ssp", code);
+                         /*msg er jnno */
+                         session.setAttribute("tecemail", tecemail);
+                         session.setAttribute("tecname", tecname);
+                         request.setAttribute("filename", filename);
+                         request.getRequestDispatcher("admin_main.jsp").forward(request,response);
                 }
                 else{
             PreparedStatement ps = DBConnection.getConnection().prepareStatement("select * from classwork_submit where course_code=? and classworkno=?");
@@ -71,6 +93,7 @@ public class show_submitted_all_classwork_codewise extends HttpServlet {
                          cw.setStudent_name(rs1.getString("student_name"));
                           cw.setStudent_id(rs1.getString("student_id"));
                            cw.setFilename(rs1.getString("filename"));
+                           cw.setComment(rs1.getString("pcomment"));
                            System.out.println(rs1.getBlob("file"));
                            worklist.add(cw);
                         System.out.println(cw);
@@ -88,6 +111,9 @@ public class show_submitted_all_classwork_codewise extends HttpServlet {
                         String coursename = rs2.getString("course_name");
                         request.setAttribute("name", coursename);
                     }
+                    session.setAttribute("tecemail", tecemail);
+                    session.setAttribute("tecname", tecname);
+                    request.setAttribute("filename", filename);
                     request.getRequestDispatcher("submitted_work_list.jsp").forward(request,response);
                 }
             }

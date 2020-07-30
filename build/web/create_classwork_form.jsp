@@ -67,6 +67,10 @@
                     <button type="submit" class="btn btn-primary btn-block enter-btn">Upload</button>
                      <a href="admin_home_redirect?email=${email}&name=${name}&filename=${filename}" class="btn btn-link btn-fw">Back to Home</a>
                   </div>
+                     
+                     <input type="email" value="${email}" name="email" hidden="">
+                     <input type="text" value="${name}" name="name" hidden="">
+                     <input type="text" value="${filename}" name="filename" hidden="">
                 </form>
               </div>
             </div>

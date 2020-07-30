@@ -37,9 +37,15 @@ public class return_create_classwork extends HttpServlet {
             throws ServletException, IOException {
        String code = request.getParameter("code");
         String email = request.getParameter("email");
-         String spass = request.getParameter("spass");
-         System.out.println(email);
-         System.out.println(spass);
+         String cname = request.getParameter("cname");
+         String tecname = request.getParameter("tecname");
+         String tecfilename = request.getParameter("tecfilename");
+          PrintWriter out = response.getWriter();
+         System.out.println(email+code+cname+tecname+tecfilename);
+         //System.out.println(spass);
+         //String code ="ict-3109";
+        // String email="nasimzafrulhasan@gmail.com";
+        // String spass="12";
       /* String co="kjkjadad";
        getServletContext().setAttribute("var",co);
        RequestDispatcher rd=getServletContext
@@ -53,18 +59,18 @@ rd.forward(request,response);*/
             ResultSet rs0 =   ps0.executeQuery();
             if(rs0.next()){
                 int count= Integer.parseInt(rs0.getString(1));
+                //int count=0;
                 if(count==0){
-                    String msg = "<div class=\"alert alert-warning\" style=\"display:inline-table; background:red; \">\n" +
-"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:red;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
-"                <strong>Oh,Blank!</strong> No classwork uploaded yet in your course !Try again...  \n" +
-"            </div>";
+                    String msg = String.format("No classwork uploaded yet in '%s'.", code);
            
                     //getServletContext().setParameter("code", code);
-                request.setAttribute("msg", msg);
+                getServletContext().setAttribute("msg", msg);
                  getServletContext().setAttribute("code",code);
-                RequestDispatcher rd=getServletContext().getRequestDispatcher("/select_course_controller");
+                  getServletContext().setAttribute("email",email);
+                RequestDispatcher rd=getServletContext().getRequestDispatcher("/no_classwork_msg");
                rd.forward(request,response);
                     
+                   
                 }
                 else{
                     
@@ -84,9 +90,9 @@ rd.forward(request,response);*/
                 request.setAttribute("code", code);
                 
                     }
-                    PreparedStatement ps2 = DBConnection.getConnection().prepareStatement("select * from student_list where email=? and pass=?");
+                    PreparedStatement ps2 = DBConnection.getConnection().prepareStatement("select * from student_list where email=? ");
                     ps2.setString(1, email);
-                    ps2.setString(2, spass);
+                    //ps2.setString(2, spass);
                     ResultSet rs2= ps2.executeQuery();
                     if(rs2.next()){
                         String sname= rs2.getString("name");
@@ -94,15 +100,19 @@ rd.forward(request,response);*/
                         request.setAttribute("sname", sname);
                         request.setAttribute("sid", sid);
                         request.setAttribute("email", email);
+                        request.setAttribute("cname", cname);
+                        request.setAttribute("tecname", tecname);
+                        request.setAttribute("tecfilename", tecfilename);
                     }
                }
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(return_create_classwork.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(return_create_classwork.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("classworklist.jsp").forward(request,response);
+        request.getRequestDispatcher("classworklist1.jsp").forward(request,response);
     }
 
    
