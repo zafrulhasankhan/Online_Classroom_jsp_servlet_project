@@ -93,6 +93,14 @@
               <span class="menu-title">People</span>
             </a>
           </li>
+           <li class="nav-item menu-items">
+            <a class="nav-link" href="student_post_share.jsp?code=${code}&email=${email}&name=${sname}&filename=${sfilename}">
+              <span class="menu-icon">
+              <i class="mdi mdi-account-multiple"></i>
+              </span>
+              <span class="menu-title">Share something</span>
+            </a>
+          </li>
            </ul>
                   
        </nav>
@@ -115,19 +123,16 @@
               </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button"   aria-expanded="false" href="student_post_share.jsp?code=${code}&email=${email}&name=${sname}&filename=${sfilename}">Share Something in ${code}</a>
               
-              </li>
               <li class="nav-item dropdown border-left">
-                <a class="nav-link btn btn-inverse-secondary"  href="edit_student_acc.jsp?email=${email}&name=${sname}&filename=${sfilename}&code=${code}" >
-                <i class="mdi mdi-lead-pencil"></i> Edit Profile
+                  <a class="nav-link btn btn-inverse-secondary create-new-button" title="Edit your profile"  href="edit_student_acc.jsp?email=${email}&name=${sname}&filename=${sfilename}&code=${code}" >
+                <i class="mdi mdi-lead-pencil"></i>
                   
                 </a>
               </li>
               <li class="nav-item dropdown border-left">
-                <a class="nav-link btn  btn-inverse-secondary create-new-button"  href="student_login.jsp" >
-                 <i class="mdi mdi-logout text-danger"></i> Log out
+                  <a class="nav-link btn  btn-inverse-secondary create-new-button" title="Log out here"  href="student_login.jsp" >
+                 <i class="mdi mdi-logout text-danger"></i>
                   
                 </a>
               </li>
@@ -229,8 +234,8 @@
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Created by  <a href="https://web.facebook.com/zafrulhasan.nasim" target="_blank">Zafrul Hasan Nasim </a>.</span>
+              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="https://web.facebook.com/zafrulhasan.nasim" target="_blank"><i class="mdi mdi-facebook text-danger" style="font-size:30px;"></i> </a><a href="https://www.instagram.com/zafrul_hasan_nasim/" target="_blank"><i class="mdi mdi-instagram text-danger" style="font-size:30px;"></i> </a></span>
             </div>
           </footer>
           <!-- partial -->

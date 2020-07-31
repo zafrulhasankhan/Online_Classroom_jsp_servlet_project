@@ -60,7 +60,7 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                    <img class="img-xs rounded-circle " src="getimage_teacher.jsp?filename=${filename}" alt="" style="width: 80px; height: 80px">
+                    <img class="img-xs rounded-circle " src="getimage_teacher.jsp?filename=${filename}" alt="" style="width: 55px; height: 55px">
                   
                 </div>
                 <div class="profile-name">
@@ -271,14 +271,14 @@
             </ul>
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown border-left">
-                <a class="nav-link btn btn-inverse-secondary create-new-button "  href="edit_teacher.jsp?email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}" >
-                <i class="mdi mdi-lead-pencil"></i> Edit Profile
+                  <a class="nav-link btn btn-inverse-secondary create-new-button " title="Edit Your Profile"  href="edit_teacher.jsp?email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}" >
+                <i class="mdi mdi-lead-pencil"></i>
                   
                 </a>
               </li>
               <li class="nav-item dropdown border-left">
-                <a class="nav-link btn btn-inverse-secondary create-new-button" href="teacher_login_form.jsp" >
-                    <i class="mdi mdi-logout text-danger"></i> Log out
+                  <a class="nav-link btn btn-inverse-secondary create-new-button" title="Log Out Here" href="teacher_login_form.jsp" >
+                    <i class="mdi mdi-logout text-danger"></i>
                   
                 </a>
               </li>
@@ -422,10 +422,10 @@
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
-          <footer class="footer">
+         <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Created by  <a href="https://web.facebook.com/zafrulhasan.nasim" target="_blank">Zafrul Hasan Nasim </a>.</span>
+              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="https://web.facebook.com/zafrulhasan.nasim" target="_blank"><i class="mdi mdi-facebook text-danger" style="font-size:30px;"></i> </a><a href="https://www.instagram.com/zafrul_hasan_nasim/" target="_blank"><i class="mdi mdi-instagram text-danger" style="font-size:30px;"></i> </a></span>
             </div>
           </footer>
           <!-- partial -->

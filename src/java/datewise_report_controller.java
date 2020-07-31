@@ -79,7 +79,7 @@ public class datewise_report_controller extends HttpServlet {
                  a.setId(rs.getString("class_id"));
                  a.setName(rs.getString("Student_name"));
                  a.setAttendance(rs.getString("Attendence"));
-                 
+                 a.setClassno(rs.getString("class_no"));
                  request.setAttribute("attendlist",attendlist);
                  request.setAttribute("code",code);
                  request.setAttribute("date", date);

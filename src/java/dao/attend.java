@@ -14,7 +14,17 @@ public class attend {
     private String name;
     private String attendance;
     private String sfilename;
+  private String classno;
 
+    public String getClassno() {
+        return classno;
+    }
+
+    public void setClassno(String classno) {
+        this.classno = classno;
+    }
+  
+  
     public String getSfilename() {
         return sfilename;
     }

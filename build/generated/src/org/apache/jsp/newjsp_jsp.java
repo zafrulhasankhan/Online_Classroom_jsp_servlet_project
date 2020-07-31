@@ -30,7 +30,7 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html;charset=UTF-8");
+      response.setContentType("text/html");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -41,33 +41,49 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
+      out.write("    \n");
       out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        ");
-
-            String email = request.getParameter("tecemail");
-            String code = request.getParameter("code");
-            
+      out.write("        <style>\n");
+      out.write("            .tooltip {\n");
+      out.write("  position: relative;\n");
+      out.write("  display: inline-block;\n");
+      out.write("    \n");
+      out.write("    position: center;\n");
+      out.write("}\n");
       out.write("\n");
-      out.write("        <form action=\"email_verification_controller\" method=\"get\">\n");
-      out.write("            <div class=\"username\">\n");
-      out.write("                               \n");
-      out.write("                               <input type=\"email\" name=\"email\" placeholder=\"email id\"  value=\"");
-      out.print(email);
-      out.write("\" class=\"name\"/>\n");
-      out.write("                           </div><br>\n");
-      out.write("            <input class=\"button button2\" type=\"submit\" name=\"login\" value=\"Login\">\n");
-      out.write("        </form>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write(".tooltip .tooltiptext {\n");
+      out.write("  visibility: hidden;\n");
+      out.write("  width: 120px;\n");
+      out.write("  background-color: black;\n");
+      out.write("  color: #fff;\n");
+      out.write("  text-align: center;\n");
+      out.write("  border-radius: 6px;\n");
+      out.write("  padding: 5px 0;\n");
+      out.write("\n");
+      out.write("  /* Position the tooltip */\n");
+      out.write("  position: absolute;\n");
+      out.write("  z-index: 1;\n");
+      out.write("}\n");
+      out.write("\n");
+      out.write(".tooltip:hover .tooltiptext {\n");
+      out.write("  visibility: visible;\n");
+      out.write("}\n");
+      out.write("        </style> \n");
+      out.write("    </head>\n");
+      out.write("    \n");
+      out.write("    <body>\n");
+      out.write("        <div class=\"tooltip\">\n");
+      out.write("                                 <a href=\"forget_pass.jsp\" style=\"color: black;\"><b>Forget password?</b></a>\n");
+      out.write("                            <span class=\"tooltiptext\"> Click for find password </span>\n");
+      out.write("                             </div>\n");
+      out.write("   \n");
+      out.write("    \n");
+      out.write("    <a href=\" \" title=\"This is some text I want to display.\" style=\"background-color:#FFFFFF;color:#000000;text-decoration:none\">This link has mouseover text.</a>\n");
       out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

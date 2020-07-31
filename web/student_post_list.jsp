@@ -36,7 +36,7 @@
     <style>
 .alert {
   padding: 20px;
-  background-color: #f44336;
+  background-color: red;
   color: white;
 }
 
@@ -52,8 +52,36 @@
 }
 
 .closebtn:hover {
-  color: black;
+  color: white;
 }
+
+         .tooltip {
+  position: relative;
+  display: inline-block;
+    
+    position: center;
+}
+
+
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+} 
+        
 </style>
   </head>
   <body>
@@ -101,7 +129,7 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                    <img class="img-xs rounded-circle " src="getimage_teacher.jsp?filename=<%=tecfilename%>" alt="image" style="width: 80px; height: 80px">
+                    <img class="img-xs rounded-circle " src="getimage_teacher.jsp?filename=<%=tecfilename%>" alt="image" style="width: 50px; height: 50px">
                   
                 </div>
                 <div class="profile-name">
@@ -136,6 +164,14 @@
               <span class="menu-title">People</span>
             </a>
           </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="student_post_share.jsp?code=${code}&email=<%=semail%>&name=<%=sname%>&filename=${sfilename} ">                                                                                                                                                                                                                                                                                                                                                                                           
+              <span class="menu-icon">
+              <i class="mdi mdi-share"></i>
+              </span>
+              <span class="menu-title">Share Something </span>
+            </a>
+          </li>
            </ul>
                   <%// } %>
                   
@@ -161,25 +197,34 @@
             </ul>
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button"   aria-expanded="false" href="student_post_share.jsp?code=${code}&email=<%=semail%>&name=<%=sname%>&filename=${sfilename}">Share Something in <%=code%></a>
+               
+              </li>
+              <li class="nav-item dropdown border-left">
               
-              </li>
-              <li class="nav-item dropdown border-left">
-                <a class="nav-link btn btn-inverse-secondary create-new-button "  href="edit_student_acc.jsp?email=<%=semail%>&name=<%=sname%>&filename=${sfilename}&code=${code}" >
-                <i class="mdi mdi-lead-pencil"></i> Edit Profile
+                <a class="nav-link btn btn-inverse-secondary  create-new-button " title="Edit Your Profile"  href="edit_student_acc.jsp?email=<%=semail%>&name=<%=sname%>&filename=${sfilename}&code=${code}" >
+                <i class="mdi mdi-lead-pencil"></i>
                   
                 </a>
+
+                    
+                
               </li>
+             
               <li class="nav-item dropdown border-left">
-                <a class="nav-link btn btn-inverse-secondary create-new-button" href="student_login.jsp" >
-                    <i class="mdi mdi-logout text-danger"></i> Log out
                   
+                  <a class="nav-link btn btn-inverse-secondary create-new-button" title="Log out here" href="student_login.jsp" >
+                    
+                    <i class="mdi mdi-logout text-danger"></i>
+                  
+                   
                 </a>
+                  
               </li>
+              
                <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="getimage_student.jsp?filename=${sfilename}" alt="" style=" width:50px; height:50px;" >
+                    <img class="img-xs rounded-circle" src="getimage_student.jsp?filename=${sfilename}" alt="" style=" width:42px; height:42px;" >
                     <p class="mb-0 d-none d-sm-block navbar-profile-name"><%=sname%></p>
                    
                   </div>
@@ -240,7 +285,7 @@
                       <h4 class="card-title">
                           
                       
-                          <img class="img-xs rounded-circle " src="getimage_teacher.jsp?filename=<%= po.getPoster_filename()%>" alt="" style="width: 65px; height: 65px">  <%= po.getPoster_name()%> 
+                          <img class="img-xs rounded-circle " src="getimage_teacher.jsp?filename=<%= po.getPoster_filename()%>" alt="" style="width: 50px; height: 50px">  <%= po.getPoster_name()%> 
                       
                       </h4>
                      
@@ -265,8 +310,8 @@
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
-              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Created by  <a href="https://web.facebook.com/zafrulhasan.nasim" target="_blank">Zafrul Hasan Nasim </a>.</span>
+              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="https://web.facebook.com/zafrulhasan.nasim" target="_blank"><i class="mdi mdi-facebook text-danger" style="font-size:30px;"></i> </a><a href="https://www.instagram.com/zafrul_hasan_nasim/" target="_blank"><i class="mdi mdi-instagram text-danger" style="font-size:30px;"></i> </a></span>
             </div>
           </footer>
           <!-- partial -->
