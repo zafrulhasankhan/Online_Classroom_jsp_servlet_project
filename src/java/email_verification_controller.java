@@ -90,6 +90,22 @@ public class email_verification_controller extends HttpServlet {
                         session.setAttribute("email", email);
                        session.setAttribute("name", name);
                         
+                        PreparedStatement  psnp = DBConnection.getConnection().prepareStatement ("SELECT ifnull((SELECT COUNT(course_code) FROM add_course WHERE teacher_email=?),\"0\" ) as course_code");
+                     psnp.setString(1, email);
+              ResultSet rsnp =psnp.executeQuery();
+                if(rsnp.next()){
+                    //String clasno = rs.getString("class_no");
+                   // System.out.println(clasno);
+                   int count1=Integer.parseInt(rsnp.getString(1));
+                    if(count1==0)
+                    {
+                        String ncourse = "<div class=\"alert alert-warning\" style=\"display:inline-table; color:white; background:green; \">\n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:red;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>Oh,sorry!</strong> No course added yet !.....  \n" +
+"            </div>"; 
+                      request.setAttribute("ncd", ncourse);
+                    }
+                }
                         request.setAttribute("filename",filename);
 			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
 			rd.forward(request, response);

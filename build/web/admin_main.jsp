@@ -14,7 +14,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Home</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -368,7 +368,7 @@
                       </div>
                       </div>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                          <img src="assets/images/attendent_shift.png" height="90px" width="75px">
+                          <img src="assets/images/attendent_shift.png" height="83px" width="75px">
                       </div>
                     </div>
                   </div>
@@ -378,7 +378,7 @@
               <div class="col-sm-4 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                      <h4>Classwork report and details</h4><br><br>
+                      <h4>Classwork report and details</h4><br>
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
@@ -415,11 +415,11 @@
                           <a class="dropdown-item" href="classwork_mark_form.jsp?code=<%=code%>&email=<%=tecemail%>&name=<%=tecname%>&filename=${filename}"><%=code%></a>
                           <%}%>
                         </div>
-                        </div>
+                         </div><br>
                         
                       </div>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                        <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
+                          <i class="icon-lg mdi mdi-monitor text-success ml-auto" style=" font-size: 55px"></i>
                       </div>
                     </div>
                   </div>
@@ -427,8 +427,8 @@
               </div>
                 <div class="col-sm-4 grid-margin">
                 <div class="card">
-                  <div class="card-body">
-                      <h6>Without Gmail verification , all the students will not get the latest updates of the class.If you already get the Gmail verification message,then there is no need for more Gmail verification.<code>Otherwise verify Gmail by cliclking below</code></h6>
+                    <div class="card-body">
+                      <h6>Without Gmail verify ,  all the students will not get the latest updates of the class.If you already get the Gmail verify message,then there is no need for more Gmail verify.<code>Otherwise verify Gmail by cliclking below</code></h6>
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
@@ -441,7 +441,7 @@
                       </div>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                         
-                        <i class="mdi mdi-gmail" style="font-size: 50px;"></i>  
+                        <i class="mdi mdi-gmail" style="font-size: 43px;"></i>  
                       </div>
                     </div>
                   </div>
@@ -457,7 +457,7 @@
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Created by  <a href="https://web.facebook.com/zafrulhasan.nasim" target="_blank">Zafrul Hasan Nasim </a>.</span>
-              <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <a href="https://web.facebook.com/zafrulhasan.nasim" target="_blank"><i class="mdi mdi-facebook text-danger" style="font-size:30px;"></i> </a><a href="https://www.instagram.com/zafrul_hasan_nasim/" target="_blank"><i class="mdi mdi-instagram text-danger" style="font-size:30px;"></i> </a></span>
+                <span class="text-muted float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="https://github.com/zafrulhasankhan" title="Github" target="_blank"><i class="mdi mdi-github-circle text-danger" style="font-size:30px;"></i> </a> <a href="https://web.facebook.com/zafrulhasan.nasim" title="Facebook" target="_blank"><i class="mdi mdi-facebook text-danger" style="font-size:30px;"></i> </a><a href="https://www.instagram.com/zafrul_hasan_nasim/" title="instagram" target="_blank"><i class="mdi mdi-instagram text-danger" style="font-size:30px;"></i> </a></span>
             </div>
           </footer>
           <!-- partial -->
@@ -611,7 +611,7 @@
                   else  if(se1==se){
             %>
             <script type="text/javascript">
-            alert('Successfully course edited ');
+            alert('Successfully course updated ');
             </script>
                   <% }%>
           

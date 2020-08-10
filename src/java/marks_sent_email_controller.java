@@ -144,6 +144,19 @@ for(int i=0;i<stuid.length;i++){
         
     }
  HttpSession session = request.getSession();
+ session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                             session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
 String ssa = "<div class=\"alert alert-warning\" style=\"display:inline-table; background:green; color:white\">\n" +
 "                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:white;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
 "                <strong>Successfully  !</strong> sent marks to all of students ...  \n" +

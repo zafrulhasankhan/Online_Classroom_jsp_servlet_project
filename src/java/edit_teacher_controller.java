@@ -68,6 +68,13 @@ public class edit_teacher_controller extends HttpServlet {
             ps5.setString(3, ptecemail);
             ps5.setString(4, ptecname);
             ps5.executeUpdate();
+            
+            PreparedStatement psp=DBConnection.getConnection().prepareStatement("update post set poster_name=? where   poster_name=? ");
+           // ps5.setString(1, tecemail);
+            psp.setString(1, tecname);
+            //ps5.setString(3, ptecemail);
+            psp.setString(2, ptecname);
+            psp.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(edit_teacher_controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -84,6 +91,13 @@ public class edit_teacher_controller extends HttpServlet {
                ps1.setString(3, tecemail);
                ps1.setString(4, tecname);
                ps1.executeUpdate();
+               
+               PreparedStatement psp=DBConnection.getConnection().prepareStatement("update post set poster_filename=? where  poster_name=? ");
+               
+               psp.setString(1, filename);
+               psp.setString(2, tecname);
+               //ps1.setString(4, tecname);
+               psp.executeUpdate();
            } catch (SQLException ex) {
                Logger.getLogger(edit_teacher_controller.class.getName()).log(Level.SEVERE, null, ex);
            } catch (ClassNotFoundException ex) {
@@ -105,6 +119,20 @@ public class edit_teacher_controller extends HttpServlet {
 "            </div>";
                         request.setAttribute("ssa", ncerror);
                         request.setAttribute("filename",lfilename);
+                        
+                        session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                            session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
 			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
 			rd.forward(request, response);
             }

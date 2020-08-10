@@ -87,9 +87,21 @@ public class all_student_attendance_report_controller extends HttpServlet {
                
                  //System.out.println(totalclass);
                  ar.setTotalday(totalclass);
-                 allreportlist.add(ar);
+                 
                  request.setAttribute("allreportlist",allreportlist);
              }
+             
+             PreparedStatement psf = DBConnection.getConnection().prepareStatement("select * from student_account  where id=? ");
+            psf.setString(1, id);
+            ResultSet rsf=psf.executeQuery();
+             if(rsf.next()){
+                 String filename = rsf.getString("filename");
+                 ar.setFilename(filename);
+                 allreportlist.add(ar);
+             }
+             
+             
+             
                 session.setAttribute("tecemail", tecemail);
                 session.setAttribute("tecname", tecname);
                 request.setAttribute("filename", tecfilename);

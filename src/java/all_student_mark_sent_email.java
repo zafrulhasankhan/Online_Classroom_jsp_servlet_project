@@ -12,11 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +33,8 @@ public class all_student_mark_sent_email extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        String atecfile= request.getParameter("tecfile");
+        String atecname= request.getParameter("tecname");
         String user="";
         String pass="";
        
@@ -103,14 +106,31 @@ for(int i=0;i<stuid.length;i++){
         //RequestDispatcher rd = request.getRequestDispatcher("newjsp.jsp");
                 //rd.forward(request, response);
     }
- PrintWriter out=response.getWriter();
-   out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( 'Yes' ,  'successfully classwork marks sent  !' ,  'success' );");
-			out.println("});");
-			out.println("</script>");
+ HttpSession session = request.getSession();
+ session.setAttribute("ssp", "no");
+                          session.setAttribute("nos", "no");
+                          session.setAttribute("sac", "no");
+                           session.setAttribute("dc", "no");
+                           session.setAttribute("ae", "no");
+                           session.setAttribute("cp", "no");
+                            session.setAttribute("np", "no");
+                            session.setAttribute("ncm", "no");
+                            session.setAttribute("nwc", "no");
+                            session.setAttribute("asa", "no");
+                             session.setAttribute("ev", "no");
+                            session.setAttribute("ns", "no");
+                            session.setAttribute("se", "no");
+String ssa = "<div class=\"alert alert-warning\" style=\"display:inline-table; background:green; color:white\">\n" +
+"                <span  class=\"closebtn\" Style=\"float:right; cursor: pointer; color:white;animation: bymove 4s infinite;\" onclick=\"this.parentElement.style.display='none';\">&times;</span>\n" +
+"                <strong>Successfully  !</strong> sent marks to all of students ...  \n" +
+"            </div>";
+                     request.setAttribute("ssa", ssa);
+                     session.setAttribute("email", user);
+                            session.setAttribute("name", atecname);
+                            request.setAttribute("filename", atecfile);
+			RequestDispatcher rd = request.getRequestDispatcher("admin_main.jsp");
+			rd.forward(request, response);
+   
     
         
     }

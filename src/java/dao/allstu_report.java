@@ -16,7 +16,16 @@ public class allstu_report {
     private String classid;
     private String student_name;
     private String email;
+ private String filename;
 
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+ 
     public int getTotalday() {
         return totalday;
     }

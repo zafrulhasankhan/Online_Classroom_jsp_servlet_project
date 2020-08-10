@@ -109,6 +109,7 @@ public class individual_report_controller extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(individual_report_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
+        request.setAttribute("code", code);
         session.setAttribute("email", tecemail);
         session.setAttribute("name", tecname);
         request.setAttribute("filename", tecfilename);

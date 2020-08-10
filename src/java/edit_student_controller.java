@@ -100,7 +100,12 @@ public class edit_student_controller extends HttpServlet {
             ps7.setString(4, pstu_id);
             
             ps7.executeUpdate();
-           
+            PreparedStatement psp=DBConnection.getConnection().prepareStatement("update post set poster_name=?  where  poster_name=? ");
+            psp.setString(1, sname);
+            psp.setString(2, psname);
+            
+            
+            psp.executeUpdate();
        } catch (SQLException ex) {
            Logger.getLogger(edit_student_controller.class.getName()).log(Level.SEVERE, null, ex);
        } catch (ClassNotFoundException ex) {
@@ -119,6 +124,13 @@ public class edit_student_controller extends HttpServlet {
                ps8.setString(3, semail);
                ps8.setString(4, sname);
                ps8.executeUpdate();
+               
+                PreparedStatement pspf=DBConnection.getConnection().prepareStatement("update post set  poster_filename=? where   poster_name=? ");
+            
+               pspf.setString(1, filename);
+               pspf.setString(2, sname);
+               
+               pspf.executeUpdate();
        
        } catch (SQLException ex) {
            Logger.getLogger(edit_student_controller.class.getName()).log(Level.SEVERE, null, ex);
